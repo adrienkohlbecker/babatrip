@@ -47,3 +47,6 @@ end
 # Authentication
 gem "devise"
 gem "omniauth-facebook"
+
+# Monitoring
+gem "newrelic_rpm"
