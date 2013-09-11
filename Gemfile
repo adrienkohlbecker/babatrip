@@ -34,10 +34,10 @@ gem "haml-rails"
 group :development do
   # Better error page
   gem "better_errors"
-
-  # Better console output formatting
-  gem "awesome_print"
 end
+
+# Better console output formatting
+gem "awesome_print"
 
 group :development, :test do
   # Configuration management
