@@ -47,3 +47,6 @@ gem 'passenger'
 
 # Required by heroku
 gem "rails_12factor"
+
+# Compile templates in HAML
+gem "haml-rails"
