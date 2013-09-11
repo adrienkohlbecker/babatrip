@@ -38,3 +38,8 @@ group :development do
   # Better console output formatting
   gem "awesome_print"
 end
+
+group :development, :test do
+  # Configuration management
+  gem "dotenv-rails"
+end
