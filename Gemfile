@@ -43,3 +43,7 @@ group :development, :test do
   # Configuration management
   gem "dotenv-rails"
 end
+
+# Authentication
+gem "devise"
+gem "omniauth-facebook"
