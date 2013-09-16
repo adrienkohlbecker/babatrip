@@ -51,3 +51,6 @@ gem "omniauth-facebook"
 
 # Monitoring
 gem "newrelic_rpm"
+
+# Facebook Graph API access
+gem "koala"
