@@ -57,3 +57,6 @@ gem "koala"
 
 # Admin interface
 gem "rails_admin"
+
+# Admin authorization management
+gem 'cancan'

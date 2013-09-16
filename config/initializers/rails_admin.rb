@@ -20,6 +20,9 @@ RailsAdmin.config do |config|
   # Or with a PaperTrail: (you need to install it first)
   # config.audit_with :paper_trail, 'User'
 
+  # Only authorize admins to view the interface
+  config.authorize_with :cancan
+
   # Display empty fields in show views:
   # config.compact_show_view = false
 
