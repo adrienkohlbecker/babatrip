@@ -60,6 +60,15 @@ class User < ActiveRecord::Base
                      user_uid: self.uid, friends_uids: friends_uids).delete_all
     end
 
+    # Get user location
+    me = @graph.get_object("me", fields: 'location')
+    location_id = me['location']['id']
+    location = @graph.get_object(location_id, fields: 'location')
+    lat = location['location']['latitude']
+    long = location['location']['longitude']
+
+    self.update_attributes(latitude: lat, longitude: long)
+
   end
 
 end
