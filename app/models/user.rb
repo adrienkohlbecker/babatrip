@@ -5,6 +5,23 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  rails_admin do
+
+    field :email
+    field :uid do
+      label 'Facebook ID'
+      pretty_value do
+        bindings[:view].tag(:a, { :href => "https://www.facebook.com/#{value}" }) << value << bindings[:view].tag('/a')
+      end
+    end
+    field :latitude, :float
+    field :longitude, :float
+
+    field :created_at, :datetime
+    field :last_sign_in_at, :datetime
+
+  end
+
   def self.find_for_facebook_oauth(auth)
 
     ap auth
