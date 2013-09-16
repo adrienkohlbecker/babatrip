@@ -54,3 +54,6 @@ gem "newrelic_rpm"
 
 # Facebook Graph API access
 gem "koala"
+
+# Admin interface
+gem "rails_admin"
