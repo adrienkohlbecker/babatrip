@@ -34,6 +34,7 @@ gem "haml-rails"
 group :development do
   # Better error page
   gem "better_errors"
+  gem "binding_of_caller"
 end
 
 # Better console output formatting
