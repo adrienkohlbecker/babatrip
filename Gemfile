@@ -60,3 +60,6 @@ gem "rails_admin"
 
 # Admin authorization management
 gem 'cancan'
+
+# Foundation CSS framework
+gem 'zurb-foundation'
