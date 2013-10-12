@@ -19,11 +19,17 @@
     /[if lt IE 7]
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 
-    .notice= notice
-    .alert= alert
+    .row
+
+      - flash.each do |key, msg|
+        %div{class: "alert-box #{key}", data: {alert: true}}
+          = msg.html_safe
+          %a.close{href: '#'} &times;
+
+      / .notice= notice
+      / .alert= alert
 
     = yield
-
 
     = jquery_include_tag :google
     = javascript_include_tag "application", "data-turbolinks-track" => true
