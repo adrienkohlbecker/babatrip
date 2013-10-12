@@ -66,3 +66,6 @@ gem 'zurb-foundation'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails-cdn'
+
+# Mordernizr
+gem 'modernizr-rails'
