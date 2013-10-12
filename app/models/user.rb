@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
     if friends_to_delete.any?
       Connection.where('(this_id =  :user_uid AND other_id IN (:friends_to_delete))
                      OR (other_id = :user_uid AND this_id  IN (:friends_to_delete))',
-                     user_uid: self.uid, friends_uids: friends_uids).delete_all
+                     user_uid: self.uid, friends_to_delete: friends_to_delete).delete_all
     end
 
     # Get user location
