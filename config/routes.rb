@@ -10,6 +10,8 @@ Babatrip::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   get 'me' => 'me#show'
+  get 'me/edit' => 'me#edit'
+  put 'me/edit' => 'me#update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

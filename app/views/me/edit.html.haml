@@ -1,0 +1,47 @@
+.row
+  .content-title-row
+    %h2.content-title= @profile.edit_content_title
+    .content-subtitle Let people know about your lifestyle so that they can decide to join you in your trips
+.row
+
+  .columns.small-2
+    pic
+  .columns.small-8
+
+    = simple_form_for @profile.user, url: me_edit_path, method: :put, html: {'data-abide' => true } do |f|
+
+      .row
+        .columns.small-6
+          = f.input :first_name
+        .columns.small-6
+          = f.input :last_name
+      .row
+        .columns.small-6
+          = f.input :email, required: true
+      .row
+        .columns.small-6
+          = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }
+        .columns.small-3
+          = f.input :sex, collection: User::SEX_COLLECTION
+        .columns.small-3
+          = f.input :relationship_status, collection: User::RELATIONSHIP_STATUS_COLLECTION
+      .row
+        .columns.small-6
+          = f.input :nationality, required: true
+        .columns.small-6
+          = f.input :city, required: true
+      .row
+        .columns.small-6
+          = f.label :mood
+          = f.collection_check_boxes :mood, User::MOOD_COLLECTION, :last, :first
+      .row
+        .columns.small-6
+          = f.label :time
+          = f.collection_check_boxes :time, User::TIME_COLLECTION, :last, :first
+      .row
+        .columns.small-offset-10.small-2
+          = f.button :submit
+
+
+  .columns.small-2
+    blala
