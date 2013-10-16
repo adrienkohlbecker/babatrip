@@ -82,14 +82,30 @@ class User < ActiveRecord::Base
                      user_uid: self.uid, friends_to_delete: friends_to_delete).delete_all
     end
 
-    # Get user location
-    me = @graph.get_object("me", fields: 'location')
+    # Get user profile
+    me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status')
+
     location_id = me['location']['id']
-    location = @graph.get_object(location_id, fields: 'location')
+    location = @graph.get_object(location_id, fields: 'location,name')
     lat = location['location']['latitude']
     long = location['location']['longitude']
+    city = location['name']
 
-    self.update_attributes(latitude: lat, longitude: long)
+    sex = nil
+    sex = 'M' if me['gender'] == 'male'
+    sex = 'F' if me['gender'] == 'female'
+
+    birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
+
+    first_name = me['first_name']
+    last_name = me['last_name']
+
+    relationship_status = nil
+    relationship_status = 'S' if ['Single', 'Widowed', 'Divorced', 'Separated'].include?(me['relationship_status'])
+    relationship_status = 'R' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
+    # manque "It's complicated" et "In an open relationship"
+
+    self.update_attributes!(latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
 
   end
 
