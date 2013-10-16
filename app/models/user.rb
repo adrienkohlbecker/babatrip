@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  SEX_COLLECTION = [['Male', 'M'] ,['Female', 'F']]
+  RELATIONSHIP_STATUS_COLLECTION = [['Single', 'S'], ['In a relationship', 'R']]
+  MOOD_COLLECTION = [['Hippie', 'H'], ['Normal', 'N'], ['Chic', 'C']]
+  TIME_COLLECTION = [['Night', 'N'], ['Day', 'D'], ['24h', 'A']]
+
   rails_admin do
 
     field :email
