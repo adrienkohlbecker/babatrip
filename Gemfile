@@ -69,3 +69,6 @@ gem 'jquery-rails-cdn'
 
 # Mordernizr
 gem 'modernizr-rails'
+
+# Simple forms DSL
+gem 'simple_form'
