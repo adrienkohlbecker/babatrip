@@ -11,5 +11,8 @@
           %a{href: '/'} Home
         %li
           %a{href: '/about'} About
-        %li
-          %a{href: '/me'} Angelo Chiacchio
+        - if current_user
+          %li
+            %a{href: '/me'}
+              = current_user.full_name
+              = image_tag current_user.picture_url(width: 32, height: 32)

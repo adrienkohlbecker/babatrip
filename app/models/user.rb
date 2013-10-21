@@ -108,10 +108,16 @@ class User < ActiveRecord::Base
     relationship_status = 'R' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
-    picture_url = "https://graph.facebook.com/#{self.uid}/picture?width=#{User::MIN_PICTURE_WIDTH}&height=#{User::MIN_PICTURE_HEIGHT}"
-
     self.update_attributes!(latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city, picture_url: picture_url)
 
+  end
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def picture_url(width: 100, height: 100)
+    "https://graph.facebook.com/#{self.uid}/picture?width=#{width}&height=#{height}"
   end
 
 end
