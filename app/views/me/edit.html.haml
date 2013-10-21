@@ -27,7 +27,7 @@
           = f.input :relationship_status, collection: User::RELATIONSHIP_STATUS_COLLECTION
       .row
         .columns.small-6
-          = f.input :nationality, required: true
+          = f.input :nationality, collection: nationality_select_collection, required: true
         .columns.small-6
           = f.input :city, required: true
       .row

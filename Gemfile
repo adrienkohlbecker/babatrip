@@ -72,3 +72,6 @@ gem 'modernizr-rails'
 
 # Simple forms DSL
 gem 'simple_form'
+
+# Standard country data for nationality selection
+gem 'countries'

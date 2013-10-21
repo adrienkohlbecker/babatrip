@@ -36,6 +36,7 @@ class MeController < ApplicationController
     user.relationship_status = me_params[:user][:relationship_status]
     user.mood = me_params[:user][:mood].reject(&:empty?)
     user.time = me_params[:user][:time].reject(&:empty?)
+    user.nationality = me_params[:user][:nationality]
 
     user.is_profile_completed = true
 
@@ -51,7 +52,7 @@ class MeController < ApplicationController
 
     def me_params
       puts ap params
-      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, {:mood => []}, {:time => []}, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
+      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, {:mood => []}, {:time => []}, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 
 end
