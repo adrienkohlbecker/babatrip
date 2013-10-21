@@ -30,6 +30,8 @@
           = f.input :nationality, collection: nationality_select_collection, required: true
         .columns.small-6
           = f.input :city, required: true
+          = f.input :latitude, required: true, as: :hidden
+          = f.input :longitude, required: true, as: :hidden
       .row
         .columns.small-6
           = f.label :mood
@@ -45,3 +47,5 @@
 
   .columns.small-2
     blala
+
+= javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
