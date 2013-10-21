@@ -12,4 +12,8 @@ class ProfileFacade
     @user
   end
 
+  def picture_url
+    @user.picture_url
+  end
+
 end

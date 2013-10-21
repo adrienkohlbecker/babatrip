@@ -5,7 +5,7 @@
 .row
 
   .columns.small-2
-    pic
+    = image_tag @profile.picture_url
   .columns.small-8
 
     = simple_form_for @profile.user, url: me_edit_path, method: :put, html: {'data-abide' => true } do |f|

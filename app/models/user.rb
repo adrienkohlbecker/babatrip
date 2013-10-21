@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   MOOD_COLLECTION = [['Hippie', 'H'], ['Normal', 'N'], ['Chic', 'C']]
   TIME_COLLECTION = [['Night', 'N'], ['Day', 'D'], ['24h', 'A']]
 
+  MIN_PICTURE_HEIGHT = 100
+  MIN_PICTURE_WIDTH = 100
+
   rails_admin do
 
     field :email
@@ -105,7 +108,9 @@ class User < ActiveRecord::Base
     relationship_status = 'R' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
-    self.update_attributes!(latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
+    picture_url = "https://graph.facebook.com/#{self.uid}/picture?width=#{User::MIN_PICTURE_WIDTH}&height=#{User::MIN_PICTURE_HEIGHT}"
+
+    self.update_attributes!(latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city, picture_url: picture_url)
 
   end
 
