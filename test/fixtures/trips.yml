@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: MyString
+  latitude: 1.5
+  longitude: 1.5
+  arriving: 2013-10-28
+  leaving: 2013-10-28
+  user_id: 
+
+two:
+  city: MyString
+  latitude: 1.5
+  longitude: 1.5
+  arriving: 2013-10-28
+  leaving: 2013-10-28
+  user_id: 
