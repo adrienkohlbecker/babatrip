@@ -29,7 +29,7 @@
         .columns.small-6
           = f.input :nationality, collection: nationality_select_collection, required: true
         .columns.small-6
-          = f.input :city, required: true
+          = f.input :city, required: true, options: {data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}}
           = f.input :latitude, required: true, as: :hidden
           = f.input :longitude, required: true, as: :hidden
       .row

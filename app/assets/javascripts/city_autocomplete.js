@@ -1,16 +1,22 @@
 $(document).ready(function() {
 
-  autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('user_city'), {
-          types: ['(cities)']
-        });
+  $('[data-city-autocomplete]').each(function(i, elt) {
 
-  function onPlaceChanged() {
-    var place = autocomplete.getPlace();
-    document.getElementById('user_latitude').value = place.geometry.location.lat();
-    document.getElementById('user_longitude').value = place.geometry.location.lng();
-  }
+    autocomplete = new google.maps.places.Autocomplete(
+          elt, {
+            types: ['(cities)']
+          });
 
-  google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+
+
+    function onPlaceChanged() {
+      var place = autocomplete.getPlace();
+      document.getElementById($(elt).data('city-autocomplete-lat')).value = place.geometry.location.lat();
+      document.getElementById($(elt).data('city-autocomplete-lng')).value = place.geometry.location.lng();
+    }
+
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+
+  });
 
 });

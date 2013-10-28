@@ -1,3 +1,17 @@
-Hello, world!
+.row
+  Hello, world!
 
-= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+  = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+
+
+  = form_tag("/search", method: "get") do
+
+    = text_field_tag(:city, "", :placeholder => "Where are you planning to go?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+    = hidden_field_tag(:latitude)
+    = hidden_field_tag(:longitude)
+    = select_tag(:arriving, options_from_collection_for_select(arriving_date_options, :first, :last), include_blank: true, required: true)
+    = select_tag(:arriving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
+    = submit_tag("Search")
+
+
+  = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
