@@ -1,5 +1,10 @@
 Babatrip::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions, :registrations, :password]
+  delete '/users/sign_out' => 'devise/sessions#sestroy', :as => "destroy_user_session"
+
+  # Fix devise redirecting to sign in page instead of home on error during sign in
+  get '/' => 'home#index', :as => "new_user_session"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
