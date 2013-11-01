@@ -10,7 +10,7 @@
     = hidden_field_tag(:latitude)
     = hidden_field_tag(:longitude)
     = select_tag(:arriving, options_from_collection_for_select(arriving_date_options, :first, :last), include_blank: true, required: true)
-    = select_tag(:arriving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
+    = select_tag(:leaving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
     = submit_tag("Search")
 
 
