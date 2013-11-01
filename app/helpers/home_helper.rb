@@ -5,7 +5,7 @@ module HomeHelper
     data = []
     date = Time.now
     12.times do
-      data << [date.strftime("%Y%m01"), date.strftime('%B %Y')]
+      data << [date.strftime("%Y-%m-01"), date.strftime('%B %Y')]
       date = date.next_month
     end
 
@@ -20,7 +20,7 @@ module HomeHelper
     date = Time.now
     12.times do
       date = (Date.new(date.year, date.month) >> 1) - 1 # last day of the month
-      data << [date.strftime("%Y%m%d"), date.strftime('%B %Y')]
+      data << [date.strftime("%Y-%m-%d"), date.strftime('%B %Y')]
       date = date.next_month
     end
 
