@@ -1,0 +1,23 @@
+.row.content-title-row
+  .columns.small-7
+    %h2.content-title
+      Who's going to
+      = @search_results.city
+    .content-subtitle
+      Between
+      = @search_results.formatted_arriving
+      and
+      = @search_results.formatted_leaving
+
+  .columns.small-5
+    .row
+      .columns.small-6
+        %a.button{:href => root_url} New search
+      .columns.small-6
+        = form_tag do |f|
+          = hidden_field_tag :city, @search_results.city
+          = hidden_field_tag :latitude, @search_results.latitude
+          = hidden_field_tag :longitude, @search_results.longitude
+          = hidden_field_tag :leaving, @search_results.leaving
+          = hidden_field_tag :arriving, @search_results.arriving
+          = submit_tag "Add to my trips", {:class => :button}

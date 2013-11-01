@@ -13,6 +13,9 @@ Babatrip::Application.routes.draw do
   get 'me/edit' => 'me#edit'
   put 'me/edit' => 'me#update'
 
+  get '/search' => 'search#index'
+  post '/search' => 'search#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
