@@ -12,6 +12,10 @@ class ProfileFacade
     @user
   end
 
+  def trips
+    @user.trips
+  end
+
   def picture_url
     @user.picture_url
   end
