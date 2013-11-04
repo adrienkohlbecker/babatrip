@@ -1,0 +1,18 @@
+.trip-box
+  .left-trip-box
+    .profile-pic
+      %img{src: trip.user.picture_url}
+    .character
+      .mood
+        = trip.user.mood
+      .time
+        = trip.user.time
+  .right-trip-box
+    .name
+      = trip.user.full_name
+    .age-city
+      = "#{trip.user.age} years old, from #{trip.user.city}"
+    .location
+      = trip.city
+    .dates
+      = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"

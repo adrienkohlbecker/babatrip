@@ -118,8 +118,17 @@ class User < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def age
+    now = Time.now.utc.to_date
+    now.year - self.birth_date.year - (self.birth_date.to_date.change(:year => now.year) > now ? 1 : 0)
+  end
+
   def picture_url(width: 100, height: 100)
     "https://graph.facebook.com/#{self.uid}/picture?width=#{width}&height=#{height}"
+  end
+
+  def friends
+    User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
   end
 
 end

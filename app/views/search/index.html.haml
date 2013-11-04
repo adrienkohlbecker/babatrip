@@ -21,3 +21,19 @@
           = hidden_field_tag :leaving, @search_results.leaving
           = hidden_field_tag :arriving, @search_results.arriving
           = submit_tag "Add to my trips", {:class => :button}
+.row.friends-results
+  .columns.small-12
+    - @search_results.trips_from_friends.each_slice(3) do |row|
+      .row
+        - row.each do |trip|
+          .columns.small-4
+            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+.row.not-friends-results
+  .columns.small-12
+    - @search_results.trips_not_from_friends.each_slice(3) do |row|
+      .row
+        - row.each do |trip|
+          .columns.small-4
+            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+
+
