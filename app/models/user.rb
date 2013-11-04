@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}"
+    "#{first_name.try(:capitalize)} #{last_name.try(:capitalize)}".strip
   end
 
   def age
