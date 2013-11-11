@@ -1,50 +1,54 @@
-.row.content-title-row
-  %h2.content-title= @profile.edit_content_title
-  .content-subtitle Let people know about your lifestyle so that they can decide to join you in your trips
-.row
+.contain-to-grid.top-zone-small
+  .row.content-title-row
+    .columns.small-12
+      %h2.big-title= @profile.edit_content_title
+      %h3.small-title Let people know about your lifestyle so that they can decide to join you in your trips
 
-  .columns.small-2
-    = image_tag @profile.picture_url
-  .columns.small-8
+.contain-to-grid.main-zone
+  .row.profile
 
-    = simple_form_for @profile.user, url: me_edit_path, method: :put, html: {'data-abide' => true } do |f|
+    .columns.small-3
+      = image_tag @profile.picture_url
+    .columns.small-7.halfleft
 
-      .row
-        .columns.small-6
-          = f.input :first_name
-        .columns.small-6
-          = f.input :last_name
-      .row
-        .columns.small-6
-          = f.input :email, required: true
-      .row
-        .columns.small-6
-          = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }
-        .columns.small-3
-          = f.input :sex, collection: User::SEX_COLLECTION
-        .columns.small-3
-          = f.input :relationship_status, collection: User::RELATIONSHIP_STATUS_COLLECTION
-      .row
-        .columns.small-6
-          = f.input :nationality, collection: nationality_select_collection, required: true
-        .columns.small-6
-          = f.input :city, required: true, options: {data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}}
-          = f.input :latitude, required: true, as: :hidden
-          = f.input :longitude, required: true, as: :hidden
-      .row
-        .columns.small-6
-          = f.label :mood
-          = f.collection_check_boxes :mood, User::MOOD_COLLECTION, :last, :first
-      .row
-        .columns.small-6
-          = f.label :time
-          = f.collection_check_boxes :time, User::TIME_COLLECTION, :last, :first
-      .row
-        .columns.small-offset-10.small-2
-          = f.button :submit
+      = simple_form_for @profile.user, url: me_edit_path, method: :put, html: {'data-abide' => true } do |f|
+
+        .row
+          .columns.small-6
+            = f.input :first_name
+          .columns.small-6
+            = f.input :last_name
+        .row
+          .columns.small-6
+            = f.input :email, required: true
+        .row
+          .columns.small-6
+            = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }
+          .columns.small-3
+            = f.input :sex, collection: User::SEX_COLLECTION
+          .columns.small-3
+            = f.input :relationship_status, collection: User::RELATIONSHIP_STATUS_COLLECTION
+        .row
+          .columns.small-6
+            = f.input :nationality, collection: nationality_select_collection, required: true
+          .columns.small-6
+            = f.input :city, required: true, options: {data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}}
+            = f.input :latitude, required: true, as: :hidden
+            = f.input :longitude, required: true, as: :hidden
+        .row
+          .columns.small-6
+            = f.label :mood
+            = f.collection_check_boxes :mood, User::MOOD_COLLECTION, :last, :first
+        .row
+          .columns.small-6
+            = f.label :time
+            = f.collection_check_boxes :time, User::TIME_COLLECTION, :last, :first
+        .row
+          .columns.small-offset-10.small-2
+            = f.button :submit
 
 
-  .columns.small-2
-    blala
+    .columns.small-2.guide-text
+      Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Maecenas sed diam eget risus varius blandit sit amet non magna.
 
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
