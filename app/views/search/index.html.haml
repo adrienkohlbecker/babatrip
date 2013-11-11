@@ -1,39 +1,42 @@
-.row.content-title-row
-  .columns.small-7
-    %h2.content-title
-      Who's going to
-      = @search_results.city
-    .content-subtitle
-      Between
-      = @search_results.formatted_arriving
-      and
-      = @search_results.formatted_leaving
+.contain-to-grid.top-zone-small
+  .row.content-title-row
+    .columns.small-7
+      %h2.big-title
+        Who's going to
+        = @search_results.city
+      %h3.small-title.content-subtitle
+        Between
+        = @search_results.formatted_arriving
+        and
+        = @search_results.formatted_leaving
 
-  .columns.small-5
-    .row
-      .columns.small-6
-        %a.button{:href => root_url} New search
-      .columns.small-6
-        = form_tag do |f|
-          = hidden_field_tag :city, @search_results.city
-          = hidden_field_tag :latitude, @search_results.latitude
-          = hidden_field_tag :longitude, @search_results.longitude
-          = hidden_field_tag :leaving, @search_results.leaving
-          = hidden_field_tag :arriving, @search_results.arriving
-          = submit_tag "Add to my trips", {:class => :button}
-.row.friends-results
-  .columns.small-12
-    - @search_results.trips_from_friends.each_slice(3) do |row|
+    .columns.small-5
       .row
-        - row.each do |trip|
-          .columns.small-4
-            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-.row.not-friends-results
-  .columns.small-12
-    - @search_results.trips_not_from_friends.each_slice(3) do |row|
-      .row
-        - row.each do |trip|
-          .columns.small-4
-            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+        .columns.small-6
+          %a.button{:href => root_url} New search
+        .columns.small-6
+          = form_tag do |f|
+            = hidden_field_tag :city, @search_results.city
+            = hidden_field_tag :latitude, @search_results.latitude
+            = hidden_field_tag :longitude, @search_results.longitude
+            = hidden_field_tag :leaving, @search_results.leaving
+            = hidden_field_tag :arriving, @search_results.arriving
+            = submit_tag "Add to my trips", {:class => :button}
+
+.contain-to-grid.main-zone
+  .row.friends-results
+    .columns.small-12
+      - @search_results.trips_from_friends.each_slice(3) do |row|
+        .row
+          - row.each do |trip|
+            .columns.small-4
+              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+  .row.not-friends-results
+    .columns.small-12
+      - @search_results.trips_not_from_friends.each_slice(3) do |row|
+        .row
+          - row.each do |trip|
+            .columns.small-4
+              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
 
 

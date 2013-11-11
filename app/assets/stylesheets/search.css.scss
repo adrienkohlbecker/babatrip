@@ -1,3 +1,67 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.friends-results {
+
+padding-top: 20px;
+}
+
+.trip-box {
+    display: block;
+    background-color: white;
+    color: #505050;
+    height: 105px;
+    margin-right: 10px;
+
+    .left-trip-box {
+        float: left;
+        width: 70px;
+        margin: 0px;
+
+         img {
+        width: 70px;
+        }
+
+        .mood, .time {
+            display: block;
+            width: 35px;
+            height: 35px;
+            float: left;
+            color: rgba(255,255,255,0.5);
+            line-height: 35px;
+        }
+        .mood {
+            background-color: #3b5998;
+        }
+        .time {
+            background-color: lighten(#3b5998, 20%);
+        }
+    }
+
+    .right-trip-box {
+        width: auto;
+        padding: 8px 10px 10px 80px;
+
+        .name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 3px;
+        }
+
+        .age-city {
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .location, .dates {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+    }
+
+   
+}
