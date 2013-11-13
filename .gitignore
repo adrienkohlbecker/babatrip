@@ -36,5 +36,3 @@ pickle-email-*.html
 # Sublime text
 *.sublime-project
 *.sublime-workspace
-
-config/database.yml
