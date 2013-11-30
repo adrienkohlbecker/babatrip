@@ -118,32 +118,9 @@ h2,h3 {
     }
 }
 
-.top-zone-small {
+.top-zone.small {
     padding: 32px 0px;
     height: 170px;
-
-    button, .button {
-        background: rgba(0,0,0,0.4) !important;
-        height: 40px;
-        line-height: 19px;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-        border: none;
-        font-size: 13px;
-        text-transform: uppercase !important;
-    }
-
-    form {
-
-        input  {
-            height: 44px;
-            font-size: 15px;
-        }
-
-        .button {
-            background-color: #ff4e96 !important;
-        }
-
-    }
 }
 
 .main-zone {
