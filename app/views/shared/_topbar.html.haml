@@ -13,6 +13,6 @@
           %a{href: '/about'} About
         - if current_user
           %li
-            %a{href: '/me'}
+            %a.user{href: '/me'}
               = current_user.full_name
-              = image_tag current_user.picture_url(width: 32, height: 32)
+              = image_tag current_user.picture_url(width: 28, height: 28)
