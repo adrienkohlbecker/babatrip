@@ -1,6 +1,6 @@
 .contain-to-grid.top-zone-small
   .row.content-title-row
-    .columns.small-7
+    .columns.small-8
       %h2.big-title
         Who's going to
         = @search_results.city
@@ -10,11 +10,11 @@
         and
         = @search_results.formatted_leaving
 
-    .columns.small-5
+    .columns.small-4.buttons
       .row
-        .columns.small-6
-          %a.button{:href => root_url} New search
-        .columns.small-6
+        .columns.small-5
+          %a.button.expand{:href => root_url} New search
+        .columns.small-7
           = form_tag do |f|
             = hidden_field_tag :city, @search_results.city
             = hidden_field_tag :latitude, @search_results.latitude
