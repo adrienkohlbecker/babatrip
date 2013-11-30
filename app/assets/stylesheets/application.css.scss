@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree
+ *= require foundation_and_overrides
+ *= require_self
+ */
+
+@font-face {
+font-family: 'Dancing Script';
+font-style: italic;
+font-weight: 400;
+src: url(http://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+}
+
+body {
+    background-image: url('bg-main.jpg');
+    background-size: cover;
+}
+
+.contain-to-grid {
+    background: none;
+}
+
+.darker {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.white-title {
+    color: white;
+    font-size: 16px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.big-title {
+    color: white;
+    font-size: 42px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0px;
+    font-family: 'Dancing Script';
+}
+
+.small-title {
+    color: white;
+    font-size: 15px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-top: -2px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.top-bar {
+    margin-left: -20px;
+    background: none ;
+
+    .top-bar-section ul {
+        background: none !important;
+    }
+}
+
+.top-zone {
+    padding: 120px 0px;
+    height: 450px;
+
+    button, .button {
+        background: rgba(0,0,0,0.4) !important;
+        height: 40px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 13px;
+        text-transform: uppercase !important;
+    }
+
+    form {
+
+        input  {
+            height: 44px;
+            font-size: 15px;
+        }
+
+        .button {
+            background-color: #ff4e96 !important;
+        }
+
+    }
+}
+
+.top-zone-small {
+    padding: 32px 0px;
+    height: 170px;
+
+    button, .button {
+        background: rgba(0,0,0,0.4) !important;
+        height: 40px;
+        line-height: 19px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 13px;
+        text-transform: uppercase !important;
+    }
+
+    form {
+
+        input  {
+            height: 44px;
+            font-size: 15px;
+        }
+
+        .button {
+            background-color: #ff4e96 !important;
+        }
+
+    }
+}
+
+.main-zone {
+    background: rgba(175, 175, 175, 0.5);
+    padding: 0px;
+    min-height: 450px;
+    
+    h2.white-title {
+    margin-top: -32px; 
+    }
+}
