@@ -1,0 +1,14 @@
+.trip-box
+  .row
+    = render :partial => 'shared/trip_box', :locals => {:trip => @popin.trip}
+  .row
+    .left-trip-box
+      .profile-pic
+        %img{src: @popin.user_picture_url}
+    .right-trip-box
+      = form_tag contact_trip_path(@popin.trip) do
+        = hidden_field_tag :trip_id, @popin.trip_id
+        = text_area_tag :message, '', :placeholder => @popin.message_placeholder
+        = submit_tag "SEND", {:class => [:button, :primary]}
+
+%a.close-reveal-modal &#215

@@ -23,20 +23,22 @@
             = hidden_field_tag :arriving, @search_results.arriving
             = submit_tag "Add to my trips", {:class => [:button, :expand]}
 
-.contain-to-grid.main-zone
+.contain-to-grid.main-zone.results
   .row.friends-results
     .columns.small-12
       - @search_results.trips_from_friends.each_slice(3) do |row|
         .row
           - row.each do |trip|
             .columns.small-4
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+              %a{:href => "/trips/#{trip.id}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                .trip-box
+                  = render :partial => 'shared/trip_box', :locals => {:trip => trip}
   .row.not-friends-results
     .columns.small-12
       - @search_results.trips_not_from_friends.each_slice(3) do |row|
         .row
           - row.each do |trip|
             .columns.small-4
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-
-
+              %a{:href => "/trips/#{trip.id}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                .trip-box
+                  = render :partial => 'shared/trip_box', :locals => {:trip => trip}

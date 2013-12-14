@@ -16,4 +16,25 @@
 // require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+  $(document).foundation();
+
+  $('#contact-modal').on('submit', 'form', function(e) {
+
+    $.ajax({
+      type: "POST",
+      url: e.target.getAttribute('action'),
+      data: $(e.target).serialize(),
+      success: function() {
+        e.target.reset();
+        $('#contact-modal').foundation('reveal', 'close');
+      }
+    });
+
+    return false;
+
+  });
+
+
+});

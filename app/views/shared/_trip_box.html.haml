@@ -1,10 +1,10 @@
-.trip-box
+.row
   .left-trip-box
     .profile-pic
       %img{src: trip.user.picture_url}
     .character
       .mood.picto
-        - klass = nil 
+        - klass = nil
         - if trip.user.mood.include? 'C'
           - klass = 'chic'
         - elsif trip.user.mood.include? 'N'
@@ -12,11 +12,11 @@
         - elsif trip.user.mood.include? 'H'
           - klass = 'hippy'
         - else
-        
+
         %span{:class => [ klass, :picto]}
           = trip.user.mood
       .time.picto
-        - klass = nil 
+        - klass = nil
         - if trip.user.time.include? 'A'
           - klass = 'allday'
         - elsif trip.user.time.include? 'N'
@@ -24,7 +24,7 @@
         - elsif trip.user.time.include? 'D'
           - klass = 'day'
         - else
-        
+
         %span{:class => [ klass, :picto]}
           = trip.user.time
   .right-trip-box
@@ -36,3 +36,7 @@
       = trip.city
     .fa.fa-calendar-o.dates
       = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"
+.row.trip-message
+  .right-trip-box
+    .message
+      = trip.message

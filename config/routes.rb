@@ -1,3 +1,9 @@
+ class OnlyAjaxRequest
+  def matches?(request)
+    request.xhr?
+  end
+end
+
 Babatrip::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions, :registrations, :password]
   devise_scope :user do
@@ -22,6 +28,9 @@ Babatrip::Application.routes.draw do
 
   get '/search' => 'search#index'
   post '/search' => 'search#create'
+
+  get '/trips/:id/popin' => 'trips#popin', :constraints => OnlyAjaxRequest.new
+  post '/trips/:id/contact' => 'trips#contact', :as => 'contact_trip'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

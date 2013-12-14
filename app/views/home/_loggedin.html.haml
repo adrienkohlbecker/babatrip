@@ -30,4 +30,6 @@
         .row
           - row.each do |trip|
             .columns.small-4
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+              %a{:href => "/trips/#{trip.id}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                .trip-box
+                  = render :partial => 'shared/trip_box', :locals => {:trip => trip}
