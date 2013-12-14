@@ -39,29 +39,43 @@
           .columns.small-5
             = f.label :mood
             .row
-              .columns.small-4.picto
+              .columns.small-4
                 <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
-                %span.custom.checkbox.hippy
+                %span.custom.checkbox.picto.hippy
                 %label.collection_check_boxes
                   Hippy
-              .columns.small-4.picto
+              .columns.small-4
                 <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
-                %span.custom.checkbox.normal
+                %span.custom.checkbox.picto.normal
                 %label.collection_check_boxes
                   Normal
-              .columns.small-4.picto
+              .columns.small-4
                 <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
-                %span.custom.checkbox.chic
+                %span.custom.checkbox.picto.chic
                 %label.collection_check_boxes
                   Chic
-
       
         .row
-          .columns.small-12
+          .columns.small-5
             = f.label :time
-            = f.collection_check_boxes :time, User::TIME_COLLECTION, :last, :first
+            .row
+              .columns.small-4
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.picto.day
+                %label.collection_check_boxes
+                  Day
+              .columns.small-4
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.picto.night
+                %label.collection_check_boxes
+                  Night
+              .columns.small-4
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.picto.allday
+                %label.collection_check_boxes
+                  All day
         .row
-          .columns.small-offset-10.small-2
+          .columns.small-offset-9.small-2.halfleft
             = f.button :submit
 
 
