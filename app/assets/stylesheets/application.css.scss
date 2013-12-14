@@ -16,9 +16,11 @@
 
 @font-face {
 font-family: 'Dancing Script';
-font-style: italic;
-font-weight: 400;
 src: url(http://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+}
+@font-face {
+font-family: 'Ubuntu';
+src: url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,700);
 }
 
 body {
@@ -72,6 +74,29 @@ h2,h3 {
     }
 }
 
+button, .button {
+        background: rgba(0,0,0,0.4) !important;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        border: none;
+        font-size: 12px;
+        text-transform: uppercase !important;
+
+        &.action {
+            background-color: #ff4e96 !important;
+            border: none;
+            line-height: 20px;
+        }
+        &.big {
+            height: 40px;
+            line-height: 19px;
+        }
+        &.small {
+            height: 32px0px;
+            line-height: 14px;
+        }
+}
+
+
 .top-bar {
     margin-left: -20px;
     background: none ;
@@ -99,26 +124,11 @@ h2,h3 {
     padding: 120px 0px;
     height: 450px;
 
-    button, .button {
-        background: rgba(0,0,0,0.4) !important;
-        height: 40px;
-        line-height: 19px;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-        border: none;
-        font-size: 12px;
-        text-transform: uppercase !important;
-    }
-
     form {
 
         input  {
-            height: 44px;
+            height: 42px;
             font-size: 15px;
-        }
-
-        .button {
-            background-color: #ff4e96 !important;
-            line-height: 20px;
         }
 
     }

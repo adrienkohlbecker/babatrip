@@ -14,7 +14,7 @@
       .columns.small-3
         = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true)
       .columns.small-2
-        = submit_tag "Search", {:class => [:button, :expand]}
+        = submit_tag "Search", {:class => [:button, :expand, :action, :big]}
 
 
     = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
