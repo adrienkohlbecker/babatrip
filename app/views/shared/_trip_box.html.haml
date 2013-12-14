@@ -3,16 +3,36 @@
     .profile-pic
       %img{src: trip.user.picture_url}
     .character
-      .mood
-        = trip.user.mood
-      .time
-        = trip.user.time
+      .mood.picto
+        - klass = nil 
+        - if trip.user.mood.include? 'C'
+          - klass = 'chic'
+        - elsif trip.user.mood.include? 'N'
+          - klass = 'normal'
+        - elsif trip.user.mood.include? 'H'
+          - klass = 'hippy'
+        - else
+        
+        %span{:class => [ klass, :picto]}
+          = trip.user.mood
+      .time.picto
+        - klass = nil 
+        - if trip.user.time.include? 'A'
+          - klass = 'allday'
+        - elsif trip.user.time.include? 'N'
+          - klass = 'night'
+        - elsif trip.user.time.include? 'D'
+          - klass = 'day'
+        - else
+        
+        %span{:class => [ klass, :picto]}
+          = trip.user.time
   .right-trip-box
     .name
       = trip.user.full_name
     .age-city
       = "#{trip.user.age} years old, from #{trip.user.city}"
-    .location
+    .fa.fa-map-marker.location
       = trip.city
-    .dates
+    .fa.fa-calendar-o.dates
       = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"

@@ -133,3 +133,34 @@ h2,h3 {
     margin-top: -32px;
     }
 }
+
+
+.picto {
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: 20px;
+   text-indent: -10000em;
+   display: block;
+   margin: 0 auto;
+   
+   &.hippy {
+        background-image: url('hippy.svg');
+   }
+   &.normal {
+        background-image: url('normal.svg');
+   }
+
+   &.chic {
+        background-image: url('chic.svg');
+   } 
+
+   &.allday {
+        background-image: url('allday.svg');
+   }
+   &.day {
+        background-image: url('day.svg');
+   } 
+   &.night {
+        background-image: url('night.svg');
+   } 
+}
