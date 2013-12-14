@@ -11,11 +11,11 @@ class SearchResultsFacade
   end
 
   def formatted_arriving
-    @arriving.strftime('%B %Y')
+    @arriving.strftime('%d %B %Y')
   end
 
   def formatted_leaving
-    @leaving.strftime('%B %Y')
+    @leaving.strftime('%d %B %Y')
   end
 
 end

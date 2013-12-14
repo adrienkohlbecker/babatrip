@@ -10,9 +10,9 @@
         = hidden_field_tag(:latitude)
         = hidden_field_tag(:longitude)
       .columns.small-3
-        = select_tag(:arriving, options_from_collection_for_select(arriving_date_options, :first, :last), include_blank: true, required: true)
+        = text_field_tag(:arriving, '', :placeholder => 'Arriving')
       .columns.small-3
-        = select_tag(:leaving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
+        = text_field_tag(:leaving, '', :placeholder => 'Leaving')
       .columns.small-2
         = submit_tag "Search", {:class => [:button, :expand]}
 

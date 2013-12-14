@@ -40,8 +40,8 @@ class SearchController < ApplicationController
 
     def search_params
       hash = params.permit(:city, :latitude, :longitude, :arriving, :leaving)
-      hash[:arriving] = Date.strptime(hash[:arriving], "%Y-%m-%d")
-      hash[:leaving] = Date.strptime(hash[:leaving], "%Y-%m-%d")
+      hash[:arriving] = Date.strptime(hash[:arriving], "%d/%m/%Y")
+      hash[:leaving] = Date.strptime(hash[:leaving], "%d/%m/%Y")
       hash
     end
 
