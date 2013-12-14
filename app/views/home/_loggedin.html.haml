@@ -10,9 +10,9 @@
         = hidden_field_tag(:latitude)
         = hidden_field_tag(:longitude)
       .columns.small-3
-        = text_field_tag(:arriving, '', :placeholder => 'Arriving')
+        = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true)
       .columns.small-3
-        = text_field_tag(:leaving, '', :placeholder => 'Leaving')
+        = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true)
       .columns.small-2
         = submit_tag "Search", {:class => [:button, :expand]}
 
