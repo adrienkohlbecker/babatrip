@@ -30,6 +30,11 @@ body {
     background: none;
 }
 
+.halfleft {
+    position: relative;
+    left: -30px;
+}
+
 .darker {
     background: rgba(0, 0, 0, 0.35);
 }
