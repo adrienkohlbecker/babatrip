@@ -1,37 +1,4 @@
-.contain-to-grid.top-zone
-  .row
-    .columns.small-12
-      %h2.bigger-title Where are you planning to go?
-      %h3.small-title Enter a destination and a time span to see who is going to be there
-      = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-  .row
-    = form_tag("/search", method: "get") do
-      .columns.small-4
-        = text_field_tag(:city, "", :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
-        = hidden_field_tag(:latitude)
-        = hidden_field_tag(:longitude)
-      .columns.small-3
-        = select_tag(:arriving, options_from_collection_for_select(arriving_date_options, :first, :last), include_blank: true, required: true)
-      .columns.small-3
-        = select_tag(:leaving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
-      .columns.small-2
-        = submit_tag "Search", {:class => [:button, :expand]}
-
-
-    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
-
-
-.contain-to-grid.main-zone
-  .row
-    .columns.small-12
-      %h2.white-title Where are your friends going
-  .row
-    .columns.small-12
-      - @home.trips_from_friends.each_slice(3) do |row|
-        .row
-          - row.each do |trip|
-            .columns.small-4
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-
-
-
+- if @home.logged_in?
+  = render :partial => 'loggedin', :locals => {:home => @home}
+- else
+  = render :partial => 'anonymous', :locals => {:home => @home}
