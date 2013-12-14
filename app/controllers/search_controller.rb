@@ -9,8 +9,8 @@ class SearchController < ApplicationController
     leaving = search_params[:leaving]
 
     @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
-    @search_results.trips_from_friends = Trip.find_from_friends_near(current_user, latitude, longitude)
-    @search_results.trips_not_from_friends = Trip.find_not_from_friends_near(current_user, latitude, longitude)
+    @search_results.trips_from_friends = Trip.find_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
+    @search_results.trips_not_from_friends = Trip.find_not_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
 
   end
 
@@ -23,8 +23,8 @@ class SearchController < ApplicationController
     leaving = search_params[:leaving]
 
     @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
-    @search_results.trips_from_friends = Trip.find_from_friends_near(current_user, latitude, longitude)
-    @search_results.trips_not_from_friends = Trip.find_not_from_friends_near(current_user, latitude, longitude)
+    @search_results.trips_from_friends = Trip.find_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
+    @search_results.trips_not_from_friends = Trip.find_not_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
 
     trip = Trip.new(search_params)
     current_user.trips << trip
