@@ -1,4 +1,4 @@
-Babatrip::Application.configure do
+TravelMeet::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -79,5 +79,5 @@ Babatrip::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Required by devise
-  config.action_mailer.default_url_options = { :host => 'babatrip.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'travel-meet.com' }
 end

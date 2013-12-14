@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Babatrip::Application.load_tasks
+TravelMeet::Application.load_tasks

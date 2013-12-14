@@ -13,4 +13,4 @@ ActionMailer::Base.smtp_settings = {
 ActionMailer::Base.delivery_method = :smtp
 
 # Initialize the Rails application.
-Babatrip::Application.initialize!
+TravelMeet::Application.initialize!
