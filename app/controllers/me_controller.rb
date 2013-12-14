@@ -1,5 +1,7 @@
 class MeController < ApplicationController
 
+  before_action :authenticate_user!
+
   def show
     @profile = ProfileFacade.new(current_user)
   end
