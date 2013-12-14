@@ -1,6 +1,8 @@
 Babatrip::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions, :registrations, :password]
-  delete '/users/sign_out' => 'devise/sessions#sestroy', :as => "destroy_user_session"
+  devise_scope :user do
+    delete '/users/sign_out' => 'devise/sessions#destroy', :as => "destroy_user_session"
+  end
 
   # Fix devise redirecting to sign in page instead of home on error during sign in
   get '/' => 'home#index', :as => "new_user_session"
