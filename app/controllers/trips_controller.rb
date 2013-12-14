@@ -8,10 +8,11 @@ class TripsController < ApplicationController
     render layout: false
   end
 
-  def contact #todo
-    id = contact_params[:id]
+  def contact
+    trip = Trip.find(contact_params[:id])
     message = contact_params[:message]
-    Rails.logger.info("Send mail to #{id}, #{message}")
+
+    UserMaler.message_from_trip(current_user, trip, message).deliver
     render nothing: true
   end
 

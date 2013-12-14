@@ -1,0 +1,17 @@
+= @message
+
+%br/
+%br/
+
+Trip:
+%br/
+= "* #{@trip.city}"
+%br/
+= "* #{@trip.arriving.to_formatted_s} => #{@trip.leaving.to_formatted_s}"
+%br/
+%br/
+%br/
+
+= "==="
+%br/
+= "Reply to this email to message #{@receiver.full_name}"
