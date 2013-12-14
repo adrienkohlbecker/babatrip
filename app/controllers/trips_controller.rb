@@ -12,7 +12,7 @@ class TripsController < ApplicationController
     trip = Trip.find(contact_params[:id])
     message = contact_params[:message]
 
-    UserMaler.message_from_trip(current_user, trip, message).deliver
+    UserMailer.message_from_trip(current_user, trip, message).deliver
     render nothing: true
   end
 
