@@ -36,11 +36,28 @@
             = f.input :latitude, required: true, as: :hidden
             = f.input :longitude, required: true, as: :hidden
         .row
-          .columns.small-6
+          .columns.small-5
             = f.label :mood
-            = f.collection_check_boxes :mood, User::MOOD_COLLECTION, :last, :first
+            .row
+              .columns.small-4.picto
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.hippy
+                %label.collection_check_boxes
+                  Hippy
+              .columns.small-4.picto
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.normal
+                %label.collection_check_boxes
+                  Normal
+              .columns.small-4.picto
+                <input checked="checked" id="user_mood_c" name="user[mood][]" type="checkbox" value="C" class="hidden-field">
+                %span.custom.checkbox.chic
+                %label.collection_check_boxes
+                  Chic
+
+      
         .row
-          .columns.small-6
+          .columns.small-12
             = f.label :time
             = f.collection_check_boxes :time, User::TIME_COLLECTION, :last, :first
         .row
