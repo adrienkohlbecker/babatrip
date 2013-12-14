@@ -75,3 +75,6 @@ gem 'simple_form'
 
 # Standard country data for nationality selection
 gem 'countries'
+
+# Font Awesome for pictos
+gem 'font-awesome-sass'
