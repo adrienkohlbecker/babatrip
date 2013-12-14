@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 20131214122345) do
     t.string   "relationship_status"
     t.string   "nationality"
     t.string   "city"
-    t.string   "mood",                                                array: true
-    t.string   "time",                                                array: true
     t.boolean  "is_email_overridden",    default: false
+    t.string   "mood",                                   null: false
+    t.string   "time",                                   null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
