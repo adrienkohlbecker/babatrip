@@ -21,7 +21,7 @@
             = hidden_field_tag :longitude, @search_results.longitude
             = hidden_field_tag :leaving, @search_results.leaving
             = hidden_field_tag :arriving, @search_results.arriving
-            = submit_tag "Add to my trips", {:class => :button}
+            = submit_tag "Add to my trips", {:class => [:button, :expand]}
 
 .contain-to-grid.main-zone
   .row.friends-results

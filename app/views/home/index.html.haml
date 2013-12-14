@@ -15,7 +15,7 @@
       .columns.small-3
         = select_tag(:leaving, options_from_collection_for_select(leaving_date_options, :first, :last), include_blank: true, required: true)
       .columns.small-2
-        = submit_tag "Search", {:class => :button} 
+        = submit_tag "Search", {:class => [:button, :expand]}
 
 
     = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
@@ -27,6 +27,6 @@
       %h2.white-title Where are your friends going
   .row
     .columns.small-6
-    
+
 
 
