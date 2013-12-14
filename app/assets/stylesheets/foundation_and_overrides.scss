@@ -1007,14 +1007,14 @@ $column-gutter: em-calc(20);
 
 // We use these to control the style of the reveal overlay.
 
-// $reveal-overlay-bg: rgba(#000, .45);
+$reveal-overlay-bg: rgba(#000, .6);
 // $reveal-overlay-bg-old: #000;
 
 // We use these to control the style of the modal itself.
 
 // $reveal-modal-bg: #fff;
 // $reveal-position-top: 50px;
-// $reveal-default-width: 80%;
+$reveal-default-width: 600px;
 // $reveal-modal-padding: em-calc(20);
 // $reveal-box-shadow: 0 0 10px rgba(#000,.4);
 
