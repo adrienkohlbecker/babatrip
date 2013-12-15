@@ -1,16 +1,16 @@
-.contain-to-grid.top-zone.small
+.contain-to-grid.top-zone.medium
   .row.content-title-row
 
-    .columns.small-3
+    .columns.small-2
       .profile-pic
-        %img{src: @user_profile.picture_url}
+        %img{src: @user_profile.picture_url(width: 160, height: 160)}
 
     .columns.small-6
       %h1= @user_profile.full_name
       .additional-info
         %span.agesex= @user_profile.age_sex
-        %span.location= @user_profile.city
-        %span.nationality= @user_profile.nationality
+        %span.location.fa.fa-map-marker= @user_profile.city
+        %span.nationality.fa.fa-globe= @user_profile.nationality
       .description
         = @user_profile.description
 
@@ -36,6 +36,9 @@
             = @user_profile.relationship_status
 
 .contain-to-grid.main-zone
+  .row
+    .columns.small-12
+      %h2.white-title My next trips
   .row
     .columns.small-12
       - @user_profile.trips.each_slice(3) do |row|

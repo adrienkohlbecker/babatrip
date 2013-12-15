@@ -1,10 +1,12 @@
 .trip-image
   = image_tag @user_profile.map_image(trip, 313, 100), :width => 313, :height => 100
-.fa.fa-map-marker.location
-  = trip.city
-.fa.fa-calendar-o.dates
-  = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"
-.fa.fa-calendar-o.composition
-  = "#{Trip::COMPOSITION_COLLECTION.rassoc(trip.composition)[0]}"
-%div.trip-message
-  = trip.message
+
+.trip-infos
+  .location
+    = trip.city
+  .fa.fa-calendar-o.dates
+    = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"
+  .fa.fa-suitcase.composition
+    = "#{Trip::COMPOSITION_COLLECTION.rassoc(trip.composition)[0]}"
+  %div.trip-message
+    = trip.message
