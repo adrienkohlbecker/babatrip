@@ -13,7 +13,7 @@
     .columns.small-4.buttons
       .row
         .columns.small-5
-          %a.button.expand{:href => root_url} New search
+          %a.button.expand{:href => root_url, :class => [:button, :expand, :big]} New search
         .columns.small-7
           = form_tag do |f|
             = hidden_field_tag :city, @search_results.city
@@ -21,7 +21,7 @@
             = hidden_field_tag :longitude, @search_results.longitude
             = hidden_field_tag :leaving, @search_results.leaving
             = hidden_field_tag :arriving, @search_results.arriving
-            = submit_tag "Add to my trips", {:class => [:button, :expand]}
+            = submit_tag "Add to my trips", {:class => [:button, :expand, :big, :action]}
 
 .contain-to-grid.main-zone.results
   .row.friends-results

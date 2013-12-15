@@ -67,7 +67,7 @@ h2,h3 {
 
 button, .button {
         background: rgba(0,0,0,0.4) !important;
-        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        box-shadow: none;
         border: none;
         font-size: 12px;
         text-transform: uppercase !important;
@@ -78,12 +78,15 @@ button, .button {
             line-height: 20px;
         }
         &.big {
-            height: 40px;
+            height: 41px;
             line-height: 19px;
+            font-size: 13px;
         }
         &.small {
-            height: 32px0px;
-            line-height: 14px;
+            height: 28px;
+            line-height: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
         }
 }
 
