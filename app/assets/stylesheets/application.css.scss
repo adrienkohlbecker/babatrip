@@ -123,7 +123,7 @@ button, .button {
         input  {
             height: 41px;
             font-size: 15px;
-            padding-left: 33px;
+            padding-left: 35px;
         }
 
     }
@@ -187,8 +187,17 @@ button, .button {
     position: absolute;
     left: 21px;
     top: 12px;
+    width: 16px;
+    text-align: center;
 }
 
 .datepicker.dropdown-menu {
     font-family: Helvetica, Arial, sans-serif;
+    border-radius: 0;
+    border: 0;
+}
+
+.datepicker td.active.day, .datepicker th.active.day {
+    background: #ff4e96;
+    color: white;
 }
