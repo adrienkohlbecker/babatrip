@@ -19,8 +19,8 @@
             = hidden_field_tag :city, @search_results.city
             = hidden_field_tag :latitude, @search_results.latitude
             = hidden_field_tag :longitude, @search_results.longitude
-            = hidden_field_tag :leaving, @search_results.leaving
-            = hidden_field_tag :arriving, @search_results.arriving
+            = hidden_field_tag :leaving, @search_results.leaving.strftime("%d/%m/%Y")
+            = hidden_field_tag :arriving, @search_results.arriving.strftime("%d/%m/%Y")
             = submit_tag "Add to my trips", {:class => [:button, :expand, :big, :action]}
 
 .contain-to-grid.main-zone.results
