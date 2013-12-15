@@ -1,0 +1,43 @@
+.contain-to-grid.top-zone.small
+  .row.content-title-row
+
+    .columns.small-3
+      .profile-pic
+        %img{src: @user_profile.picture_url}
+
+    .columns.small-6
+      %h1= @user_profile.full_name
+      .additional-info
+        %span.agesex= @user_profile.age_sex
+        %span.location= @user_profile.city
+        %span.nationality= @user_profile.nationality
+      .description
+        = @user_profile.description
+
+    .columns.small-3
+
+      %div
+        %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+          CONTACT
+
+      .character
+        .mood
+          %span{:class => class_from_mood(@user_profile.mood)}
+            = @user_profile.mood
+        .time
+          %span{:class => class_from_time(@user_profile.time)}
+            = @user_profile.time
+        .relationship
+          %span{:class => class_from_relationship(@user_profile.relationship_status)}
+            = @user_profile.relationship_status
+
+.contain-to-grid.main-zone
+  .row
+    .columns.small-12
+      - @user_profile.trips.each_slice(3) do |row|
+        .row
+          - row.each do |trip|
+            .columns.small-4
+              %a{:href => "/trips/#{trip.id}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                .profile-trip-box
+                  = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}

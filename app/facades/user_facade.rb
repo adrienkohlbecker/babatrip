@@ -1,0 +1,40 @@
+class UserFacade
+
+  attr_accessor :user
+
+  def initialize(user)
+    @user = user
+  end
+
+  def age_sex
+    "#{@user.readable_sex}, #{@user.age} years old"
+  end
+
+  def map_image(trip, width, height)
+
+    params = {
+      center: "#{trip.latitude},#{trip.longitude}",
+      sensor: false,
+      zoom: 11,
+      size: "#{width}x#{height}",
+      language: I18n.locale,
+      region: 'en' #TODO
+    }
+
+    "http://maps.googleapis.com/maps/api/staticmap?#{params.to_query}"
+
+  end
+
+  delegate :full_name, to: :user
+  delegate :city, to: :user
+  delegate :nationality, to: :user
+  delegate :description, to: :user
+  delegate :picture_url, to: :user
+  delegate :mood, to: :user
+  delegate :time, to: :user
+  delegate :relationship_status, to: :user
+  delegate :trips, to: :user
+
+end
+
+

@@ -32,6 +32,8 @@ TravelMeet::Application.routes.draw do
   get '/trips/:id/popin' => 'trips#popin', :constraints => OnlyAjaxRequest.new
   post '/trips/:id/contact' => 'trips#contact', :as => 'contact_trip'
 
+  get '/users/:id_or_username' => 'users#show', :as => 'user_show', :constraints => {id_or_username: /[a-zA-Z0-9\.]+/}
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

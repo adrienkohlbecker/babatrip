@@ -132,4 +132,8 @@ class User < ActiveRecord::Base
     User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
   end
 
+  def readable_sex
+    User::SEX_COLLECTION.rassoc(sex)[0]
+  end
+
 end

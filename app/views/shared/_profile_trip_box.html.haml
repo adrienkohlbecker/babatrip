@@ -1,0 +1,8 @@
+.trip-image
+  = image_tag @user_profile.map_image(trip, 313, 100), :width => 313, :height => 100
+.fa.fa-map-marker.location
+  = trip.city
+.fa.fa-calendar-o.dates
+  = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"
+%div.trip-message
+  = trip.message
