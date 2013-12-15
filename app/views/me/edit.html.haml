@@ -75,6 +75,10 @@
                 %label.collection_check_boxes
                   All day
         .row
+          .columns.small-12
+            = f.input :description, :placeholder => 'Write a few words about yourself'
+
+        .row
           .columns.small-offset-9.small-2.halfleft
             = f.button :submit
 

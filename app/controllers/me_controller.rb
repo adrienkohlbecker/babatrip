@@ -39,6 +39,8 @@ class MeController < ApplicationController
     user.mood = me_params[:user][:mood]
     user.time = me_params[:user][:time]
 
+    user.description = me_params[:user][:description]
+
     user.nationality = me_params[:user][:nationality]
     user.city = me_params[:user][:city]
     user.latitude = me_params[:user][:latitude]
@@ -58,7 +60,7 @@ class MeController < ApplicationController
 
     def me_params
       puts ap params
-      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
+      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 
 end
