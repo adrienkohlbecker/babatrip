@@ -8,6 +8,6 @@
       = form_tag contact_trip_path(@popin.trip) do
         = hidden_field_tag :trip_id, @popin.trip_id
         = text_area_tag :message, '', :placeholder => @popin.message_placeholder
-        = submit_tag "SEND", {:class => [:button, :action, :small]}
+        = submit_tag "SEND", {:class => [:button, :action, :small, :right]}
 
 %a.close-reveal-modal &#215
