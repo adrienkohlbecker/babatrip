@@ -5,43 +5,53 @@
 
 .profile {
 
-padding-top: 25px;
+  padding-top: 25px;
 
-img {
-    width: 160px;
-    height: 160px;
-    border: 3px solid rgba(0,0,0,0.11);
+  img {
+      width: 160px;
+      height: 160px;
+      border: 3px solid rgba(0,0,0,0.11);
+  }
+
+  label {
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+          text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+
+  }
+
+  input  {
+      height: 38px;
+      font-size: 15px;
+      box-shadow: 0 0 0 3px hsla(0, 0%, 0%, 0.14);
+      margin-bottom: 30px;
+  }
+  select, .chosen-container-single .chosen-single {
+      -webkit-appearance: none !important;
+      background-color: white;
+      color: rgba(0, 0, 0, 0.75);
+      font-size: 15px;
+      padding: 0.5em;
+      height: 38px;
+      font-size: 15px;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 0 0 3px hsla(0, 0%, 0%, 0.14);
+      margin-bottom: 30px;
+      background-image: image-url('arrow-down.png');
+      background-position: 95% center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+  }
+
+  .chosen-container-single .chosen-drop {
+      margin-top: -25px;
+      border-radius: 0;
+      background-clip: padding-box;
+  }
 }
-
-label {
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 10px;
-        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-
-
-}
-
-        input  {
-            height: 38px;
-            font-size: 15px;
-            // border: 3px solid rgba(0,0,0,0.11);
-            box-shadow: 0 0 0 3px hsla(0, 0%, 0%, 0.14);
-            margin-bottom: 30px;
-        }
-
-        .button {
-            background-color: #ff4e96;
-            height: 40px;
-            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-            border: none;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-    }
 
 .guide-text {
     font-size: 12px;
@@ -52,14 +62,17 @@ label {
     display: block;
     width: 44px;
     height: 44px;
-    border-radius: 22px;
+    border-radius: 25px;
     border: 3px solid rgba(255,255,255, 0.7);
-    float: left;
     margin: 0 auto;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 
     &.selected {
-        border-color: black;
+        background-color: rgba(0,0,0,0.5);
+        border: 0px;
+        width: 44px;
+        height: 44px;
+
     }
 }
 label.collection_check_boxes {
@@ -68,8 +81,54 @@ label.collection_check_boxes {
     text-shadow: none;
     width: 100%;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .hidden-field {
     display:none;
+}
+
+.user_description {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.content-title-row {
+    height: 220px;
+    
+    h1 {
+        font-family: 'Ubuntu';
+        font-size: 48px;
+        color: white;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+        margin-top: -15px;
+        margin-left: 15px;
+    }
+
+    .additional-info {
+        margin-left: 15px;
+        font-size: 15px;
+
+        span {
+            margin-right: 15px;
+            
+            &:before {
+                opacity: 0.5;
+                margin-right: 5px;
+            }
+
+        }
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.5em;
+        margin-left: 15px;
+        margin-top: 20px;        font-style: italic;
+        overflow: hidden;
+        height: 65px;
+    }
+
 }

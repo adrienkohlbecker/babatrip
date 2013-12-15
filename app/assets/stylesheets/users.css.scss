@@ -2,34 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.content-title-row {
-    height: 220px;
-    
-    h1 {
-        font-family: 'Ubuntu';
-        font-size: 48px;
-        color: white;
-        font-weight: 400;
-        margin: 0;
-        padding: 0;
-        margin-top: -15px;
-        margin-left: 15px;
-    }
-
-    .additional-info {
-        margin-left: 15px;
-        font-size: 15px;
-
-        span {
-            margin-right: 15px;
-            
-            &:before {
-                opacity: 0.5;
-                margin-right: 5px;
-            }
-
-        }
-    }
-
-}
-
