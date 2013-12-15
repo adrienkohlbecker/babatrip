@@ -6,12 +6,15 @@
   .row
     = form_tag("/search", method: "get") do
       .columns.small-4
+        .span.fa.fa-map-marker.location.inside
         = text_field_tag(:city, "", :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
         = hidden_field_tag(:latitude)
         = hidden_field_tag(:longitude)
       .columns.small-3
+        .span.fa.fa-calendar.inside
         = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true)
       .columns.small-3
+        .span.fa.fa-calendar.inside
         = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true)
       .columns.small-2
         = submit_tag "Search", {:class => [:button, :expand, :action, :big]}

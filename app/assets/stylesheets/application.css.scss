@@ -120,6 +120,7 @@ button, .button {
         input  {
             height: 42px;
             font-size: 15px;
+            padding-left: 33px;
         }
 
     }
@@ -175,4 +176,12 @@ button, .button {
    &.single {
         background-image: image-url('night.svg');
    }
+}
+
+.inside {
+    font-size: 18px;
+    color: #d2d2d2;
+    position: absolute;
+    left: 21px;
+    top: 12px;
 }
