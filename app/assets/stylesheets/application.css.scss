@@ -128,12 +128,19 @@ button, .button {
         }
 
     }
+
+    &.small {
+        padding: 26px 0px;
+        height: 156px;
+        }
+
+    &.medium {
+        height: 205px;
+        padding: 28px 0px;
+    }
 }
 
-.top-zone.small {
-    padding: 28px 0px;
-    height: 150px;
-}
+
 
 .main-zone {
     background: rgba(0, 0, 0, 0.3);
@@ -142,7 +149,8 @@ button, .button {
 
     h2.white-title {
         font-size: 18px;
-        margin-top: -38px;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
 }
 
