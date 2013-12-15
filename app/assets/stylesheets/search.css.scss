@@ -12,6 +12,6 @@ padding-top: 20px;
     color: black;
 }
 
-.results .trip-message {
-    display:none;
+.results .trip-message, .results .relationship {
+    display:none !important;
 }

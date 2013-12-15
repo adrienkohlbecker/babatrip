@@ -3,30 +3,15 @@
     .profile-pic
       %img{src: trip.user.picture_url}
     .character
-      .mood.picto
-        - klass = nil
-        - if trip.user.mood.include? 'C'
-          - klass = 'chic'
-        - elsif trip.user.mood.include? 'N'
-          - klass = 'normal'
-        - elsif trip.user.mood.include? 'H'
-          - klass = 'hippy'
-        - else
-
-        %span{:class => [ klass, :picto]}
+      .mood
+        %span{:class => [class_from_mood(trip.user.mood), :picto]}
           = trip.user.mood
-      .time.picto
-        - klass = nil
-        - if trip.user.time.include? 'A'
-          - klass = 'allday'
-        - elsif trip.user.time.include? 'N'
-          - klass = 'night'
-        - elsif trip.user.time.include? 'D'
-          - klass = 'day'
-        - else
-
-        %span{:class => [ klass, :picto]}
+      .time
+        %span{:class => [class_from_time(trip.user.time), :picto]}
           = trip.user.time
+      .relationship
+        %span{:class => [class_from_relationship(trip.user.relationship_status), :picto]}
+          = trip.user.relationship_status
   .right-trip-box
     .name
       = trip.user.full_name

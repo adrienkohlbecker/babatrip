@@ -13,4 +13,33 @@ module ApplicationHelper
 
   end
 
+  def class_from_mood(mood)
+
+    case mood
+    when 'C' then :chic
+    when 'N' then :normal
+    when 'H' then :hippy
+    end
+
+  end
+
+  def class_from_time(time)
+
+    case time
+    when 'A' then :allday
+    when 'N' then :night
+    when 'D' then :day
+    end
+
+  end
+
+  def class_from_relationship(relationship)
+
+    case relationship
+    when 'S' then :single
+    when 'R' then :couple
+    end
+
+  end
+
 end
