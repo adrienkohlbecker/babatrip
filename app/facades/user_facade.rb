@@ -2,12 +2,17 @@ class UserFacade
 
   attr_accessor :user
 
-  def initialize(user)
+  def initialize(user, current_user)
     @user = user
+    @current_user = current_user
   end
 
   def age_sex
     "#{@user.readable_sex}, #{@user.age} years old"
+  end
+
+  def own?
+    @current_user.id == @user.id
   end
 
   def map_image(trip, width, height)

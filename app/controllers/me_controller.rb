@@ -3,7 +3,7 @@ class MeController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @profile = ProfileFacade.new(current_user)
+    redirect_to user_show_path(current_user)
   end
 
   def edit

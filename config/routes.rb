@@ -22,8 +22,8 @@ TravelMeet::Application.routes.draw do
   # Admin interface
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  get 'me' => 'me#show'
-  get 'me/edit' => 'me#edit'
+  get 'me' => 'me#show', :as => 'my_profile'
+  get 'me/edit' => 'me#edit', :as => 'edit_profile'
   put 'me/edit' => 'me#update'
 
   get '/search' => 'search#index'

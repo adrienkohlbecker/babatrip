@@ -17,8 +17,12 @@
     .columns.small-3
 
       %div
-        %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-          CONTACT
+        - if @user_profile.own?
+          %a.button.expand.primary{:href => edit_profile_path}
+            EDIT MY PROFILE
+        - else
+          %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+            CONTACT
 
       .character
         .mood

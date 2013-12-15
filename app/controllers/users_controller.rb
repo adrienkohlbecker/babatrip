@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
-    @user_profile = UserFacade.new(@user)
+    @user_profile = UserFacade.new(@user, current_user)
   end
 
   def contact_show
