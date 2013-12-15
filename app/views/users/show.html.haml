@@ -24,15 +24,15 @@
           %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
             CONTACT
 
-      .character
-        .mood
-          %span{:class => class_from_mood(@user_profile.mood)}
+      .character.row
+        .mood.columns.small-4
+          %span{:class => [ class_from_mood(@user_profile.mood), :picto, :medium ]}
             = @user_profile.mood
-        .time
-          %span{:class => class_from_time(@user_profile.time)}
+        .time.columns.small-4
+          %span{:class => [ class_from_time(@user_profile.time), :picto, :medium ]}
             = @user_profile.time
-        .relationship
-          %span{:class => class_from_relationship(@user_profile.relationship_status)}
+        .relationship.columns.small-4
+          %span{:class => [ class_from_relationship(@user_profile.relationship_status), :picto, :medium ]}
             = @user_profile.relationship_status
 
 .contain-to-grid.main-zone
