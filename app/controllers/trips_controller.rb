@@ -5,7 +5,7 @@ class TripsController < ApplicationController
   def contact_show
     trip = Trip.find(params[:id])
     @popin = PopinFacade.new(trip, current_user)
-    render layout: false
+    render 'popin', layout: false
   end
 
   def contact_create
