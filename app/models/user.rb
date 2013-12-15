@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
     end
 
     # Get user profile
-    me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status')
+    me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status,username')
 
     location_id = me['location']['id']
     location = @graph.get_object(location_id, fields: 'location,name')
@@ -101,6 +101,7 @@ class User < ActiveRecord::Base
     sex = 'F' if me['gender'] == 'female'
 
     birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
+    username = me['username']
 
     first_name = me['first_name']
     last_name = me['last_name']
@@ -110,7 +111,7 @@ class User < ActiveRecord::Base
     relationship_status = 'R' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
-    self.update_attributes!(latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
+    self.update_attributes!(username: username, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
 
   end
 
