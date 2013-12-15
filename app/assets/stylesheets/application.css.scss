@@ -11,6 +11,7 @@
  *= require_tree
  *= require foundation_and_overrides
  *= require font-awesome
+ *= require chosen
  *= require_self
  */
 
@@ -201,4 +202,8 @@ button, .button {
 .datepicker td.active.day, .datepicker th.active.day {
     background: #ff4e96;
     color: white;
+}
+
+.chosen-drop {
+    color:black;
 }
