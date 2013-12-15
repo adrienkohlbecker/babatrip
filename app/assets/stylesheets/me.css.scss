@@ -57,6 +57,10 @@ label {
     float: left;
     margin: 0 auto;
     margin-bottom: 8px;
+
+    &.selected {
+        border-color: black;
+    }
 }
 label.collection_check_boxes {
     font-weight: normal;
@@ -64,4 +68,8 @@ label.collection_check_boxes {
     text-shadow: none;
     width: 100%;
     text-align: center;
+}
+
+.hidden-field {
+    display:none;
 }

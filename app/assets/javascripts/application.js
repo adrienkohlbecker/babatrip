@@ -37,5 +37,23 @@ $(function(){
 
   });
 
+  $('.image-as-radio').on('click', '.picto', function(e) {
+
+    var elt = $(e.target);
+    var radio = elt.siblings(':radio');
+
+    previously_selected = elt.hasClass('selected');
+    should_be_selected = !previously_selected;
+
+    if (should_be_selected && !radio.is(':checked')) {
+
+      radio[0].checked = true;
+
+      elt.parents('.image-as-radio').find('.picto').removeClass('selected');
+      elt.addClass('selected');
+    }
+
+  });
+
 
 });

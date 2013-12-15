@@ -38,14 +38,14 @@
         .row
           .columns.small-5
             = f.label :mood
-            .row
-              = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @profile.user.mood }
+            .row.image-as-radio
+              = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @profile.user.mood, :selected_class => :selected }
 
         .row
           .columns.small-5
             = f.label :time
-            .row
-              = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time }
+            .row.image-as-radio
+              = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected }
         .row
           .columns.small-12
             = f.input :description, :placeholder => 'Write a few words about yourself'
