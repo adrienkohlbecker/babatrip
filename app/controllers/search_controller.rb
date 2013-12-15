@@ -30,6 +30,7 @@ class SearchController < ApplicationController
 
     trip = Trip.new(search_params)
     trip.message = 'Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.' #TODO
+    trip.composition = 'A' #TODO
     current_user.trips << trip
     current_user.save!
 

@@ -3,6 +3,8 @@ class Trip < ActiveRecord::Base
 
   BOX_SIZE_IN_METERS = 5000
 
+  COMPOSITION_COLLECTION = [['Alone', 'A'], ['Couple', 'C'], ['With friends', 'F']]
+
   scope :near, ->(latitude, longitude, box_size=BOX_SIZE_IN_METERS) { where("earth_box(ll_to_earth(?, ?), ?) @> ll_to_earth(latitude, longitude)", latitude, longitude, box_size) }
 
   scope :from_friends_of, ->(user) { user.nil? ? none : where(:user_id => user.friends.pluck(:id) ) }

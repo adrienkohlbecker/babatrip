@@ -10,6 +10,8 @@
       = trip.city
     .fa.fa-calendar-o.dates
       = "#{trip.arriving.to_formatted_s(:rfc822)} - #{trip.leaving.to_formatted_s(:rfc822)}"
+    .fa.fa-calendar-o.composition
+      = "#{Trip::COMPOSITION_COLLECTION.rassoc(trip.composition)[0]}"
 %div.trip-message
   .right-trip-box
     .message
