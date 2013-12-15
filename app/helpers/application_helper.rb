@@ -18,7 +18,7 @@ module ApplicationHelper
     case mood
     when 'C' then :chic
     when 'N' then :normal
-    when 'H' then :hippy
+    when 'H' then :hippie
     end
 
   end

@@ -39,41 +39,13 @@
           .columns.small-5
             = f.label :mood
             .row
-              .columns.small-4
-                <input id="user_mood_hippy" name="user[mood]" type="radio" value="H" class="hidden-field">
-                %span.custom.checkbox.picto.hippy
-                %label.collection_check_boxes
-                  Hippy
-              .columns.small-4
-                <input id="user_mood_normal" name="user[mood]" type="radio" value="N" class="hidden-field">
-                %span.custom.checkbox.picto.normal
-                %label.collection_check_boxes
-                  Normal
-              .columns.small-4
-                <input id="user_mood_chic" name="user[mood]" type="radio" value="C" class="hidden-field">
-                %span.custom.checkbox.picto.chic
-                %label.collection_check_boxes
-                  Chic
+              = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @profile.user.mood }
 
         .row
           .columns.small-5
             = f.label :time
             .row
-              .columns.small-4
-                <input id="user_time_day" name="user[time]" type="radio" value="D" class="hidden-field">
-                %span.custom.checkbox.picto.day
-                %label.collection_check_boxes
-                  Day
-              .columns.small-4
-                <input id="user_time_night" name="user[time]" type="radio" value="N" class="hidden-field">
-                %span.custom.checkbox.picto.night
-                %label.collection_check_boxes
-                  Night
-              .columns.small-4
-                <input id="user_time_allday" name="user[time]" type="radio" value="A" class="hidden-field">
-                %span.custom.checkbox.picto.allday
-                %label.collection_check_boxes
-                  All day
+              = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time }
         .row
           .columns.small-12
             = f.input :description, :placeholder => 'Write a few words about yourself'

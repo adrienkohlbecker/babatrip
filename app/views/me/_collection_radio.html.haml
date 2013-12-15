@@ -1,0 +1,6 @@
+- collection.each do |array|
+  .columns.small-4
+    = radio_button_tag name, array[1], (value == array[1]), :class => 'hidden-field'
+    %span{:class => "custom checkbox picto #{array[0].downcase.gsub(' ', '')}"}
+    %label.collection_check_boxes
+      = array[0]
