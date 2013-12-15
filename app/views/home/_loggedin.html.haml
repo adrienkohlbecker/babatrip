@@ -31,8 +31,9 @@
     .columns.small-12
       - @home.trips_from_friends.each_slice(3) do |row|
         .row
-          - row.each do |trip|
+          - (row + ([nil] * (3 - row.length))).each do |trip|
             .columns.small-4
-              %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                .trip-box
-                  = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+              - if !trip.nil?
+                %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                  .trip-box
+                    = render :partial => 'shared/trip_box', :locals => {:trip => trip}
