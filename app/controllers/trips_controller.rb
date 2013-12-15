@@ -2,13 +2,13 @@ class TripsController < ApplicationController
 
   before_action :authenticate_user!
 
-  def popin
+  def contact_show
     trip = Trip.find(params[:id])
     @popin = PopinFacade.new(trip, current_user)
     render layout: false
   end
 
-  def contact
+  def contact_create
     trip = Trip.find(contact_params[:id])
     message = contact_params[:message]
 

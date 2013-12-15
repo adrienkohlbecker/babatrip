@@ -17,7 +17,7 @@
     .columns.small-3
 
       %div
-        %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+        %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
           CONTACT
 
       .character
@@ -38,6 +38,6 @@
         .row
           - row.each do |trip|
             .columns.small-4
-              %a{:href => "/trips/#{trip.id}/popin", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+              %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
                 .profile-trip-box
                   = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}

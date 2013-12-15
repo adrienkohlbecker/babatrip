@@ -1,0 +1,12 @@
+.profile-pic
+  %img{src: user.picture_url}
+.character
+  .mood
+    %span{:class => [class_from_mood(user.mood), :picto]}
+      = user.mood
+  .time
+    %span{:class => [class_from_time(user.time), :picto]}
+      = user.time
+  .relationship
+    %span{:class => [class_from_relationship(user.relationship_status), :picto]}
+      = user.relationship_status

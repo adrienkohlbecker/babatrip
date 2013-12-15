@@ -9,4 +9,12 @@ class UserMailer < ActionMailer::Base
 
     mail(to: @receiver.email, reply_to: @sender.email, subject: "New message from #{sender.full_name}")
   end
+
+  def message_from_profile(sender, receiver, message)
+    @sender = sender
+    @receiver = receiver
+    @message = message
+
+    mail(to: @receiver.email, reply_to: @sender.email, subject: "New message from #{sender.full_name}")
+  end
 end

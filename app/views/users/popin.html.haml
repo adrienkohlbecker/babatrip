@@ -1,0 +1,20 @@
+.contact
+  %div
+    .left-trip-box
+      = render partial: 'shared/pic_and_character', locals: {user: @user}
+    .right-trip-box
+      .name
+        = @user.full_name
+      .age-city
+        = "#{@user.age} years old, from #{@user.city}"
+      .description
+        = @user.description
+
+  %div.answer
+    .left-trip-box
+      .profile-pic
+        %img{src: @user.picture_url}
+    .right-trip-box
+      = form_tag contact_user_path(@user) do
+        = text_area_tag :message, '', :placeholder => "Send a message to #{@user.first_name}"
+        = submit_tag "SEND", {:class => [:button, :action, :small, :right]}

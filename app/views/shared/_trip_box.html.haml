@@ -1,17 +1,6 @@
 %div
   .left-trip-box
-    .profile-pic
-      %img{src: trip.user.picture_url}
-    .character
-      .mood
-        %span{:class => [class_from_mood(trip.user.mood), :picto]}
-          = trip.user.mood
-      .time
-        %span{:class => [class_from_time(trip.user.time), :picto]}
-          = trip.user.time
-      .relationship
-        %span{:class => [class_from_relationship(trip.user.relationship_status), :picto]}
-          = trip.user.relationship_status
+    = render partial: 'shared/pic_and_character', locals: {user: trip.user}
   .right-trip-box
     .name
       = trip.user.full_name
