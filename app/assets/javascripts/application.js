@@ -59,6 +59,8 @@ $(function(){
 
   });
 
+  var alert_children = $('#alerts').children();
+  setTimeout(function() { alert_children.slideUp(); }, 5000);
 
 });
 
