@@ -15,13 +15,7 @@
         .columns.small-5
           %a.button.expand{:href => root_url, :class => [:button, :expand, :big]} New search
         .columns.small-7
-          = form_tag do |f|
-            = hidden_field_tag :city, @search_results.city
-            = hidden_field_tag :latitude, @search_results.latitude
-            = hidden_field_tag :longitude, @search_results.longitude
-            = hidden_field_tag :leaving, @search_results.leaving.strftime("%d/%m/%Y")
-            = hidden_field_tag :arriving, @search_results.arriving.strftime("%d/%m/%Y")
-            = submit_tag "Add to my trips", {:class => [:button, :expand, :big, :action]}
+          %a.button.expand.big.action{:href => '#', :data => {:reveal_id => 'add-modal'}} Add to my trips
 
 .contain-to-grid.main-zone.results
   .row.friends-results
@@ -44,3 +38,28 @@
                 %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
                   .trip-box
                     = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+
+.reveal-modal#add-modal
+  = form_tag("/trips", method: "post") do
+    .row
+      .columns.small-12
+        .span.fa.fa-map-marker.location.inside
+        = text_field_tag(:city, @search_results.city, :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+        = hidden_field_tag(:latitude, @search_results.latitude)
+        = hidden_field_tag(:longitude, @search_results.longitude)
+    .row
+      .columns.small-6
+        .span.fa.fa-calendar.inside
+        = text_field_tag(:arriving, @search_results.arriving.strftime("%d/%m/%Y"), :placeholder => 'Arriving', required: true)
+      .columns.small-6
+        .span.fa.fa-calendar.inside
+        = text_field_tag(:leaving, @search_results.leaving.strftime("%d/%m/%Y"), :placeholder => 'Leaving', required: true)
+    .row
+      .columns.small-12
+        = select_tag(:composition, options_from_collection_for_select(Trip::COMPOSITION_COLLECTION, :last, :first))
+    .row
+      .columns.small-12
+        = text_area_tag(:message, '', :placeholder => 'Describe your trip', required: true)
+    .row
+      .columns.small-2
+        = submit_tag "Add", {:class => [:button, :expand, :action, :big]}

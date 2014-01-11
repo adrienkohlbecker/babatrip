@@ -22,7 +22,7 @@
 
     = render :partial => 'shared/topbar'
 
-    .row
+    .row#alerts
 
       - flash.each do |key, msg|
         %div{class: "alert-box #{key}", data: {alert: true}}

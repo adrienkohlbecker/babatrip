@@ -57,3 +57,16 @@ $(function(){
 
 
 });
+
+function alertBox(content, klass) {
+
+  var alert_contents = $.parseHTML('<div data-alert style="display:none;" class="alert-box ' + klass + '">' + content + '<a href="#" class="close">&times;</a></div>');
+
+  $('#alerts').append(alert_contents);
+  $(alert_contents).slideDown();
+  setTimeout(function() {
+    $(alert_contents).slideUp();
+  }, 5000);
+
+}
+

@@ -225,3 +225,12 @@ button, .button {
 .chosen-drop {
     color:black;
 }
+
+
+
+#alerts {
+  position:absolute;
+  left:0;
+  right:0;
+  z-index: 1000;
+}
