@@ -1,0 +1,370 @@
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    / If you delete this meta tag, Half Life 3 will never be released.
+    %meta{content: "width=device-width", name: "viewport"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= "#{@subject} - Travel Meet"
+    :css
+      /* -------------------------------------
+          GLOBAL
+      ------------------------------------- */
+      * {
+        margin:0;
+        padding:0;
+      }
+      * { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+
+      img {
+        max-width: 100%;
+      }
+      .collapse {
+        margin:0;
+        padding:0;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: none;
+        width: 100%!important;
+        height: 100%;
+        color: #2B2B2B;
+      }
+
+
+      /* -------------------------------------
+          ELEMENTS
+      ------------------------------------- */
+      a {
+        color: #ff62a0;
+        text-decoration: none;
+      }
+
+      .btn {
+        text-decoration:none;
+        color: #FFF;
+        background-color: #666;
+        padding:10px 16px;
+        font-weight:bold;
+        margin-right:10px;
+        text-align:center;
+        cursor:pointer;
+        display: inline-block;
+      }
+
+      table.social {
+      /*  padding:15px; */
+        background-color: #ebebeb;
+
+      }
+      .soc-btn  {
+        padding: 3px 7px;
+        font-size:12px;
+        margin-bottom:10px;
+        text-decoration:none;
+        color: #FFF;font-weight:bold;
+        display:block;
+        text-align:center;
+      }
+      a.fb { background-color: #3B5998!important; }
+      a.tw { background-color: #1daced!important; }
+      a.gp { background-color: #DB4A39!important; }
+      a.ms { background-color: #000!important; }
+      .soc-btn  {
+        display:block;
+        width:100%;
+      }
+
+      /* -------------------------------------
+          HEADER
+      ------------------------------------- */
+
+      .header.container table td.logo { padding: 15px; }
+      .header.container table td.label {
+        padding: 10px;
+        padding-left: 0px;
+      }
+
+
+      /* -------------------------------------
+          BODY
+      ------------------------------------- */
+      table.body-wrap { width: 100%;}
+
+
+      /* -------------------------------------
+          FOOTER
+      ------------------------------------- */
+      table.footer-wrap {
+        width: 100%;
+        clear: both!important;
+        font-size: 11px;
+        color: #fefefe;
+      }
+      .links a {
+        font-size: 13px;
+        text-transform: uppercase;
+        color: #FFF;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+      .footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
+      .footer-wrap .container td.content p {
+        font-size:10px;
+        font-weight: bold;
+
+      }
+
+
+      /* -------------------------------------
+          TYPOGRAPHY
+      ------------------------------------- */
+      h1,h2,h3,h4,h5,h6 {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        margin-bottom: 1px;
+        color: #2b2b2b;
+      }
+      h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
+
+      h1 { font-weight:200; font-size: 44px;}
+      h2 { font-weight:200; font-size: 37px;}
+      h3 {
+        font-size: 27px;
+        padding: 0px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
+      h4 { font-weight:500; font-size: 23px;}
+      h5 { font-weight:900; font-size: 17px;}
+      h6 {
+        font-weight: bold;
+        font-size: 12px;
+        color: #FFF;
+      }
+
+      .collapse { margin:0!important;}
+
+      p, ul {
+        margin-bottom: 10px;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      p.lead {
+        font-size: 13px;
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+      p.last { margin-bottom:0px;}
+
+      ul li {
+        margin-left:5px;
+        list-style-position: inside;
+      }
+
+      /* -------------------------------------
+          SIDEBAR
+      ------------------------------------- */
+      ul.sidebar {
+        background:#ebebeb;
+        display:block;
+        list-style-type: none;
+      }
+      ul.sidebar li { display: block; margin:0;}
+      ul.sidebar li a {
+        text-decoration:none;
+        color: #666;
+        padding:10px 16px;
+      /*  font-weight:bold; */
+        margin-right:10px;
+      /*  text-align:center; */
+        cursor:pointer;
+        border-bottom: 1px solid #777777;
+        border-top: 1px solid #FFFFFF;
+        display:block;
+        margin:0;
+      }
+      ul.sidebar li a.last { border-bottom-width:0px;}
+      ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.sidebar li a h5,ul.sidebar li a h6,ul.sidebar li a p { margin-bottom:0!important;}
+
+
+
+      /* ---------------------------------------------------
+          RESPONSIVENESS
+          Nuke it from orbit. It's the only way to be sure.
+      ------------------------------------------------------ */
+
+      /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+      .container {
+        display:block!important;
+        max-width:600px!important;
+        margin:0 auto!important; /* makes it centered */
+        clear:both!important;
+      }
+
+      /* This should also be a block element, so that it will fill 100% of the .container */
+      .content {
+        padding: 8px;
+        max-width: 600px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Let's make sure tables in the content area are 100% wide */
+      .content table { width: 100%; }
+
+
+      /* Odds and ends */
+      .column {
+        width: 300px;
+        float:left;
+      }
+      .column tr td { padding: 15px; }
+      .column-wrap {
+        padding:0!important;
+        margin:0 auto;
+        max-width:600px!important;
+      }
+      .column table { width:100%;}
+      .social .column {
+        width: 280px;
+        min-width: 279px;
+        float:left;
+      }
+
+      /* Be sure to place a .clear element after each set of columns, just to be safe */
+      .clear { display: block; clear: both; }
+
+
+      /* -------------------------------------------
+          PHONE
+          For clients that support media queries.
+          Nothing fancy.
+      -------------------------------------------- */
+      @media only screen and (max-width: 600px) {
+
+        a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+
+        div[class="column"] { width: auto!important; float:none!important;}
+
+        table.social div[class="column"] {
+          width:auto!important;
+        }
+
+      }
+
+
+      .message {
+        font-style: italic;
+        font-size: 13px;
+        color: #505050;
+        margin-top: 10px;
+        display: block;
+      }
+      .sender {
+        font-weight: bold;
+        color: #2B2B2B;
+        font-size: 15px;
+      }
+      .sender-infos {
+        color: #666;
+        font-size: 13px;
+      }
+      .destination {
+        color: #2B2B2B;
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        padding: 0px;
+        margin-top: 18px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+      }
+      .period {
+        font-style: italic;
+        display: block;
+        padding: 0px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 23px;
+        margin-left: 0px;
+      }
+      .content-preview {
+        color: #CCC;
+        font-size: 10px;
+      }
+      .suggestion {
+        font-weight: bold;
+        font-size: 12px;
+        padding-top: 10px;
+      }
+
+  %body{bgcolor: "#FFFFFF"}
+    %table.body-wrap{cellspacing: 0}
+      / CONTENT PREVIEW
+      %tr
+        %td.content-preview{colspan:3}= @content_preview
+      / HEADER
+      %tr{bgcolor: "#0e9880"}
+        %td
+        %td.header.container
+          .content
+            %table
+              %tr
+                %td
+                  %img{src: "http://#{ENV['DOMAIN']}/logo_email.jpg"}/
+                %td{align: "right"}
+                  %h6.collapse Aenean lacinia bibendum nulla sed consectetur. Nulla vitae
+        %td
+      %tr
+        %td
+        %td.container{bgcolor: "#FFFFFF"}
+          .content
+            %table
+              %tr
+                %td
+                  = yield
+          / /content
+        %td
+    / /BODY
+    / FOOTER
+    %table.footer-wrap{bgcolor: "#a4a4a4"}
+      %tr
+        %td
+        %td.container
+          / content
+          .content
+            %table
+              %tr
+                %td{align: "center", valign: "top"}
+                  %table{border: "0", cellpadding: "0", cellspacing: "0", width: "100%"}
+                    %tr
+                      %td.links
+                        %p
+                          %a{href: "#"} About
+                          %a{href: "#"} Legal
+                          %a{href: "#"}
+                            %unsubscribe Contact
+                    %tr
+                      %td
+                        You’re receiving this email because you have subscribed to Your Website email newsletter.
+                        %br/
+                        Just not that into us?
+                        %a{href: "#"}
+                          %unsubscribe Unsubscribe
+                        instantly or Edit your subscription.
+                        %br/
+                        We’d love to hear your feedback on what we can improve.
+                %td{align: "center"}
+                  %table.column{align: "left"}
+                    %tr
+                      %td
+                        %a.soc-btn.fb{href: "#"} Facebook
+                        %a.soc-btn.tw{href: "#"} Twitter
+                        %a.soc-btn.gp{href: "#"} Google+
+          / /content
+        %td
+    / /FOOTER

@@ -1,17 +1,19 @@
-= @message
-
-%br/
-%br/
-
-Trip:
-%br/
-= "* #{@trip.city}"
-%br/
-= "* #{@trip.arriving.to_formatted_s} => #{@trip.leaving.to_formatted_s}"
-%br/
-%br/
-%br/
-
-= "==="
-%br/
-= "Reply to this email to message #{@receiver.full_name}"
+%h3= "Hi #{@receiver.first_name},"
+%p.lead someone is interested in your trip to
+%p
+  %span.destination= @trip.city
+  %span.period= "from #{@trip.arriving.to_formatted_s(:long)} to #{@trip.leaving.to_formatted_s(:long)}"
+%table{width: '100%', border: 0, cellspacing: 15, cellpadding: 0, bgcolor: '#efefef'}
+  %tr
+    %td{width: 65, valign: :top}
+      %img{src: @sender.picture_url(width: 65, height: 65), alt:"" }
+    %td
+      %span.sender= @sender.full_name
+      %br/
+      %span.sender-info= "#{@sender.age} years old, from #{@sender.city}, #{@sender.nationality}"
+      %br/
+      %span.message= @message
+%p.suggestion
+  = "Reply to this email to get in touch with "
+  %a{href: user_show_url(@sender)}= @sender.first_name
+  = " !"
