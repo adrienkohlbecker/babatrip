@@ -13,7 +13,7 @@
   %div.answer
     .left-trip-box
       .profile-pic
-        %img{src: @user.picture_url}
+        %img{src: current_user.picture_url}
     .right-trip-box
       = form_tag contact_user_path(@user) do
         = text_area_tag :message, '', :placeholder => "Send a message to #{@user.first_name}"
