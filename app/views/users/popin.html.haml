@@ -18,3 +18,5 @@
       = form_tag contact_user_path(@user) do
         = text_area_tag :message, '', :placeholder => "Send a message to #{@user.first_name}"
         = submit_tag "SEND", {:class => [:button, :action, :small, :right]}
+
+%a.close-reveal-modal &#215
