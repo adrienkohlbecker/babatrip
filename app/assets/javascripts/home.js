@@ -10,6 +10,7 @@ $(function(){
   var checkin = $('#arriving').fdatepicker({
 
     format: 'dd/mm/yyyy',
+    weekStart: 1,
     onRender: function (date) {
       return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
