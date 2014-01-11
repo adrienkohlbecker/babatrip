@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
 
   has_many :trips
 
-  SEX_COLLECTION = [['Male', 'M'] ,['Female', 'F']]
-  RELATIONSHIP_STATUS_COLLECTION = [['Single', 'S'], ['In a relationship', 'R']]
-  MOOD_COLLECTION = [['Hippie', 'H'], ['Normal', 'N'], ['Chic', 'C']]
-  TIME_COLLECTION = [['Night', 'N'], ['Day', 'D'], ['All day', 'A']]
+  SEX_COLLECTION = ['Male', 'Female']
+  RELATIONSHIP_STATUS_COLLECTION = ['Single', 'In a relationship']
+  MOOD_COLLECTION = ['Hippie', 'Normal', 'Chic']
+  TIME_COLLECTION = ['Night', 'Day', 'All day']
 
   MIN_PICTURE_HEIGHT = 100
   MIN_PICTURE_WIDTH = 100
@@ -97,8 +97,8 @@ class User < ActiveRecord::Base
     city = location['name']
 
     sex = nil
-    sex = 'M' if me['gender'] == 'male'
-    sex = 'F' if me['gender'] == 'female'
+    sex = 'Male' if me['gender'] == 'male'
+    sex = 'Female' if me['gender'] == 'female'
 
     birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
     username = me['username']
@@ -107,8 +107,8 @@ class User < ActiveRecord::Base
     last_name = me['last_name']
 
     relationship_status = nil
-    relationship_status = 'S' if ['Single', 'Widowed', 'Divorced', 'Separated'].include?(me['relationship_status'])
-    relationship_status = 'R' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
+    relationship_status = 'Single' if ['Single', 'Widowed', 'Divorced', 'Separated'].include?(me['relationship_status'])
+    relationship_status = 'In a relationship' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
     self.update_attributes!(username: username, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
@@ -130,10 +130,6 @@ class User < ActiveRecord::Base
 
   def friends
     User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
-  end
-
-  def readable_sex
-    User::SEX_COLLECTION.rassoc(sex)[0]
   end
 
 end

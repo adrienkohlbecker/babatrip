@@ -3,7 +3,7 @@ class Trip < ActiveRecord::Base
 
   BOX_SIZE_IN_METERS = 5000
 
-  COMPOSITION_COLLECTION = [['Alone', 'A'], ['Couple', 'C'], ['With friends', 'F']]
+  COMPOSITION_COLLECTION = ['Alone', 'Couple', 'With friends']
 
   scope :near, ->(latitude, longitude, box_size=BOX_SIZE_IN_METERS) { where("earth_box(ll_to_earth(?, ?), ?) @> ll_to_earth(latitude, longitude)", latitude, longitude, box_size) }
 

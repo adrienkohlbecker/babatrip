@@ -8,7 +8,7 @@ class UserFacade
   end
 
   def age_sex
-    "#{@user.readable_sex}, #{@user.age} years old"
+    "#{@user.sex}, #{@user.age} years old"
   end
 
   def own?
