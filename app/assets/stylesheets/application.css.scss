@@ -124,6 +124,19 @@ button, .button {
     margin-left: -20px;
     background: none ;
 
+    .name h1 {
+      text-indent: -10000em;
+      background-image: image-url('logo.svg');
+      background-repeat: no-repeat;
+      display: block;
+      width: 100px;
+      height: 100%;
+      background-size: 100%;
+      background-position: center center;
+
+
+    }
+
     .top-bar-section ul {
         background: none !important;
 
