@@ -1,8 +1,14 @@
 %h3= "Hi #{@receiver.first_name},"
 %p.lead someone is interested in your trip to
 %p
-  %span.destination= @trip.city
-  %span.period= "from #{@trip.arriving.to_formatted_s(:long)} to #{@trip.leaving.to_formatted_s(:long)}"
+%table{width: '100%', border: 0, cellspacing: 15, cellpadding: 0}
+  %tr
+    %td{width: 45}
+      %img{src: "http://#{ENV['DOMAIN']}/travel.png"}/
+    %td
+      %p
+        %span.destination= @trip.city
+        %span.period= "from #{@trip.arriving.to_formatted_s(:long)} to #{@trip.leaving.to_formatted_s(:long)}"
 %table{width: '100%', border: 0, cellspacing: 15, cellpadding: 0, bgcolor: '#efefef'}
   %tr
     %td{width: 65, valign: :top}
