@@ -12,6 +12,7 @@ TravelMeet::Application.routes.draw do
 
   # Fix devise redirecting to sign in page instead of home on error during sign in
   get '/' => 'home#index', :as => "new_user_session"
+  get '/about' => 'home#about', :as => "about"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

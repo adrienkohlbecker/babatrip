@@ -1,1 +1,26 @@
-= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+.contain-to-grid.top-zone
+  .row
+    .columns.small-12
+      %h2.bigger-title Where are you planning to go?
+      %h3.small-title Sign-up now and discover where your friends are going!
+  .row
+    %a{href: user_omniauth_authorize_path(:facebook)}
+      %img{src: image_path('facebook_login.png')}
+
+.contain-to-grid.main-zone.results
+  .row
+    .columns.small-4
+      %img{src: 'http://www.placehold.it/350x150'}
+      %h2 Lorem Ipsum
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    .columns.small-4
+      %img{src: 'http://www.placehold.it/350x150'}
+      %h2 Lorem Ipsum
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    .columns.small-4
+      %img{src: 'http://www.placehold.it/350x150'}
+      %h2 Lorem Ipsum
+      %p
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
