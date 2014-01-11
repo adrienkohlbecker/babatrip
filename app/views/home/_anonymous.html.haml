@@ -3,9 +3,10 @@
     .columns.small-12
       %h2.bigger-title Where are you planning to go?
       %h3.small-title Sign-up now and discover where your friends are going!
-  .row
-    %a{href: user_omniauth_authorize_path(:facebook)}
-      %img{src: image_path('facebook_login.png')}
+  - unless current_user
+    .row
+      %a{href: user_omniauth_authorize_path(:facebook)}
+        %img{src: image_path('facebook_login.png')}
 
 .contain-to-grid.main-zone.results
   .row
