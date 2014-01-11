@@ -29,12 +29,19 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+  margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */
   background-image: image-url('bg-main.jpg');
     background-size: cover;
 }
 .footer, .push {
-  height: 155px; /* .push must be the same height as .footer */
+  height: 45px; /* .push must be the same height as .footer */
+  z-index: 1000;
+  
+  a {
+    line-height: 45px;
+    color: white;
+    font-size: 12px;
+  }
 }
 
 
