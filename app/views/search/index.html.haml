@@ -18,26 +18,35 @@
           %a.button.expand.big.action{:href => '#', :data => {:reveal_id => 'add-modal'}} Add to my trips
 
 .contain-to-grid.main-zone.results
-  .row.friends-results
-    .columns.small-12
-      - @search_results.trips_from_friends.each_slice(3) do |row|
-        .row
-          - (row + ([nil] * (3 - row.length))).each do |trip|
-            .columns.small-4
-              - if !trip.nil?
-                %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                  .trip-box
-                    = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-  .row.not-friends-results
-    .columns.small-12
-      - @search_results.trips_not_from_friends.each_slice(3) do |row|
-        .row
-          - (row + ([nil] * (3 - row.length))).each do |trip|
-            .columns.small-4
-              - if !trip.nil?
-                %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                  .trip-box
-                    = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+  - if @search_results.empty?
+    %h2 No results, invite more friends!
+
+  - else
+
+    - unless @search_results.trips_from_friends.empty?
+      .row.friends-results
+        .columns.small-12
+          %h2 Friends that are going there
+          - @search_results.trips_from_friends.each_slice(3) do |row|
+            .row
+              - (row + ([nil] * (3 - row.length))).each do |trip|
+                .columns.small-4
+                  - if !trip.nil?
+                    %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                      .trip-box
+                        = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+    - unless @search_results.locals.empty?
+      .row.locals-results
+        .columns.small-12
+          %h2 Other interesting people living there
+          - @search_results.locals.each_slice(3) do |row|
+            .row
+              - (row + ([nil] * (3 - row.length))).each do |user|
+                .columns.small-4
+                  - if !user.nil?
+                    %a{:href => "#{user_show_path(user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                      .trip-box
+                        = render :partial => 'shared/user_box', :locals => {:user => user}
 
 .reveal-modal#add-modal
   = form_tag("/trips", method: "post") do

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   has_many :trips
 
+  BOX_SIZE_IN_METERS = 5000
+  scope :near, ->(latitude, longitude, box_size=BOX_SIZE_IN_METERS) { where("earth_box(ll_to_earth(?, ?), ?) @> ll_to_earth(latitude, longitude)", latitude, longitude, box_size) }
+
   SEX_COLLECTION = ['Male', 'Female']
   RELATIONSHIP_STATUS_COLLECTION = ['Single', 'In a relationship']
   MOOD_COLLECTION = ['Hippie', 'Normal', 'Chic']
@@ -131,6 +134,18 @@ class User < ActiveRecord::Base
 
   def friends
     User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
+  end
+
+  def self.find_near_location(latitude, longitude)
+    User.near(latitude, longitude)
+  end
+
+  def is_a_friend_of?(other_user)
+    return friends.include? other_user
+  end
+
+  def male?
+    sex == 'Male'
   end
 
 end

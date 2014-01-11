@@ -12,7 +12,7 @@ class SearchController < ApplicationController
 
     @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
     @search_results.trips_from_friends = Trip.find_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
-    @search_results.trips_not_from_friends = Trip.find_not_from_friends_near_between(current_user, latitude, longitude, arriving, leaving)
+    @search_results.locals = User.find_near_location(latitude, longitude)
 
   end
 

@@ -1,6 +1,6 @@
 class SearchResultsFacade
 
-  attr_accessor :city, :latitude, :longitude, :arriving, :leaving, :trips_from_friends, :trips_not_from_friends
+  attr_accessor :city, :latitude, :longitude, :arriving, :leaving, :trips_from_friends, :locals
 
   def initialize(city, latitude, longitude, arriving, leaving)
     @city = city
@@ -16,6 +16,10 @@ class SearchResultsFacade
 
   def formatted_leaving
     @leaving.strftime('%d %B %Y')
+  end
+
+  def empty?
+    locals.empty? and trips_from_friends.empty?
   end
 
 end

@@ -1,0 +1,19 @@
+
+.left-user-box
+  .profile-pic
+    %img{src: user.picture_url}
+.middle-user-box
+  .name
+    = user.full_name
+  .age-city
+    = "#{user.age} years old, #{user.nationality}"
+  .fa.fa-map-marker.location
+    = user.city
+.right-user-box
+  .mood
+    %span{:class => [class_from_mood(user.mood), class_from_relationship_and_sex(user, current_user), :picto], title: user.mood, data: {tooltip: true}}
+      = user.mood
+  .time
+    %span{:class => [class_from_time(user.time), class_from_relationship_and_sex(user, current_user), :picto], title: user.time, data: {tooltip: true}}
+      = user.time
+
