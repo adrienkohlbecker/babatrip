@@ -59,7 +59,7 @@
         = select_tag(:composition, options_from_collection_for_select(Trip::COMPOSITION_COLLECTION, :last, :first))
     .row
       .columns.small-12
-        = text_area_tag(:message, '', :placeholder => 'Describe your trip', required: true)
+        = text_area_tag(:message, '', :placeholder => 'Describe your trip')
     .row
       .columns.small-2
         = submit_tag "Add", {:class => [:button, :expand, :action, :big]}
