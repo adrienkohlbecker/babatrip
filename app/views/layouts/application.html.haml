@@ -17,22 +17,28 @@
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Dancing+Script:400,700'
     / Place favicon.ico and apple-touch-icon.png in the root directory
   %body
-    /[if lt IE 7]
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    .wrapper
+      /[if lt IE 7]
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 
-    = render :partial => 'shared/topbar'
+      = render :partial => 'shared/topbar'
 
-    .row#alerts
+      .row#alerts
 
-      - flash.each do |key, msg|
-        %div{class: "alert-box #{key}", data: {alert: true}}
-          = msg.html_safe
-          %a.close{href: '#'} &times;
+        - flash.each do |key, msg|
+          %div{class: "alert-box #{key}", data: {alert: true}}
+            = msg.html_safe
+            %a.close{href: '#'} &times;
 
-      / .notice= notice
-      / .alert= alert
+        / .notice= notice
+        / .alert= alert
 
-    = yield
+      = yield
+
+      .push
+
+    .footer.darker
+      = render :partial => 'shared/footer'
 
     #contact-modal.reveal-modal
 
