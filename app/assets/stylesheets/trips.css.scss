@@ -133,6 +133,10 @@
         line-height: 1.4em;
     }
 
+    .infos  {
+        min-height: 140px;
+    }
+
     .answer {
         background-color: #efefef;
         min-height: 122px;
@@ -161,6 +165,7 @@
     background-color: white;
     color: #505050;
     margin-bottom: 20px;
+    height: 275px;
 
     .trip-infos {
         padding: 12px;
@@ -171,6 +176,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 8px;
+            margin-top: 5px;
             }
         
         .dates, .composition {
@@ -196,9 +202,11 @@
         }
 
         .trip-message {
-            margin-top: 5px;
+            margin-top: 8px;
             font-size: 12px;
             line-height: 1.4em;
+            height: 64px;
+            overflow: hidden;
         }
 
     }
