@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
     user.email = auth.info.email unless user.is_email_overridden
     user.facebook_token = auth.credentials.token
     user.facebook_token_expires = Time.at(auth.credentials.expires_at)
+    user.username = auth.info.nickname
 
     user.save!
     user
