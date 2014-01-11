@@ -17,4 +17,4 @@
               = current_user.full_name
               = image_tag current_user.picture_url(width: 28, height: 28)
           %li
-            = button_to "Log out", destroy_user_session_path, :method => :delete
+            = button_to "Log out", destroy_user_session_path, :method => :delete, :class => :logout
