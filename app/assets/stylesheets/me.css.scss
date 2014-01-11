@@ -22,11 +22,14 @@
 
   }
 
-  input  {
-      height: 38px;
+  input, textarea {
       font-size: 15px;
       box-shadow: 0 0 0 3px hsla(0, 0%, 0%, 0.14);
       margin-bottom: 30px;
+  }
+
+  input  {
+      height: 38px;
   }
   select, .chosen-container-single .chosen-single {
       -webkit-appearance: none !important;
@@ -44,6 +47,10 @@
       background-position: 95% center;
       background-repeat: no-repeat;
       cursor: pointer;
+  }
+
+  .user_birth_date select {
+    width: 32%;
   }
 
   .chosen-container-single .chosen-drop {
@@ -95,7 +102,7 @@ label.collection_check_boxes {
 
 .content-title-row {
     height: 220px;
-    
+
     h1 {
         font-family: 'Ubuntu';
         font-size: 40px;
@@ -113,7 +120,7 @@ label.collection_check_boxes {
 
         span {
             margin-right: 15px;
-            
+
             &:before {
                 opacity: 0.5;
                 margin-right: 5px;
