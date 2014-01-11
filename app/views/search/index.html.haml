@@ -52,7 +52,7 @@
   .row
     .columns.small-12
       %h4
-        Add a trip 
+        Add a trip
   = form_tag("/trips", method: "post") do
     .row
       .columns.small-12
@@ -73,7 +73,7 @@
     .row
       .columns.small-12
         = label_tag "Composition"
-        = select_tag(:composition, options_from_collection_for_select(Trip::COMPOSITION_COLLECTION, :last, :first))
+        = select_tag(:composition, options_for_select(Trip::COMPOSITION_COLLECTION))
     .row
       .columns.small-12
         = label_tag "Personal message"
