@@ -37,6 +37,7 @@
     #contact-modal.reveal-modal
 
     = jquery_include_tag :google
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
     = javascript_include_tag "application", "data-turbolinks-track" => true
 
     / Google Analytics: change UA-XXXXX-X to be your site's ID.
