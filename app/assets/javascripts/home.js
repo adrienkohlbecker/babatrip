@@ -28,6 +28,7 @@ $(function(){
   }).data('datepicker');
   var checkout = $('#leaving').fdatepicker({
     format: 'dd/mm/yyyy',
+    weekStart: 1,
     onRender: function (date) {
       return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
     }
