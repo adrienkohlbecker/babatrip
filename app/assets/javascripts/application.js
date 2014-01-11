@@ -30,6 +30,10 @@ $(function(){
       success: function() {
         e.target.reset();
         $('#contact-modal').foundation('reveal', 'close');
+        alertBox('Message sent successfully!', 'success');
+      },
+      error: function() {
+        alertBox('Unexpected error.', 'alert');
       }
     });
 
