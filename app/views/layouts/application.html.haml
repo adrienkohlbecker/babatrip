@@ -8,11 +8,11 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %title= content_for?(:title) ? yield(:title) : "Travel Meet"
+    %title= content_for?(:title) ? yield(:title) : "Travel Meet - Where are your friends planning to go?"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag :modernizr
     = csrf_meta_tags
-    %meta{:content => "", :name => "description"}/
+    %meta{:content => "International online community specialized in connecting travelers. Travel-Meet allows you to see your Facebook friends next destination , to find and contact individuals with your same interests planning to travel to the same place at the same time as well as locals.", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Dancing+Script:400,700'
     / Place favicon.ico and apple-touch-icon.png in the root directory

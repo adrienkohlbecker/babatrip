@@ -35,7 +35,7 @@
                 .columns.small-4
                   - if !trip.nil?
                     %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                      .trip-box
+                      .card
                         = render :partial => 'shared/trip_box', :locals => {:trip => trip}
     - unless @search_results.locals.empty?
       .row.locals-results
