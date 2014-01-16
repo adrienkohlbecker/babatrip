@@ -50,7 +50,8 @@
   }
 
   .user_birth_date select {
-    width: 32%;
+    width: 30%;
+    margin-right: 6px; 
   }
 
   .chosen-container-single .chosen-drop {
@@ -98,6 +99,10 @@ label.collection_check_boxes {
 .user_description {
   margin-top: 20px;
   margin-bottom: 30px;
+  
+  textarea {
+    height: 100px;
+  }
 }
 
 .content-title-row {
