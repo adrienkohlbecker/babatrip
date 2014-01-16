@@ -19,7 +19,9 @@
 
 .contain-to-grid.main-zone.results
   - if @search_results.empty?
-    %h2 No results, invite more friends!
+    .row
+      .columns.small-12.centered
+        %h2.noresults No results, invite more friends!
 
   - else
 
