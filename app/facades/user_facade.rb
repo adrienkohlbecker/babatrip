@@ -30,6 +30,10 @@ class UserFacade
 
   end
 
+  def trips
+    @user.trips.current
+  end
+
   delegate :full_name, to: :user
   delegate :city, to: :user
   delegate :nationality, to: :user
@@ -38,7 +42,6 @@ class UserFacade
   delegate :mood, to: :user
   delegate :time, to: :user
   delegate :relationship_status, to: :user
-  delegate :trips, to: :user
 
 end
 

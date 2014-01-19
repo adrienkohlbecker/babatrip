@@ -11,13 +11,14 @@ class Trip < ActiveRecord::Base
   scope :not_from_friends_of, ->(user) { user.nil? ? none : where.not(:user_id => user.friends.pluck(:id) + [user.id] ) }
 
   scope :between, ->(arriving, leaving) { where('(arriving, leaving) OVERLAPS (:arriving, :leaving)', :arriving => arriving, :leaving => leaving) }
+  scope :current, ->() { order('arriving ASC', 'leaving ASC').where('leaving > ?', Date.today) }
 
   def self.find_from_friends_near_between(user, latitude, longitude, arriving, leaving)
-    Trip.near(latitude, longitude).from_friends_of(user).between(arriving, leaving)
+    Trip.current.near(latitude, longitude).from_friends_of(user).between(arriving, leaving)
   end
 
   def self.find_not_from_friends_near_between(user, latitude, longitude, arriving, leaving)
-    Trip.near(latitude, longitude).not_from_friends_of(user).between(arriving, leaving)
+    Trip.current.near(latitude, longitude).not_from_friends_of(user).between(arriving, leaving)
   end
 
 end
