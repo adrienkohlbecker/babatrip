@@ -1,4 +1,4 @@
-.card.contact
+.card.contact{:data => {:user_profile => user_show_path(@user.id)}}
   %div.infos
     .left-trip-box
       = render partial: 'shared/pic_and_character', locals: {user: @user}

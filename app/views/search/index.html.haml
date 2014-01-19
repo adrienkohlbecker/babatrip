@@ -34,9 +34,8 @@
               - (row + ([nil] * (3 - row.length))).each do |trip|
                 .columns.small-4
                   - if !trip.nil?
-                    %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                      .card
-                        = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+                    .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
+                      = render :partial => 'shared/trip_box', :locals => {:trip => trip}
     - unless @search_results.locals.empty?
       .row.locals-results
         .columns.small-12
@@ -46,9 +45,8 @@
               - (row + ([nil] * (3 - row.length))).each do |user|
                 .columns.small-4
                   - if !user.nil?
-                    %a{:href => "#{user_show_path(user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                      .card.user
-                        = render :partial => 'shared/user_box', :locals => {:user => user}
+                    .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(user.id)}}
+                      = render :partial => 'shared/user_box', :locals => {:user => user}
 
 .reveal-modal#add-modal
   .row

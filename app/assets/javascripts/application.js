@@ -59,6 +59,41 @@ $(function(){
 
   });
 
+  $(document).on('click', '[data-ajax-modal]', function(e) {
+
+    var target = $(e.target);
+    var href;
+
+    if (target.hasClass('name') || target.parent().hasClass('profile-pic')) {
+
+      href = target.parents('[data-ajax-modal]').attr('data-user-profile');
+      window.location.pathname = href;
+
+    } else {
+
+      var id = '#' + target.parents('[data-ajax-modal]').attr('data-ajax-modal');
+      href = target.parents('[data-ajax-modal]').attr('data-href');
+
+      $(id).foundation('reveal', 'open', {url: href});
+
+    }
+
+  });
+
+  $(document).on('click', '.contact[data-user-profile]', function(e) {
+
+    var target = $(e.target);
+    var href;
+
+    if (target.hasClass('name') || target.parent().hasClass('profile-pic')) {
+
+      href = target.parents('[data-user-profile]').attr('data-user-profile');
+      window.location.pathname = href;
+
+    }
+
+  });
+
   var alert_children = $('#alerts').children();
   setTimeout(function() { alert_children.slideUp(); }, 5000);
 
