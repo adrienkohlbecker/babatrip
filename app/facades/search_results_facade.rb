@@ -1,6 +1,6 @@
 class SearchResultsFacade
 
-  attr_accessor :city, :latitude, :longitude, :arriving, :leaving, :trips_from_friends, :locals
+  attr_accessor :city, :latitude, :longitude, :arriving, :leaving, :trips_from_friends, :trips_from_others, :locals
 
   def initialize(city, latitude, longitude, arriving, leaving)
     @city = city
@@ -19,7 +19,7 @@ class SearchResultsFacade
   end
 
   def empty?
-    locals.empty? and trips_from_friends.empty?
+    locals.empty? and trips_from_friends.empty? and trips_from_others.empty?
   end
 
 end

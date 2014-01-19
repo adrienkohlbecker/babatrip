@@ -144,6 +144,12 @@ class User < ActiveRecord::Base
     return friends.include? other_user
   end
 
+  def is_a_friend_of_friend_of?(other_user)
+    friends_uids = friends.collect(&:uid)
+    friends_of_friends = User.joins("INNER JOIN connections ON (connections.this_id IN ('#{friends_uids.join("','")}') AND users.uid = connections.other_id) OR (connections.other_id IN ('#{friends_uids.join("','")}') AND users.uid = connections.this_id)").where("users.uid NOT IN ('#{friends_uids.join("','")}') AND users.uid != '#{self.uid}'")
+    return friends_of_friends.include? other_user
+  end
+
   def male?
     sex == 'Male'
   end

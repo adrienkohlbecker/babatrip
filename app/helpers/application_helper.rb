@@ -44,7 +44,7 @@ module ApplicationHelper
 
   def class_from_relationship_and_sex(user, current_user)
 
-    if user.is_a_friend_of?(current_user)
+    if user.is_a_friend_of?(current_user) or user.is_a_friend_of_friend_of?(current_user)
       return :blue
     else
       if user.male?
