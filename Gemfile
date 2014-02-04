@@ -53,7 +53,7 @@ gem "omniauth-facebook"
 gem "newrelic_rpm"
 
 # Facebook Graph API access
-gem "koala"
+gem "koala", "~>1.9.0rc1"
 
 # Admin interface
 gem "rails_admin"

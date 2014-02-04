@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
       return
     end
 
-    @graph = Koala::Facebook::API.new(self.facebook_token)
+    @graph = Koala::Facebook::API.new(self.facebook_token, ENV['FACEBOOK_APP_SECRET'])
     friends = @graph.get_connections("me", "friends")
     friends_uids = friends.collect{|f| f["id"]}
 
