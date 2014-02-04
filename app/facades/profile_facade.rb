@@ -20,4 +20,8 @@ class ProfileFacade
     @user.picture_url
   end
 
+  def is_signup?
+    @user.is_profile_completed
+  end
+
 end

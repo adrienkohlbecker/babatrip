@@ -16,6 +16,10 @@ class MeController < ApplicationController
     user.last_name = me_params[:user][:last_name]
     user.email = me_params[:user][:email]
 
+    if not user.is_profile_completed
+      user.accepts = me_params[:user][:accepts]
+    end
+
     if user.email_changed?
       user.is_email_overridden = true
       # resend verification ?
@@ -48,7 +52,7 @@ class MeController < ApplicationController
 
     user.is_profile_completed = true
 
-    if !user.errors.any? && user.save
+    if user.save
       redirect_to root_path
     else
       @profile = ProfileFacade.new(user)
@@ -60,7 +64,7 @@ class MeController < ApplicationController
 
     def me_params
       puts ap params
-      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
+      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, :accepts, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 
 end

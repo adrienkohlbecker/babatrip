@@ -38,6 +38,7 @@
         .row
           .columns.small-12
             = f.input :description, :placeholder => 'Write a few words about yourself'
+
         .row
           .columns.small-5
             = f.label :mood
@@ -50,6 +51,11 @@
             .row.image-as-radio
               = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected }
 
+        - if @profile.is_signup?
+          .row.terms
+            .columns.small-12
+              = f.input :accepts, input_html: { :class => 'no-custom', :required => true }, :label => "By clicking Submit, you agree to our Terms and that you have read our Privacy Policy."
+
         .row
           .columns.small-offset-9.small-2
             = f.button :submit, {:class => [:button,:action, :big]}
@@ -57,7 +63,7 @@
 
     .columns.small-2.guide-text
       Be part of the
-      %br 
-      Travel-Meet community! Register for free and fill out your profile! It's easy and quick! 
+      %br
+      Travel-Meet community! Register for free and fill out your profile! It's easy and quick!
       %br
       You'll be able to see where your friends are planning to go and contact new friends!

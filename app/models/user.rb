@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  validate :must_accept_terms
+
   has_many :trips
 
   BOX_SIZE_IN_METERS = 5000
@@ -34,6 +36,15 @@ class User < ActiveRecord::Base
     field :last_sign_in_at, :datetime
 
   end
+
+  def must_accept_terms
+
+    if is_profile_completed and not accepts
+      errors.add(:accepts, "Please accept our Terms of Service")
+    end
+
+  end
+
 
   def self.find_for_facebook_oauth(auth)
 
