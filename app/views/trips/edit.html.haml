@@ -1,0 +1,37 @@
+= form_tag("/trips/#{@trip.id}", method: "delete", class: 'delete-form') do
+  = hidden_field_tag(:confirm, true)
+
+= form_tag("/trips/#{@trip.id}/edit", method: "post") do
+  .row
+    .columns.small-12
+      = label_tag "Where are you going exactly ?"
+      .span.fa.fa-map-marker.location.inside
+      = text_field_tag(:city, @trip.city, :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+      = hidden_field_tag(:latitude, @trip.latitude)
+      = hidden_field_tag(:longitude, @trip.longitude)
+  .row
+    .columns.small-6
+      = label_tag "From"
+      .span.fa.fa-calendar.inside
+      = text_field_tag(:arriving, @trip.arriving.strftime("%d/%m/%Y"), :placeholder => 'Arriving', required: true)
+    .columns.small-6
+      = label_tag "To"
+      .span.fa.fa-calendar.inside
+      = text_field_tag(:leaving, @trip.leaving.strftime("%d/%m/%Y"), :placeholder => 'Leaving', required: true)
+  .row
+    .columns.small-12
+      = label_tag "Composition"
+      = select_tag(:composition, options_for_select(Trip::COMPOSITION_COLLECTION), selected: @trip.composition)
+  .row
+    .columns.small-12
+      = label_tag "Personal message"
+      = text_area_tag(:message, @trip.message, :placeholder => 'Describe your trip')
+  .row
+    .columns.small-2
+      = submit_tag "Edit", {:class => [:button, :expand, :action, :big]}
+    .columns.small-10
+      %a{href: "#", class: 'delete-button'} Delete trip
+
+:javascript
+  city_autocomplete($('#edit-modal [data-city-autocomplete]')[0]);
+  datepicker();

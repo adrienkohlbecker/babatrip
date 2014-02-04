@@ -46,6 +46,11 @@
           - (row + ([nil] * (3 - row.length))).each do |trip|
             .columns.small-4
               - if !trip.nil?
-                %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
-                  .profile-trip-box
-                    = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}
+                - if !@user_profile.own?
+                  %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+                    .profile-trip-box
+                      = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}
+                - else
+                  %a{:href => "/trips/#{trip.id}/edit", :data => {:reveal_id => "edit-modal", :reveal_ajax => "true"}}
+                    .profile-trip-box
+                      = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}

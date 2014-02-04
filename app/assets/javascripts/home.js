@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 //= require foundation-datepicker
 
-$(function(){
+function datepicker() {
 
   var nowTemp = new Date();
   var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -35,5 +35,11 @@ $(function(){
   }).on('changeDate', function (ev) {
     checkout.hide();
   }).data('datepicker');
+
+}
+
+$(function(){
+
+  datepicker();
 
 });

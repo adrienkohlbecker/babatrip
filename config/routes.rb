@@ -40,6 +40,10 @@ TravelMeet::Application.routes.draw do
     get '/trips/:id/contact' => 'trips#contact_show', :constraints => OnlyAjaxRequest.new
     post '/trips/:id/contact' => 'trips#contact_create', :as => 'contact_trip', :constraints => OnlyAjaxRequest.new
 
+    get '/trips/:id/edit' => 'trips#edit', :as => 'edit_trip', :constraints => OnlyAjaxRequest.new
+    post '/trips/:id/edit' => 'trips#update', :as => 'update_trip', :constraints => OnlyAjaxRequest.new
+    delete '/trips/:id' => 'trips#delete', :as => 'delete_trip', :constraints => OnlyAjaxRequest.new
+
     get '/users/:id_or_username' => 'users#show', :as => 'user_show', :constraints => {id_or_username: /[a-zA-Z0-9\.]+/}
     get '/users/:id_or_username/contact' => 'users#contact_show', :constraints => {id_or_username: /[a-zA-Z0-9\.]+/}
     post '/users/:id_or_username/contact' => 'users#contact_create', :as => 'contact_user', :constraints => {id_or_username: /[a-zA-Z0-9\.]+/}
