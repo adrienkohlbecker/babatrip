@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   SEX_COLLECTION = ['Male', 'Female']
   RELATIONSHIP_STATUS_COLLECTION = ['Single', 'In a relationship']
-  MOOD_COLLECTION = ['Hippie', 'Normal', 'Chic']
+  MOOD_COLLECTION = ['Hippie', 'Cool', 'Chic']
   TIME_COLLECTION = ['Night', 'Day', 'All day']
 
   MIN_PICTURE_HEIGHT = 100
