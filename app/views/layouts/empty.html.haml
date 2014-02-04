@@ -1,0 +1,38 @@
+!!!
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8] <html class="no-js lt-ie9" lang="en">
+/ [if gt IE 8]><!
+%html.no-js{:lang => :en}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %title= content_for?(:title) ? yield(:title) : "Travel Meet - Where are your friends planning to go?"
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag :modernizr
+    = csrf_meta_tags
+    %meta{:content => "International online community specialized in connecting travelers. Travel-Meet allows you to see your Facebook friends next destination , to find and contact individuals with your same interests planning to travel to the same place at the same time as well as locals.", :name => "description"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Dancing+Script:400,700'
+    %link{:rel => "apple-touch-icon-precomposed", :href => "/favicon-152.png"}
+    %meta{:name => "msapplication-TileColor", :content => "#FFB625"}
+    %meta{:name => "msapplication-TileImage", :content => "/favicon-144.png"}
+  %body
+
+    = yield
+
+    = jquery_include_tag :google
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+
+    != "<script>var GAID='#{ENV['GOOGLE_ANALYTICS_ID']}';var GADOM='#{ENV['GOOGLE_ANALYTICS_DOMAIN']}';</script>"
+
+    / Google Analytics: change UA-XXXXX-X to be your site's ID.
+    :javascript
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//stats.g.doubleclick.net/dc.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create',GAID,GADOM);ga('require','linkid','linkid.js');ga('send','pageview');

@@ -13,4 +13,8 @@ class HomeController < ApplicationController
   def legal
   end
 
+  def landing_page
+    render 'landing_page', layout: 'empty'
+  end
+
 end
