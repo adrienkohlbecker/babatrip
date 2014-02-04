@@ -16,6 +16,7 @@
 
         img {
         width: 70px;
+        cursor: pointer;
         }
 
     }
@@ -67,6 +68,12 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        cursor: pointer;
+
+        &:hover {
+            color: black;
+        }
+
         }
 
         .age-city {
