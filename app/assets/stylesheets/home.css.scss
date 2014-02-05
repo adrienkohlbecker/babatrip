@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //= require foundation-datepicker
 //= require foundation-datepicker-fix
+//= depend_on_asset "meet.svg"
+//= depend_on_asset "plan.svg"
+//= depend_on_asset "travel.svg"
 
 .centered {
     text-align: center;

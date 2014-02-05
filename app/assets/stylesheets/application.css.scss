@@ -13,6 +13,15 @@
  *= require font-awesome
  *= require chosen
  *= require_self
+ *= depend_on_asset "logo.svg"
+ *= depend_on_asset "allday.svg"
+ *= depend_on_asset "chic.svg"
+ *= depend_on_asset "cool.svg"
+ *= depend_on_asset "couple.svg"
+ *= depend_on_asset "day.svg"
+ *= depend_on_asset "hippie.svg"
+ *= depend_on_asset "night.svg"
+ *= depend_on_asset "single.svg"
  */
 
  /*
