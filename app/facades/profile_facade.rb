@@ -21,7 +21,7 @@ class ProfileFacade
   end
 
   def is_signup?
-    @user.is_profile_completed
+    !@user.is_profile_completed
   end
 
 end
