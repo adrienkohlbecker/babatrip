@@ -31,7 +31,11 @@ class MeController < ApplicationController
     date = Date.civil(year, month, day) rescue nil
 
     if date
-      user.birth_date = date
+      if date < 18.years.ago
+        user.birth_date = date
+      else
+        user.errors.add(:birth_date, "is too recent")
+      end
     elsif year == 0 and month == 0 and day == 0
       user.birth_date = nil
     else
@@ -52,7 +56,7 @@ class MeController < ApplicationController
 
     user.is_profile_completed = true
 
-    if user.save
+    if user.errors.empty? && user.save
       redirect_to root_path
     else
       @profile = ProfileFacade.new(user)
@@ -63,7 +67,6 @@ class MeController < ApplicationController
   private
 
     def me_params
-      puts ap params
       params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, :accepts, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 

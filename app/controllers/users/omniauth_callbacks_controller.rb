@@ -1,6 +1,13 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+
+    if Date.strptime(request.env["omniauth.auth"].extra.raw_info.birthday, '%m/%d/%Y') > 18.years.ago
+      flash[:alert] = "You must be 18 to signup"
+      redirect_to "/"
+      return
+    end
+
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"])
 
     if @user.persisted?
