@@ -81,3 +81,6 @@ gem 'font-awesome-sass'
 
 # Preview emails in development
 gem "letter_opener", :group => :development
+
+# Exception monitoring
+gem 'sentry-raven'
