@@ -4,18 +4,21 @@
       %h2.bigger-title Where are you planning to go?
       %h3.small-title Enter a destination and a time span to see who is going to be there
   .row
-    = form_tag("/search", method: "get") do
+    = form_tag("/search", method: "get", data: {abide: true}) do
       .columns.small-4
         .span.fa.fa-map-marker.location.inside
-        = text_field_tag(:city, "", :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+        = text_field_tag(:city, "", :placeholder => "Which city are you visiting?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+        %small.error City is required
         = hidden_field_tag(:latitude)
         = hidden_field_tag(:longitude)
       .columns.small-3
         .span.fa.fa-calendar.inside
-        = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true)
+        = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true, pattern: "\d\d\/\d\d\/\d\d\d\d")
+        %small.error Arriving date is required and must be in the form DD/MM/YYYY
       .columns.small-3
         .span.fa.fa-calendar.inside
-        = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true)
+        = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true, pattern: "\d\d\/\d\d\/\d\d\d\d")
+        %small.error Leaving date is required and must be in the form DD/MM/YYYY
       .columns.small-2
         = submit_tag "Search", {:class => [:button, :expand, :action, :big]}
 

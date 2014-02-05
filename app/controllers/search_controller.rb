@@ -10,6 +10,11 @@ class SearchController < ApplicationController
     arriving = search_params[:arriving]
     leaving = search_params[:leaving]
 
+    if [city, latitude, longitude, arriving, leaving].compact.length != 5
+      flash[:alert] = "You must complete all the search fields"
+      redirect_to "/"
+    end
+
     friends = current_user.friends
     friends_of_friends = friends.collect(&:friends).flatten
 
@@ -30,8 +35,11 @@ class SearchController < ApplicationController
 
     def search_params
       hash = params.permit(:city, :latitude, :longitude, :arriving, :leaving)
-      hash[:arriving] = Date.strptime(hash[:arriving], "%d/%m/%Y")
-      hash[:leaving] = Date.strptime(hash[:leaving], "%d/%m/%Y")
+      hash[:city] = (hash[:city] && hash[:city] != '') ? hash[:city] : nil
+      hash[:latitude] = (hash[:latitude] && hash[:latitude] != '') ? hash[:latitude] : nil
+      hash[:longitude] = (hash[:longitude] && hash[:longitude] != '') ? hash[:longitude] : nil
+      hash[:arriving] = Date.strptime(hash[:arriving], "%d/%m/%Y") rescue nil
+      hash[:leaving] = Date.strptime(hash[:leaving], "%d/%m/%Y") rescue nil
       hash
     end
 
