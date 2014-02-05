@@ -13,11 +13,11 @@
         = hidden_field_tag(:longitude)
       .columns.small-3
         .span.fa.fa-calendar.inside
-        = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true, pattern: "\d\d\/\d\d\/\d\d\d\d")
+        = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
         %small.error Arriving date is required and must be in the form DD/MM/YYYY
       .columns.small-3
         .span.fa.fa-calendar.inside
-        = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true, pattern: "\d\d\/\d\d\/\d\d\d\d")
+        = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
         %small.error Leaving date is required and must be in the form DD/MM/YYYY
       .columns.small-2
         = submit_tag "Search", {:class => [:button, :expand, :action, :big]}
