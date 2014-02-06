@@ -38,18 +38,22 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */
+  margin: 0 auto -62px; /* the bottom margin is the negative value of the footer's height */
   background-image: image-url('bg-main.jpg');
     background-size: cover;
 }
 .footer, .push {
-  height: 45px; /* .push must be the same height as .footer */
+  height: 62px; /* .push must be the same height as .footer */
   z-index: 1000;
 
   a {
-    line-height: 45px;
-    color: white;
+    margin-top: 3px;
+    line-height: 42px;
+    color: rgba(255,255,255,0.7);
     font-size: 12px;
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -153,6 +157,13 @@ button, .button {
 
     .top-bar-section ul {
         background: none !important;
+
+        a {
+          opacity: 0.8;
+          &:hover {
+            opacity: 1;
+          }
+        }
 
         .user {
             font-weight: normal;
