@@ -19,8 +19,8 @@
     %meta{:name => "msapplication-TileColor", :content => "#FFB625"}
     %meta{:name => "msapplication-TileImage", :content => "/favicon-144.png"}
   %body
-
-    = yield
+    .wrapper
+      = yield
 
     = jquery_include_tag :google
     = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"
