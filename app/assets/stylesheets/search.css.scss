@@ -16,7 +16,7 @@ padding-top: 20px;
     display:none !important;
 }
 
-#add-modal {
+#add-modal, #edit-modal {
 
 padding: 15px;
 
@@ -37,6 +37,7 @@ padding: 15px;
 
     form {
         padding: 0px;
+        margin-bottom: 0px;
 
         input, select, textarea   {
             background: #efefef;
@@ -76,6 +77,17 @@ padding: 15px;
          color: #bebebe;
          margin-top: 17px;
         } 
+    }
+    .delete-button {
+      color: #8D8D8D;
+      line-height: 36px;
+      
+      &:hover {
+        color: #ff4e96;
+      }
+      &:before {
+        margin-right: 6px;
+      }
     }
 }
 

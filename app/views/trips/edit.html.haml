@@ -1,7 +1,13 @@
+
+
 = form_tag("/trips/#{@trip.id}", method: "delete", class: 'delete-form') do
   = hidden_field_tag(:confirm, true)
 
 = form_tag("/trips/#{@trip.id}/edit", method: "post") do
+  .row
+    .columns.small-12
+      %h4
+        Edit your trip
   .row
     .columns.small-12
       = label_tag "Where are you going exactly ?"
@@ -26,11 +32,11 @@
     .columns.small-12
       = label_tag "Personal message"
       = text_area_tag(:message, @trip.message, :placeholder => 'Describe your trip')
-  .row
+  .row.plus10v
     .columns.small-2
       = submit_tag "Edit", {:class => [:button, :expand, :action, :big]}
     .columns.small-10
-      %a{href: "#", class: 'delete-button'} Delete trip
+      %a.delete-button.fa.fa-trash-o{href: "#" } Delete trip
 
 :javascript
   city_autocomplete($('#edit-modal [data-city-autocomplete]')[0]);
