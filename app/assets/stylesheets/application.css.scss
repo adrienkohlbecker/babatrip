@@ -107,6 +107,13 @@ h2,h3 {
     font-style: italic;
     font-weight: normal;
 }
+.landing-title {
+    font-size: 18px;
+    margin-top: -12px;
+    margin-bottom: 50px;
+    font-style: italic;
+    font-weight: normal;
+}
 
 .buttons {
     padding-top: 20px;
@@ -141,6 +148,17 @@ button, .button {
         }
 }
 
+.big-logo {
+  text-indent: -10000em;
+  background-image: image-url('logo.svg');
+  background-repeat: no-repeat;
+  display: block;
+  width: 420px;
+  height: 140px;
+  background-size: 100%;
+  background-position: 50%;
+  margin: auto;
+}
 
 .top-bar {
     margin-left: -20px;
