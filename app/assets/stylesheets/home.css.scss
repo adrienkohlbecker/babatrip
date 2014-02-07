@@ -16,7 +16,7 @@
     background-position: top center;
     background-size: 150px 150px;
     background-repeat: no-repeat;
-    margin-top: 30px;
+    margin-top: 10px;
     text-transform: uppercase;
     text-align: center;
     font-family: 'Ubuntu';
@@ -34,5 +34,27 @@
 p {
     font-size: 14px;
     line-height: 1.5em;
-    padding: 5px 10px 40px;
+    padding: 5px 10px 0px;
+}
+
+.legenda {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    h2 {
+        font-family: 'Ubuntu';
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        margin-left: -5px;
+    }
+    p {
+        padding: 0;
+        margin-left: -5px;
+        padding-right: 25px;
+    }
+}
+
+.about {
+    padding: 50px 0 !important;
 }
