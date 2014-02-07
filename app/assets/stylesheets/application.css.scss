@@ -39,8 +39,8 @@ html, body {
   height: auto !important;
   height: 100%;
   margin: 0 auto -62px; /* the bottom margin is the negative value of the footer's height */
-  background-image: image-url('bg-main.jpg');
-    background-size: cover;
+  background: image-url('bg-friends.jpg') no-repeat center center fixed; 
+  background-size: cover;
 }
 .footer, .push {
   height: 62px; /* .push must be the same height as .footer */
@@ -74,7 +74,7 @@ body {
     background: rgba(0, 0, 0, 0.35);
 }
 .darkest {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.9);
 }
 .plus10v {
   position: relative;
@@ -248,7 +248,7 @@ button, .button {
 
 
 .main-zone {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     padding: 0px;
     min-height: 450px;
 
