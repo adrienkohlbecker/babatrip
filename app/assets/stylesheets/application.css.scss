@@ -390,3 +390,28 @@ button, .button {
   }
 
 }
+
+.plaintext {
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.82);
+  color: black;
+  h1 {
+        font-family: 'Ubuntu';
+        font-size: 30px;
+        color: black;
+        font-weight: 500;
+        margin-bottom: 15px;
+        padding: 0;
+    }
+  p.p1, p.p2, li.li1, li.li2 {
+  padding: 0px;
+  margin: 0.0px 0.0px 15px 0.0px;
+  font: 14.0px Helvetica;
+  color: #333333;
+    line-height: 1.5em;
+
+  }
+
+  span.s1 {color: #4183c4}
+  ol.ol1 {list-style-type: decimal}  
+}
