@@ -60,6 +60,11 @@ TravelMeet::Application.routes.draw do
       routes
     end
   else
+    constraints subdomain: 'beta' do
+      get "(*x)" => redirect { |params, request|
+        URI.parse(request.url).tap { |x| x.host = x.host.sub('beta', 'www') }.to_s
+      }
+    end
     routes
   end
 
