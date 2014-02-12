@@ -23,7 +23,11 @@ class MeController < ApplicationController
 
         url = "http://#{ENV['DOMAIN']}/"
         graph = Koala::Facebook::API.new(user.facebook_token, ENV['FACEBOOK_APP_SECRET'])
-        graph.put_wall_post("I'm using Travel-Meet to share my trips and find out where my friends are going. Join me!", {:link => url})
+        begin
+          graph.put_wall_post("I'm using Travel-Meet to share my trips and find out where my friends are going. Join me!", {:link => url})
+        rescue => e
+          # We don't have permission
+        end
 
       end
     end

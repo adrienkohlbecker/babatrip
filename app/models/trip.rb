@@ -70,7 +70,11 @@ class Trip < ActiveRecord::Base
     picture = self.map_image_url(116,116)
 
     graph = Koala::Facebook::API.new(self.user.facebook_token, ENV['FACEBOOK_APP_SECRET'])
-    graph.put_wall_post('I just added a trip on Travel-Meet.', {:link => url, :caption => caption, :name => name, :description => description, :picture => picture})
+    begin
+      graph.put_wall_post('I just added a trip on Travel-Meet.', {:link => url, :caption => caption, :name => name, :description => description, :picture => picture})
+    rescue => e
+      # we don't have permission
+    end
 
   end
 
