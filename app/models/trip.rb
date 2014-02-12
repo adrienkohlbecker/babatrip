@@ -1,3 +1,6 @@
+# encoding: UTF-8
+require 'digest/md5'
+
 class Trip < ActiveRecord::Base
   belongs_to :user
 
@@ -47,6 +50,39 @@ class Trip < ActiveRecord::Base
     trips.sort_by! {|trip| [-ids_to_properties[trip.id][:match], ids_to_properties[trip.id][:distance], trip.arriving, trip.leaving] }
 
     return trips
+
+  end
+
+  def share_on_facebook
+
+    params = {
+              :city => self.city,
+              :latitude => self.latitude,
+              :longitude => self.longitude,
+              :arriving => self.arriving.strftime("%d/%m/%Y"),
+              :leaving => self.leaving.strftime("%d/%m/%Y")
+            }.to_query
+
+    url = "http://#{ENV['DOMAIN']}/search?#{params}"
+    name = "#{self.city.split(',').first}, from #{self.arriving.strftime("%d/%m/%Y")} to #{self.leaving.strftime("%d/%m/%Y")}"
+    caption = ENV['DOMAIN']
+    description = self.message || ''
+    picture = self.map_image_url(116,116)
+
+    graph = Koala::Facebook::API.new(self.user.facebook_token, ENV['FACEBOOK_APP_SECRET'])
+    graph.put_wall_post('I just added a trip on Travel-Meet.', {:link => url, :caption => caption, :name => name, :description => description, :picture => picture})
+
+  end
+
+  def map_image_url(width, height)
+
+    params = {
+      width: width,
+      height: height,
+      v: Digest::MD5.hexdigest(self.cache_key + width.to_s + height.to_s)
+    }
+
+    "http://#{ENV['DOMAIN']}/trips/#{self.id}/image.png?#{params.to_query}"
 
   end
 

@@ -37,6 +37,8 @@ TravelMeet::Application.routes.draw do
 
     post '/trips' => 'trips#create'
 
+    get '/trips/:id/image.png' => 'trips#image'
+
     get '/trips/:id/contact' => 'trips#contact_show', :constraints => OnlyAjaxRequest.new
     post '/trips/:id/contact' => 'trips#contact_create', :as => 'contact_trip', :constraints => OnlyAjaxRequest.new
 

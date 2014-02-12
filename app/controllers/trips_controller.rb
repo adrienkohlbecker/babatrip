@@ -43,15 +43,47 @@ class TripsController < ApplicationController
 
   def create
 
-    trip = Trip.new(create_params)
+    hash = create_params
+    hash.delete(:share)
+
+    trip = Trip.new(hash)
     current_user.trips << trip
     current_user.save!
+
+    if create_params[:share] == "1"
+      trip.share_on_facebook
+    end
 
     render nothing: true
 
   end
 
+  def image
+
+    trip = Trip.find(image_params[:id])
+
+    params = {
+      center: "#{trip.latitude},#{trip.longitude}",
+      sensor: false,
+      zoom: 11,
+      size: "#{image_params[:width].to_i}x#{image_params[:height].to_i}",
+      language: I18n.locale,
+      region: 'en' #TODO
+    }
+
+    image = "http://maps.googleapis.com/maps/api/staticmap?#{params.to_query}"
+
+    response.headers["Expires"] = 1.year.from_now.httpdate
+    response.headers["Cache-Control"] = 'public'
+    send_file open(image), :type=>"image/png", :disposition => "inline", :x_sendfile=>true
+
+  end
+
   private
+
+    def image_params
+      params.permit(:id, :height, :width)
+    end
 
     def edit_params
       params.permit(:id)
@@ -62,7 +94,7 @@ class TripsController < ApplicationController
     end
 
     def create_params
-      hash = params.permit(:city, :latitude, :longitude, :arriving, :leaving, :composition, :message)
+      hash = params.permit(:city, :latitude, :longitude, :arriving, :leaving, :composition, :message, :share)
       hash[:arriving] = Date.strptime(hash[:arriving], "%d/%m/%Y")
       hash[:leaving] = Date.strptime(hash[:leaving], "%d/%m/%Y")
       hash

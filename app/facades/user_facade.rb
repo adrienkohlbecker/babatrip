@@ -17,16 +17,7 @@ class UserFacade
 
   def map_image(trip, width, height)
 
-    params = {
-      center: "#{trip.latitude},#{trip.longitude}",
-      sensor: false,
-      zoom: 11,
-      size: "#{width}x#{height}",
-      language: I18n.locale,
-      region: 'en' #TODO
-    }
-
-    "http://maps.googleapis.com/maps/api/staticmap?#{params.to_query}"
+    trip.map_image_url(width, height)
 
   end
 

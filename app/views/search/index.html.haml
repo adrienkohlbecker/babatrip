@@ -92,5 +92,9 @@
     .row
       .columns.small-2
         = submit_tag "Add", {:class => [:button, :expand, :action, :big]}
+      .columns.small-10
+        %label{'for' => 'share'}
+          = check_box_tag "share", "1", true
+          Share on Facebook
 
   %a.close-reveal-modal &#215
