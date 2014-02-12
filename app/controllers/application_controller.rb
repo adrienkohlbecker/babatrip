@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.is_profile_completed
-      root_path
+      session.delete("user_return_to") || root_path
     else
       me_edit_path
     end

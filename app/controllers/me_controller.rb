@@ -69,7 +69,7 @@ class MeController < ApplicationController
     user.is_profile_completed = true
 
     if user.errors.empty? && user.save
-      redirect_to root_path
+      redirect_to session.delete("user_return_to")  || my_profile_path
     else
       @profile = ProfileFacade.new(user)
       render 'edit'
