@@ -55,6 +55,9 @@
           .row.terms
             .columns.small-12
               = f.input :accepts, input_html: { :class => 'no-custom', :required => true }, :label => "By clicking Submit, you agree to our Terms and that you have read our Privacy Policy."
+              %label{'for' => 'share'}
+                = check_box_tag "share", "1", true
+                Share on Facebook
 
         .row
           .columns.small-offset-9.small-2

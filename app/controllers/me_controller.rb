@@ -18,6 +18,14 @@ class MeController < ApplicationController
 
     if not user.is_profile_completed
       user.accepts = me_params[:user][:accepts]
+
+      if me_params[:share] == "1"
+
+        url = "http://#{ENV['DOMAIN']}/"
+        graph = Koala::Facebook::API.new(user.facebook_token, ENV['FACEBOOK_APP_SECRET'])
+        graph.put_wall_post("I'm using Travel-Meet to share my trips and find out where my friends are going. Join me!", {:link => url})
+
+      end
     end
 
     if user.email_changed?
@@ -67,7 +75,7 @@ class MeController < ApplicationController
   private
 
     def me_params
-      params.permit(:user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, :accepts, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
+      params.permit(:share, :user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, :accepts, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 
 end
