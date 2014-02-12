@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => ['image']
 
   def contact_show
     trip = Trip.find(contact_params[:id])
@@ -63,6 +63,7 @@ class TripsController < ApplicationController
     trip = Trip.find(image_params[:id])
 
     params = {
+      key: ENV['GOOGLE_API_KEY'],
       center: "#{trip.latitude},#{trip.longitude}",
       sensor: false,
       zoom: 11,
@@ -75,7 +76,12 @@ class TripsController < ApplicationController
 
     response.headers["Expires"] = 1.year.from_now.httpdate
     response.headers["Cache-Control"] = 'public'
-    send_file open(image), :type=>"image/png", :disposition => "inline", :x_sendfile=>true
+
+    Tempfile.open('map_image', Rails.root.join('tmp') ) do |f|
+      f.binmode
+      f << open(image).read
+      send_file f, :type=>"image/png", :disposition => "inline", :x_sendfile=>true
+    end
 
   end
 
