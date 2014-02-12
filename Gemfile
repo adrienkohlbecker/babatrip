@@ -53,7 +53,7 @@ gem "omniauth-facebook"
 gem "newrelic_rpm"
 
 # Facebook Graph API access
-gem "koala", "~>1.9.0rc1"
+gem "koala"
 
 # Admin interface
 gem "rails_admin"
@@ -62,7 +62,7 @@ gem "rails_admin"
 gem 'cancan'
 
 # Foundation CSS framework
-gem 'zurb-foundation'
+gem 'foundation-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails-cdn'
