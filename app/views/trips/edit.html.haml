@@ -34,7 +34,7 @@
       = text_area_tag(:message, @trip.message, :placeholder => 'Describe your trip')
   .row.plus10v
     .columns.small-2
-      = submit_tag "Edit", {:class => [:button, :expand, :action, :big]}
+      = submit_tag "Edit", {:class => [:button, :expand, :action]}
     .columns.small-10
       %a.delete-button.fa.fa-trash-o{href: "#" } Delete trip
 

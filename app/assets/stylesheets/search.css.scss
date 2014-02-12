@@ -52,7 +52,8 @@ padding: 15px;
         }
         .button {
             padding-left: 0 !important;
-            padding-top: 10px;
+            padding-top: 0 !important;
+            line-height:38px !important;
         }
          select, .chosen-container-single .chosen-single {
               -webkit-appearance: none !important;
@@ -75,13 +76,13 @@ padding: 15px;
         }
         .inside {
          color: #bebebe;
-         margin-top: 17px;
-        } 
+         margin-top: 25px;
+        }
     }
     .delete-button {
       color: #8D8D8D;
       line-height: 36px;
-      
+
       &:hover {
         color: #ff4e96;
       }

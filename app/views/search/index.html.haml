@@ -59,7 +59,7 @@
                     .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(user.id)}}
                       = render :partial => 'shared/user_box', :locals => {:user => user}
 
-.reveal-modal#add-modal
+.reveal-modal#add-modal{data: {reveal: true}}
   .row
     .columns.small-12
       %h4
