@@ -66,10 +66,13 @@ class MeController < ApplicationController
     user.latitude = me_params[:user][:latitude]
     user.longitude = me_params[:user][:longitude]
 
+    is_signup = !user.is_profile_completed
+
     user.is_profile_completed = true
 
     if user.errors.empty? && user.save
-      redirect_to session.delete("user_return_to")  || my_profile_path
+      redir = is_signup ? root_path : my_profile_path
+      redirect_to session.delete("user_return_to") || redir
     else
       @profile = ProfileFacade.new(user)
       render 'edit'
