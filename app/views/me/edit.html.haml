@@ -51,10 +51,11 @@
             .row.image-as-radio
               = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected }
 
-        - if @profile.is_signup?
+        - if !@profile.is_signup?
           .row.terms
             .columns.small-12
-              = f.input :accepts, input_html: { :class => 'no-custom', :required => true }, :label => "By clicking Submit, you agree to our Terms and that you have read our Privacy Policy."
+              <div class="input boolean optional user_accepts"><input name="user[accepts]" type="hidden" value="0"><label class="boolean optional control-label checkbox" for="user_accepts"><input checked="checked" class="boolean optional no-custom" id="user_accepts" name="user[accepts]" required="required" type="checkbox" value="1">By clicking Submit, you agree to our <a href="/terms">Terms</a> and that you have read our <a href="/privacy">Privacy Policy</a>.</label></div>
+              / = f.input :accepts, input_html: { :class => 'no-custom', :required => true }, :label => "By clicking Submit, you agree to our Terms and that you have read our Privacy Policy."
               %label{'for' => 'share'}
                 = check_box_tag "share", "1", true
                 Share on Facebook
