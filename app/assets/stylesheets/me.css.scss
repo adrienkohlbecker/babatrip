@@ -116,11 +116,13 @@ label.collection_check_boxes {
         padding: 0;
         margin-top: -7px;
         margin-left: 15px;
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.16);
     }
 
     .additional-info {
         margin-left: 15px;
         font-size: 15px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
 
         span {
             margin-right: 15px;
@@ -141,6 +143,7 @@ label.collection_check_boxes {
         font-style: italic;
         overflow: hidden;
         height: 65px;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.16);
     }
 
 }
