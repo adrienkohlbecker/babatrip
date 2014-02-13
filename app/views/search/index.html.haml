@@ -37,9 +37,9 @@
                     .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
                       = render :partial => 'shared/trip_box', :locals => {:trip => trip}
     - unless @search_results.trips_from_others.empty?
-      .row.friends-results
+      .row.friendsOf-results
         .columns.small-12
-          %h2 Other people that are going there
+          %h2 Friends of friends that are going there
           - @search_results.trips_from_others.each_slice(3) do |row|
             .row
               - (row + ([nil] * (3 - row.length))).each do |trip|
@@ -50,7 +50,7 @@
     - unless @search_results.locals.empty?
       .row.locals-results
         .columns.small-12
-          %h2 Other interesting people living there
+          %h2 Interesting people living there
           - @search_results.locals.each_slice(3) do |row|
             .row
               - (row + ([nil] * (3 - row.length))).each do |user|
