@@ -46,7 +46,7 @@ html, body {
   height: 62px; /* .push must be the same height as .footer */
   z-index: 1000;
 
-  a {
+  a, span {
     margin-top: 3px;
     line-height: 42px;
     color: rgba(255,255,255,0.7);
@@ -55,6 +55,7 @@ html, body {
       color: white;
     }
   }
+  
 }
 
 
