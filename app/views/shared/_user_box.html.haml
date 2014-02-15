@@ -11,9 +11,9 @@
     = user.city
 .right-user-box
   .mood
-    %span{:class => [class_from_mood(user.mood), class_from_relationship_and_sex(user, current_user), :picto], title: user.mood, data: {tooltip: true}}
+    %span{:class => [class_from_mood(user.mood), class_from_relationship_and_sex(user, current_user), :picto, :small], title: user.mood, data: {tooltip: true}}
       = user.mood
   .time
-    %span{:class => [class_from_time(user.time), class_from_relationship_and_sex(user, current_user), :picto], title: user.time, data: {tooltip: true}}
+    %span{:class => [class_from_time(user.time), class_from_relationship_and_sex(user, current_user), :picto, :small], title: user.time, data: {tooltip: true}}
       = user.time
 
