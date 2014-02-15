@@ -4,7 +4,7 @@ require 'digest/md5'
 class Trip < ActiveRecord::Base
   belongs_to :user
 
-  BOX_SIZE_IN_METERS = 5000
+  BOX_SIZE_IN_METERS = 30000
 
   COMPOSITION_COLLECTION = ['Alone', 'Couple', 'With friends']
 
