@@ -59,13 +59,14 @@
 
     .right-trip-box, .middle-user-box {
         width: auto;
-        padding: 11px 10px 10px 80px;
+        padding: 7px 10px 10px 80px;
 
-        .name {
+        a.name {
+        color: #444444;
         font-family: 'Ubuntu';
         font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 4px;
+        line-height: 24px;
+        font-weight: 500;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -86,7 +87,7 @@
         .location, .dates, .composition {
             font-size: 12px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
             margin-left: -7px;
             text-overflow: ellipsis;
             white-space: nowrap;
