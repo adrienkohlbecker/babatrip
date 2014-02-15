@@ -5,21 +5,21 @@
       %h3.small-title Enter a destination and a time span to see who is going to be there
   .row
     = form_tag("/search", method: "get", data: {abide: true}) do
-      .columns.small-4
+      .columns.small-12.medium-4.large-4
         .span.fa.fa-map-marker.location.inside
         = text_field_tag(:city, "", :placeholder => "Which city are you visiting?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
         %small.error City is required
         = hidden_field_tag(:latitude)
         = hidden_field_tag(:longitude)
-      .columns.small-3
+      .columns.small-12.medium-3.large-4
         .span.fa.fa-calendar.inside
         = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
         %small.error Arriving date is required and must be in the form DD/MM/YYYY
-      .columns.small-3
+      .columns.small-12.medium-3.large-4
         .span.fa.fa-calendar.inside
         = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
         %small.error Leaving date is required and must be in the form DD/MM/YYYY
-      .columns.small-2
+      .columns.small-12.medium-2.large-2
         = submit_tag "Search", {:class => [:button, :expand, :action, :big]}
 
 
@@ -32,7 +32,7 @@
       - @home.trips_from_friends.each_slice(3) do |row|
         .row
           - (row + ([nil] * (3 - row.length))).each do |trip|
-            .columns.small-4
+            .columns.small-12.medium-6.large-4
               - if !trip.nil?
                 .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
                   = render :partial => 'shared/trip_box', :locals => {:trip => trip}

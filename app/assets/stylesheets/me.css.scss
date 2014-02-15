@@ -143,6 +143,14 @@ label.collection_check_boxes {
         margin-top: -7px;
         margin-left: 15px;
         text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.3);
+
+        @media only screen and (max-width: 40em) { 
+        font-size: 37px;
+        line-height: 44px;
+        padding-top: 6px;
+        margin-left: 0px;
+        }
+
     }
 
     .additional-info {
@@ -150,8 +158,16 @@ label.collection_check_boxes {
         font-size: 15px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 
+        @media only screen and (max-width: 40em) { 
+        margin-left: -107px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        }
+
         span {
             margin-right: 15px;
+
+
 
             &:before {
                 opacity: 0.5;
@@ -170,6 +186,12 @@ label.collection_check_boxes {
         overflow: hidden;
         height: 65px;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+        @media only screen and (max-width: 40em) { 
+        margin-left: -107px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        }
     }
 
 

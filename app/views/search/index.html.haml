@@ -1,6 +1,6 @@
 .contain-to-grid.top-zone.small
   .row.content-title-row
-    .columns.small-8
+    .columns.small-12.medium-7.large-8
       %h2.big-title
         Who's in
         = @search_results.city
@@ -12,11 +12,11 @@
         %strong
           = @search_results.formatted_leaving
 
-    .columns.small-4.buttons
+    .columns.small-12.medium-5.large-4.buttons
       .row
-        .columns.small-5
+        .columns.small-6.medium-6.large-5
           %a.button.expand{:href => root_url, :class => [:button, :expand, :big]} New search
-        .columns.small-7
+        .columns.small-6.medium-6.large-7
           %a.button.expand.big.action{:href => '#', :data => {:reveal_id => 'add-modal'}} Add to my trips
 
 .contain-to-grid.main-zone.results
@@ -34,7 +34,7 @@
           - @search_results.trips_from_friends.each_slice(3) do |row|
             .row
               - (row + ([nil] * (3 - row.length))).each do |trip|
-                .columns.small-4
+                .columns.small-12.medium-6.large-4
                   - if !trip.nil?
                     .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
                       = render :partial => 'shared/trip_box', :locals => {:trip => trip}
@@ -45,7 +45,7 @@
           - @search_results.trips_from_friends_of_friends.each_slice(3) do |row|
             .row
               - (row + ([nil] * (3 - row.length))).each do |trip|
-                .columns.small-4
+                .columns.small-12.medium-6.large-4
                   - if !trip.nil?
                     .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
                       = render :partial => 'shared/trip_box', :locals => {:trip => trip}
@@ -56,7 +56,7 @@
           - @search_results.locals.each_slice(3) do |row|
             .row
               - (row + ([nil] * (3 - row.length))).each do |user|
-                .columns.small-4
+                .columns.small-12.medium-6.large-4
                   - if !user.nil?
                     .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(user.id)}}
                       = render :partial => 'shared/user_box', :locals => {:user => user}

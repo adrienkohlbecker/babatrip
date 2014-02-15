@@ -1,11 +1,11 @@
 .contain-to-grid.top-zone.medium
   .row.content-title-row
 
-    .columns.small-2
+    .columns.small-4.medium-2.large-2
       .profile-pic
         %img{src: @user_profile.picture_url(width: 160, height: 160)}
 
-    .columns.small-6
+    .columns.small-8.medium-6.large-6
       %h1= @user_profile.full_name
       .additional-info
         %span.agesex= @user_profile.age_sex
@@ -14,7 +14,7 @@
       .description
         = @user_profile.description
 
-    .columns.small-3
+    .columns.small-12.medium-3.large-3
 
       %div
         - if @user_profile.own?
@@ -44,7 +44,7 @@
       - @user_profile.trips.each_slice(3) do |row|
         .row
           - (row + ([nil] * (3 - row.length))).each do |trip|
-            .columns.small-4
+            .columns.small-12.medium-6.large-4
               - if !trip.nil?
                 - if !@user_profile.own?
                   %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
