@@ -46,14 +46,43 @@
             }
         }
         .mood {
-            background-color: #3b5998;
             text-align: center;
+
+            &.blue {
+               background-color: #3b5998; 
+            }
+            &.green {
+                background-color: #40a4a3;
+            }
+            &.yellow {
+                background-color: #ffaa00;
+            }
+            
+            
         }
         .time {
             background-color: lighten(#3b5998, 20%);
+            &.blue {
+               background-color: lighten(#3b5998, 20%);
+            }
+            &.green {
+                background-color: lighten(#40a4a3, 20%);
+            }
+            &.yellow {
+                background-color: lighten(#ffaa00, 20%);
+            }
         }
         .relationship {
             background-color: lighten(#3b5998, 35%);
+            &.blue {
+               background-color: lighten(#3b5998, 35%); 
+            }
+            &.green {
+                background-color: lighten(#40a4a3, 35%);
+            }
+            &.yellow {
+                background-color: lighten(#ffaa00, 35%);
+            }
         }
     }
 
@@ -115,7 +144,7 @@
     .middle-user-box {
         float: left; 
         width: 205px;
-        padding: 9px 10px 10px 10px;
+        padding: 5px 10px 10px 10px;
 
         .age-city {
             color: #8a8a8a;

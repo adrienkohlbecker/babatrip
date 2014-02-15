@@ -10,10 +10,10 @@
   .fa.fa-map-marker.location
     = user.city
 .right-user-box
-  .mood
-    %span{:class => [class_from_mood(user.mood), class_from_relationship_and_sex(user, current_user), :picto, :small], title: user.mood, data: {tooltip: true}}
+  %div{:class => [:mood, class_from_relationship_and_sex(user, current_user)]}
+    %span{:class => [class_from_mood(user.mood), :picto, :small], title: user.mood, data: {tooltip: true}}
       = user.mood
-  .time
-    %span{:class => [class_from_time(user.time), class_from_relationship_and_sex(user, current_user), :picto, :small], title: user.time, data: {tooltip: true}}
+  %div{:class => [:time, class_from_relationship_and_sex(user, current_user)]}
+    %span{:class => [class_from_time(user.time), :picto, :small], title: user.time, data: {tooltip: true}}
       = user.time
 
