@@ -23,7 +23,7 @@
             = f.input :email, required: true
         .row
           .columns.small-6
-            = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }
+            = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year]
           .columns.small-2
             = f.input :sex, collection: User::SEX_COLLECTION
           .columns.small-4
