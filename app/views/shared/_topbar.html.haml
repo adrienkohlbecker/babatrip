@@ -1,21 +1,19 @@
 .contain-to-grid.darker
   %nav.top-bar
-    .columns.small-3.medium-4.large-6
-      %ul.title-area
-        %li.name
-          %h1
-            %a{href: '/'} Travel Meet
-    .columns.small-9.medium-8.large-6
-      %section.top-bar-section
-        %ul.right
+    %ul.title-area
+      %li.name
+        %h1
+          %a{href: '/'} Travel Meet
+    %section.top-bar-section
+      %ul.right
+        %li
+          %a{href: '/'} Home
+        - if current_user
           %li
-            %a{href: '/'} Home
-          - if current_user
-            %li
-              %a{href: '/about'} About
-            %li
-              %a.user{href: '/me'}
-                = current_user.full_name
-                = image_tag current_user.picture_url(width: 28, height: 28)
-            %li
-              = button_to "Log out", destroy_user_session_path, :method => :delete, :class => :logout
+            %a{href: '/about'} About
+          %li
+            %a.user{href: '/me'}
+              = current_user.full_name
+              = image_tag current_user.picture_url(width: 28, height: 28)
+          %li
+            = button_to "Log out", destroy_user_session_path, :method => :delete, :class => :logout
