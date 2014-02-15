@@ -9,9 +9,9 @@
       %ul.right
         %li
           %a{href: '/'} Home
-        %li
-          %a{href: '/about'} About
         - if current_user
+          %li
+            %a{href: '/about'} About
           %li
             %a.user{href: '/me'}
               = current_user.full_name
