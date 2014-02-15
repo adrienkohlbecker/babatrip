@@ -19,14 +19,13 @@ class SearchController < ApplicationController
     friends_of_friends = friends.collect(&:friends).flatten
 
     friends_ids = friends.collect(&:id)
-    friends_of_friends_ids = friends_of_friends.collect(&:id).uniq - [current_user.id]
-    ids = (friends_ids + friends_of_friends_ids).uniq
+    friends_of_friends_ids = friends_of_friends.collect(&:id).uniq - friends_ids - [current_user.id]
 
     trips = Trip.find_near_between(current_user, latitude, longitude, arriving, leaving)
 
     @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
-    @search_results.trips_from_friends = trips.select{|t| ids.include?(t.user_id) }
-    @search_results.trips_from_others = trips.select{|t| !ids.include?(t.user_id) }
+    @search_results.trips_from_friends = trips.select{|t| friends_ids.include?(t.user_id) }
+    @search_results.trips_from_friends_of_friends = trips.select{|t| friends_of_friends_ids.include?(t.user_id) }
     @search_results.locals = User.find_near_location(latitude, longitude).select{|u| u.id != current_user.id }
 
   end
