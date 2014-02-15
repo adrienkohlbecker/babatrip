@@ -2,7 +2,7 @@
   .left-trip-box
     = render partial: 'shared/pic_and_character', locals: {user: trip.user}
   .right-trip-box
-    .name
+    %a.name
       = trip.user.full_name
     .age-city
       = "#{trip.user.age} years old, from #{trip.user.city}"
