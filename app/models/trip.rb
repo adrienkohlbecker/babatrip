@@ -6,7 +6,7 @@ class Trip < ActiveRecord::Base
 
   BOX_SIZE_IN_METERS = 30000
 
-  COMPOSITION_COLLECTION = ['Alone', 'Couple', 'With friends']
+  COMPOSITION_COLLECTION = ['Alone', 'Couple', 'With friends', 'For Work']
 
   scope :from_friends_of, ->(user) { user.nil? ? none : where(:user_id => user.friends.pluck(:id) ) }
   scope :current, ->() { order('arriving ASC', 'leaving ASC').where('leaving > ?', Date.today) }
