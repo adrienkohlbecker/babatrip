@@ -399,7 +399,9 @@ button, .button {
   }
 
 }
-
+[data-abide] .error small.error, [data-abide] span.error, [data-abide] small.error {
+background: rgba(240, 36, 74, 0.59);
+}
 .plaintext {
   padding: 40px;
   background: rgba(255, 255, 255, 0.82);
