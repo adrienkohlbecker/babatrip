@@ -2,11 +2,11 @@
   %img{src: user.picture_url, title: "See profile", data: {tooltip: true}}
 .character
   .mood
-    %span{:class => [class_from_mood(user.mood), :picto, class_from_relationship_and_sex(user, current_user)], title: user.mood, data: {tooltip: true}}
+    %span{:class => [class_from_mood(user.mood), :picto, :small, class_from_relationship_and_sex(user, current_user)], title: user.mood, data: {tooltip: true}}
       = user.mood
   .time
-    %span{:class => [class_from_time(user.time), :picto, class_from_relationship_and_sex(user, current_user)], title: user.time, data: {tooltip: true}}
+    %span{:class => [class_from_time(user.time), :picto, :small, class_from_relationship_and_sex(user, current_user)], title: user.time, data: {tooltip: true}}
       = user.time
   .relationship
-    %span{:class => [class_from_relationship(user.relationship_status), :picto, class_from_relationship_and_sex(user, current_user)], title: user.relationship_status, data: {tooltip: true}}
+    %span{:class => [class_from_relationship(user.relationship_status), :picto, :small, class_from_relationship_and_sex(user, current_user)], title: user.relationship_status, data: {tooltip: true}}
       = user.relationship_status
