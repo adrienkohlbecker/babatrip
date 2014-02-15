@@ -4,6 +4,8 @@
 
 $('#add-modal').on('submit', 'form', function(e) {
 
+  $('#add-modal input[type=submit]').attr('value', 'Adding...').attr('disabled', true);
+
   $.ajax({
     type: "POST",
     url: e.target.getAttribute('action'),
@@ -14,6 +16,7 @@ $('#add-modal').on('submit', 'form', function(e) {
       alertBox('Successfully added trip!', 'success');
     },
     error: function() {
+      $('#add-modal input[type=submit]').attr('value', 'Add').attr('disabled', false);
       alertBox('Unexpected error.', 'alert');
     }
   });

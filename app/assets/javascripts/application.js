@@ -23,6 +23,8 @@ $(function(){
 
   $('#contact-modal').on('submit', 'form', function(e) {
 
+    $('#contact-modal input[type=submit]').attr('value', 'Sending...').attr('disabled', true);
+
     $.ajax({
       type: "POST",
       url: e.target.getAttribute('action'),
@@ -33,6 +35,7 @@ $(function(){
         alertBox('Message sent successfully!', 'success');
       },
       error: function() {
+        $('#contact-modal input[type=submit]').attr('value', 'Send').attr('disabled', false);
         alertBox('Unexpected error.', 'alert');
       }
     });
