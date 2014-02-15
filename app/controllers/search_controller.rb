@@ -26,7 +26,10 @@ class SearchController < ApplicationController
     @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
     @search_results.trips_from_friends = trips.select{|t| friends_ids.include?(t.user_id) }
     @search_results.trips_from_friends_of_friends = trips.select{|t| friends_of_friends_ids.include?(t.user_id) }
-    @search_results.locals = User.find_near_location(latitude, longitude).select{|u| u.id != current_user.id }
+
+    locals = User.find_near_location(latitude, longitude, current_user)
+    @search_results.locals = locals.select{|u| friends_ids.include?(u.id)} + locals.select{|u| friends_of_friends_ids.include?(u.id)}
+    @search_results.locals += (locals - @search_results.locals)
 
   end
 

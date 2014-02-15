@@ -145,8 +145,28 @@ class User < ActiveRecord::Base
     User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
   end
 
-  def self.find_near_location(latitude, longitude)
-    User.near(latitude, longitude)
+  def self.find_near_location(latitude, longitude, current_user)
+
+    users = User.near(latitude, longitude).select{|u| u.id != current_user.id }
+
+    ids_to_match = {}
+    users.each {|u|
+
+      match = 0
+      if u['mood'] == current_user.mood
+        match += 1
+      end
+      if u['time'] == current_user.time or u['time'] == 'All day' or current_user.time = 'All day'
+        match += 1
+      end
+
+      ids_to_match[u['id'].to_i] = match
+
+    }
+
+    users.sort_by! {|u| [-ids_to_match[u.id]] }
+    users
+
   end
 
   def is_a_friend_of?(other_user)
