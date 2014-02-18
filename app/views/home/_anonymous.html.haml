@@ -2,7 +2,7 @@
   .row
     .columns.small-12
       %h2.bigger-title Where are your friends planning to go?
-      %h3.small-title Sign up now, share your trips destinations with your friends and let the journey begin!
+      %h3.small-title Sign up now, share your next destinations with your friends and let the journey begin!
   - unless current_user
     .row
       %a{href: user_omniauth_authorize_path(:facebook)}
@@ -41,14 +41,14 @@
         .columns.small-6
           %span.picto.big.hippie
         .columns.small-6
-          %h2 Hippie
+          %h2 Bohemian
           %p I enjoy having a drink in a park or walking around.
     .columns.small-12.medium-4
       .row
         .columns.small-6
           %span.picto.big.cool
         .columns.small-6
-          %h2.hippie Normal
+          %h2.hippie Ordinary
           %p
             I just o like to grab a pint and have a chat.
               
@@ -67,8 +67,8 @@
         .columns.small-6
           %span.picto.big.day
         .columns.small-6
-          %h2 Day
-          %p I get up in the morning and enjoy the city light.
+          %h2 Morning
+          %p You are an Early Bird, getting up in the morning to enjoy the city light.
     .columns.small-12.medium-4
       .row
         .columns.small-6
@@ -76,7 +76,7 @@
         .columns.small-6
           %h2.hippie Night
           %p
-            I prefer to go out at night and sleep in the morning.
+            You are a Night Owl, going out at night and sleeping in the morning.
               
     .columns.small-12.medium-4
       .row
@@ -85,4 +85,4 @@
         .columns.small-6
           %h2.hippie 24h/7
           %p
-            I visit the city during the day and have fun at night.
+            You are always on, visiting the city during the day and having fun at night.
