@@ -14,11 +14,11 @@
       .columns.small-12.medium-3.large-3 
         .span.fa.fa-calendar.inside
         = text_field_tag(:arriving, '', :placeholder => 'Arriving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
-        %small.error Arriving date is required and must be in the form DD/MM/YYYY
+        %small.error Arriving date is required
       .columns.small-12.medium-3.large-3
         .span.fa.fa-calendar.inside
         = text_field_tag(:leaving, '', :placeholder => 'Leaving', required: true, pattern: "[0-9][0-9]\\/[0-9][0-9]\\/[0-9][0-9][0-9][0-9]")
-        %small.error Leaving date is required and must be in the form DD/MM/YYYY
+        %small.error Leaving date is required
       .columns.small-12.medium-2.large-2
         = submit_tag "Search", {:class => [:button, :expand, :action, :big]}
 
