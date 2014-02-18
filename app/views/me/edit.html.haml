@@ -37,19 +37,23 @@
             = f.input :longitude, required: true, as: :hidden
         .row
           .columns.small-12
-            = f.input :description, :placeholder => 'Write a few words about yourself'
+            = f.input :description, :placeholder => 'Add a short description of yourself that will be visible in your profile'
 
         .row
-          .columns.small-5
-            = f.label :mood
-            .row.image-as-radio
-              = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @profile.user.mood, :selected_class => :selected }
+          .columns.small-12
+            = f.label :mood , required: true
+            %span.explication Which kind of place do you look for?
+        .row.image-as-radio
+          .columns.small-6
+            = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @profile.user.mood, :selected_class => :selected, required: true }
 
         .row
-          .columns.small-5
-            = f.label :time
-            .row.image-as-radio
-              = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected }
+          .columns.small-12
+            = f.label :time , required: true
+            %span.explication Which part of the day do you enjoy the most?
+        .row.image-as-radio
+          .columns.small-6
+            = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected, required: true }
 
         - if !@profile.is_signup?
           .row.terms
@@ -66,8 +70,6 @@
 
 
     .columns.small-2.guide-text
-      Be part of the
+      Fill out your profile, with your real informations. 
       %br
-      Travel-Meet community! Register for free and fill out your profile! It's easy and quick!
-      %br
-      You'll be able to see where your friends are planning to go and contact new friends!
+      If you don't enter a valid e-mail adress your friends won't be able to get in touch with you.
