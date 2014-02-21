@@ -76,7 +76,7 @@
               <div class="input boolean optional user_accepts"><input name="user[accepts]" type="hidden" value="0"><label class="boolean optional control-label checkbox simple-text" for="user_accepts"><input checked="checked" class="boolean optional" id="user_accepts" name="user[accepts]" required="required" type="checkbox" value="1">By clicking Submit, you agree to our <a href="/terms">Terms</a> and that you have read our <a href="/privacy">Privacy Policy</a>.</label></div>
               / = f.input :accepts, input_html: { :class => 'no-custom', :required => true }, :label => "By clicking Submit, you agree to our Terms and that you have read our Privacy Policy."
               %label.simple-text{'for' => 'share'}
-                = check_box_tag "share", "1", true
+                = check_box_tag "share", "1"
                 Share on Facebook
 
         .row

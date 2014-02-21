@@ -28,6 +28,11 @@ class TripsController < ApplicationController
     trip = Trip.find(update_params[:id])
     trip.update_attributes!(update_params)
     flash[:notice] = "Trip sucessfully edited"
+
+    if update_params[:share] == "1"
+      trip.share_on_facebook
+    end
+
     render nothing: true
 
   end
@@ -107,7 +112,7 @@ class TripsController < ApplicationController
     end
 
     def update_params
-      hash = params.permit(:id, :city, :latitude, :longitude, :arriving, :leaving, :composition, :message)
+      hash = params.permit(:id, :city, :latitude, :longitude, :arriving, :leaving, :composition, :message, :share)
       hash[:arriving] = Date.strptime(hash[:arriving], "%d/%m/%Y")
       hash[:leaving] = Date.strptime(hash[:leaving], "%d/%m/%Y")
       hash
