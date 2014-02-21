@@ -8,7 +8,7 @@
     color: #505050;
     height: 105px;
     margin-bottom: 23px;
-    cursor: pointer;
+    cursor: context-menu;
 
     // width: 32%;
     // float: left;
@@ -21,7 +21,7 @@
 
         img {
         width: 70px;
-        cursor: help;
+        cursor: pointer;
 
             &:hover {
                 opacity: 0.8;
@@ -44,6 +44,7 @@
             float: left;
             color: rgba(255,255,255,0.5);
             line-height: 35px;
+            cursor: pointer;
 
             span {
 
