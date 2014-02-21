@@ -20,6 +20,7 @@
 $(function(){
 
   $(document).foundation();
+
   $('#arriving, #leaving').off('blur.fndtn.abide'); // disable blur validation for date picker
 
   $('#contact-modal').on('submit', 'form', function(e) {

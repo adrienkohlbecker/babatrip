@@ -11,37 +11,49 @@
       = image_tag @profile.picture_url
     .columns.small-7.halfleft
 
-      = simple_form_for @profile.user, url: me_edit_path, method: :put, html: {'data-abide' => true } do |f|
+      = form_tag(me_edit_path, method: "put", data: {abide: true}) do
 
         .row
           .columns.small-6
-            = f.input :first_name
+            = label_tag :user_first_name, 'First name'
+            = text_field_tag('user[first_name]', @profile.user.first_name)
           .columns.small-6
-            = f.input :last_name
+            = label_tag :user_last_name, 'Last name'
+            = text_field_tag('user[last_name]', @profile.user.first_name)
         .row
           .columns.small-6
-            = f.input :email, required: true
+            = label_tag :user_email, 'Email'
+            = email_field_tag('user[email]', @profile.user.email, required: true)
+            %small.error Email is required
         .row
-          .columns.small-6
-            = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year]
+          .columns.small-6.user_birth_date
+            = label_tag 'user_birth_date_3i', 'Birth date'
+            = date_select 'user', 'birth_date', start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: @profile.user.birth_date
           .columns.small-2
-            = f.input :sex, collection: User::SEX_COLLECTION
+            = label_tag :user_sex, 'Sex'
+            = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, @profile.user.sex)
           .columns.small-4
-            = f.input :relationship_status, collection: User::RELATIONSHIP_STATUS_COLLECTION
+            = label_tag :user_relationship_status, 'Relationship status'
+            = select_tag 'user[relationship_status]', options_for_select(User::RELATIONSHIP_STATUS_COLLECTION, @profile.user.sex)
         .row
           .columns.small-6
-            = f.input :nationality, collection: nationality_select_collection, required: true
+            = label_tag :user_nationality, 'Nationality'
+            = select_tag 'user[nationality]', options_for_select(nationality_select_collection, @profile.user.nationality), required: true
+            %small.error Nationality is required
           .columns.small-6
-            = f.input :city, required: true, options: {data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}}
-            = f.input :latitude, required: true, as: :hidden
-            = f.input :longitude, required: true, as: :hidden
+            = label_tag :user_city, 'City'
+            = text_field_tag 'user[city]', @profile.user.city, required: true, data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}
+            = hidden_field_tag 'user[latitude]', @profile.user.latitude, required: true
+            = hidden_field_tag 'user[longitude]', @profile.user.longitude, required: true
+            %small.error City is required
         .row
           .columns.small-12
-            = f.input :description, :placeholder => 'Add a short description of yourself that will be visible in your profile'
+            = label_tag :user_description, 'Description'
+            = text_area_tag 'user[description]', @profile.user.description, :placeholder => 'Add a short description of yourself that will be visible in your profile'
 
         .row
           .columns.small-12
-            = f.label :mood , required: true
+            = label_tag :user_mood, 'Mood'
             %span.explication Which kind of place do you look for?
         .row.image-as-radio
           .columns.small-6
@@ -49,7 +61,7 @@
 
         .row
           .columns.small-12
-            = f.label :time , required: true
+            = label_tag :user_mood, 'Time'
             %span.explication Which part of the day do you enjoy the most?
         .row.image-as-radio
           .columns.small-6
@@ -66,7 +78,7 @@
 
         .row
           .columns.small-offset-9.small-2
-            = f.button :submit, {:class => [:button,:action, :big]}
+            = submit_tag 'Submit', :class => [:button,:action, :big]
 
 
     .columns.small-2.guide-text
