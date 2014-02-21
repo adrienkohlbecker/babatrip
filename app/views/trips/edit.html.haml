@@ -35,11 +35,11 @@
   .row.plus10v
     .columns.small-2
       = submit_tag "Edit", {:class => [:button, :expand, :action]}
-    .columns.small-8
+    .columns.small-7
       %label{'for' => 'share'}
         = check_box_tag "share", "1", true
         Share on Facebook
-    .columns.small-2
+    .columns.small-3
       %a.delete-button.fa.fa-trash-o{href: "#" } Delete trip
 
 :javascript
