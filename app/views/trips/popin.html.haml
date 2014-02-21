@@ -1,5 +1,24 @@
 .card.contact{:data => {:user_profile => user_show_path(@popin.trip.user.id)}}
-  = render :partial => 'shared/trip_box', :locals => {:trip => @popin.trip}
+  %div
+    .left-trip-box
+      = render partial: 'shared/pic_and_character', locals: {user: @popin.trip.user}
+    .right-trip-box
+      %div
+        %a.name
+          = @popin.trip.user.full_name
+        %a.fa.fa-facebook-square{href: "https://facebook.com/#{@popin.trip.user.uid}", target: '_blank'}
+      .age-city
+        = "#{@popin.trip.user.age} years old, from #{@popin.trip.user.city}"
+      .fa.fa-map-marker.location
+        = @popin.trip.city
+      .fa.fa-calendar-o.dates
+        = "#{@popin.trip.arriving.to_formatted_s(:rfc822)} - #{@popin.trip.leaving.to_formatted_s(:rfc822)}"
+      .fa.fa-suitcase.composition
+        = "#{@popin.trip.composition}"
+  %div.trip-message
+    .right-trip-box
+      .message
+        = @popin.trip.message
   %div.answer
     .left-trip-box
       .profile-pic

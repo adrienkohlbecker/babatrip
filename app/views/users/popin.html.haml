@@ -3,8 +3,10 @@
     .left-trip-box
       = render partial: 'shared/pic_and_character', locals: {user: @user}
     .right-trip-box
-      .name
-        = @user.full_name
+      %div
+        %span.name
+          = @user.full_name
+        %span.fa.fa-facebook-square
       .age-city
         = "#{@user.age} years old, from #{@user.city}"
       .description
