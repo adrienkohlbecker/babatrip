@@ -55,7 +55,7 @@
           .columns.small-6
             = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @profile.user.time, :selected_class => :selected, required: true }
 
-        - if !@profile.is_signup?
+        - if @profile.is_signup?
           .row.terms
             .columns.small-12.no-custom
               <div class="input boolean optional user_accepts"><input name="user[accepts]" type="hidden" value="0"><label class="boolean optional control-label checkbox simple-text" for="user_accepts"><input checked="checked" class="boolean optional" id="user_accepts" name="user[accepts]" required="required" type="checkbox" value="1">By clicking Submit, you agree to our <a href="/terms">Terms</a> and that you have read our <a href="/privacy">Privacy Policy</a>.</label></div>
@@ -70,6 +70,6 @@
 
 
     .columns.small-2.guide-text
-      Fill out your profile, with your real informations. 
+      Fill out your profile, with your real informations.
       %br
       If you don't enter a valid e-mail adress your friends won't be able to get in touch with you.
