@@ -1,5 +1,5 @@
 .profile-pic
-  %img{src: user.picture_url, title: "See profile", data: {tooltip: true}}
+  %img{src: user.picture_url}
 .character
   %div{:class => [:mood, class_from_relationship_and_sex(user, current_user)]}
     %span{:class => [class_from_mood(user.mood), :picto, :small ], title: user.mood, data: {tooltip: true}}
