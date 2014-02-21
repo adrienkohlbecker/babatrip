@@ -20,7 +20,7 @@
             %small.error First name is required
           .columns.small-6
             = label_tag :user_last_name, 'Last name'
-            = text_field_tag('user[last_name]', @profile.user.first_name, required: true)
+            = text_field_tag('user[last_name]', @profile.user.last_name, required: true)
             %small.error Last name is required
         .row
           .columns.small-6
