@@ -16,10 +16,12 @@
         .row
           .columns.small-6
             = label_tag :user_first_name, 'First name'
-            = text_field_tag('user[first_name]', @profile.user.first_name)
+            = text_field_tag('user[first_name]', @profile.user.first_name, required: true)
+            %small.error First name is required
           .columns.small-6
             = label_tag :user_last_name, 'Last name'
-            = text_field_tag('user[last_name]', @profile.user.first_name)
+            = text_field_tag('user[last_name]', @profile.user.first_name, required: true)
+            %small.error Last name is required
         .row
           .columns.small-6
             = label_tag :user_email, 'Email'
@@ -28,7 +30,8 @@
         .row
           .columns.small-6.user_birth_date
             = label_tag 'user_birth_date_3i', 'Birth date'
-            = date_select 'user', 'birth_date', start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: @profile.user.birth_date
+            = date_select 'user', 'birth_date', start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: @profile.user.birth_date, required: true
+            %small.error Birth date is required
           .columns.small-2
             = label_tag :user_sex, 'Sex'
             = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, @profile.user.sex)
