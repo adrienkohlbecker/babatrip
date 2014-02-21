@@ -17,7 +17,11 @@
 
         img {
         width: 70px;
-        cursor: pointer;
+        cursor: help;
+
+            &:hover {
+                opacity: 0.8;
+            }
         }
 
     }
