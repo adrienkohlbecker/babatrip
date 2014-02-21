@@ -8,12 +8,16 @@
     color: #505050;
     height: 105px;
     margin-bottom: 23px;
-    cursor: pointer;    
+    cursor: pointer;
+
+    width: 32%;
+    float: left;
+    margin-left: 1%;
 
     .left-trip-box, .left-user-box  {
-    float: left; 
+    float: left;
     width: 70px;
-    
+
 
         img {
         width: 70px;
@@ -26,13 +30,13 @@
 
     }
     .right-user-box  {
-    float: right; 
-    width: 35px; 
+    float: right;
+    width: 35px;
     }
 
     .left-trip-box, .right-user-box {
         margin: 0px;
-        
+
         .mood, .time, .relationship {
             display: block;
             width: 35px;
@@ -53,7 +57,7 @@
             text-align: center;
 
             &.blue {
-               background-color: #3b5998; 
+               background-color: #3b5998;
             }
             &.green {
                 background-color: #40a4a3;
@@ -61,8 +65,8 @@
             &.yellow {
                 background-color: #ffaa00;
             }
-            
-            
+
+
         }
         .time {
             background-color: lighten(#3b5998, 20%);
@@ -79,7 +83,7 @@
         .relationship {
             background-color: lighten(#3b5998, 35%);
             &.blue {
-               background-color: lighten(#3b5998, 35%); 
+               background-color: lighten(#3b5998, 35%);
             }
             &.green {
                 background-color: lighten(#40a4a3, 35%);
@@ -146,11 +150,11 @@
     }
 
     .middle-user-box {
-        float: left; 
+        float: left;
         width: 205px;
         padding: 5px 10px 10px 10px;
 
-         @media only screen and (max-width: 40em) { 
+         @media only screen and (max-width: 40em) {
         width: 175px;
         }
 
@@ -257,7 +261,7 @@
             margin-bottom: 8px;
             margin-top: 5px;
             }
-        
+
         .dates, .composition {
             width: 100%;
             font-size: 12px;
