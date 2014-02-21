@@ -147,25 +147,40 @@ class User < ActiveRecord::Base
 
   def self.find_near_location(latitude, longitude, current_user)
 
-    users = User.near(latitude, longitude).select{|u| u.id != current_user.id }
+    users_to_consider = ActiveRecord::Base.connection.execute %Q{
 
-    ids_to_match = {}
-    users.each {|u|
+      SELECT users.id, users.mood, users.time,
+        earth_distance(ll_to_earth(#{ActiveRecord::Base.connection.quote(latitude)}, #{ActiveRecord::Base.connection.quote(longitude)}), ll_to_earth(users.latitude, users.longitude)) AS distance
+      FROM users
+      WHERE
+        (earth_box(ll_to_earth(#{ActiveRecord::Base.connection.quote(latitude)}, #{ActiveRecord::Base.connection.quote(longitude)}), #{BOX_SIZE_IN_METERS}) @> ll_to_earth(users.latitude, users.longitude))
+        AND users.user_id != #{ActiveRecord::Base.connection.quote(current_user.id)}
+    }
+
+    ids_to_properties = {}
+    users_to_consider.each {|r|
 
       match = 0
-      if u['mood'] == current_user.mood
+      if r['mood'] == current_user.mood
         match += 1
       end
-      if u['time'] == current_user.time or u['time'] == 'All day' or current_user.time = 'All day'
+      if r['time'] == current_user.time or r['time'] == 'All day' or current_user.time = 'All day'
         match += 1
       end
 
-      ids_to_match[u['id'].to_i] = match
+      ids_to_properties[r['id'].to_i] = {
+        :distance => r['distance'],
+        :mood => r['mood'],
+        :time => r['time'],
+        :match => match
+      }
 
     }
 
-    users.sort_by! {|u| [-ids_to_match[u.id]] }
-    users
+    users = User.where(:id => ids_to_properties.keys).to_a
+    users.sort_by! {|user| [-ids_to_properties[user.id][:match], ids_to_properties[user.id][:distance]] }
+
+    return users
 
   end
 
