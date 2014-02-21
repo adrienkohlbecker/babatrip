@@ -491,3 +491,8 @@ background: rgba(255, 210, 32, 0.7);
   span.s1 {color: #4183c4}
   ol.ol1 {list-style-type: decimal}  
 }
+
+// fixing foundation column positioning
+[class*="column"] + [class*="column"]:last-child {
+float: left !important; 
+}

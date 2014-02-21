@@ -14,7 +14,7 @@
       .description
         = @user_profile.description
 
-    .columns.small-12.medium-3.large-3
+    .columns.small-12.medium-3.large-3.large-offset-1
 
       %div
         - if @user_profile.own?
@@ -40,13 +40,14 @@
     .columns.small-12
       %h2.white-title My next trips
   .row
-    .columns.small-12
-      - @user_profile.trips.each do |trip|
-        - if !@user_profile.own?
+    - @user_profile.trips.each do |trip|
+      - if !@user_profile.own?
+        .columns.small-12.medium-6.large-4
           %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
             .profile-trip-box
               = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}
-        - else
+      - else
+        .columns.small-12.medium-6.large-4
           %a{:href => "/trips/#{trip.id}/edit", :data => {:reveal_id => "edit-modal", :reveal_ajax => "true"}}
             .profile-trip-box
               = render :partial => 'shared/profile_trip_box', :locals => {:trip => trip}
