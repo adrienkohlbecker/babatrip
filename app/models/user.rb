@@ -103,11 +103,17 @@ class User < ActiveRecord::Base
     # Get user profile
     me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status,username')
 
-    location_id = me['location']['id']
-    location = @graph.get_object(location_id, fields: 'location,name')
-    lat = location['location']['latitude']
-    long = location['location']['longitude']
-    city = location['name']
+    if me['location']
+      location_id = me['location']['id']
+      location = @graph.get_object(location_id, fields: 'location,name')
+      lat = location['location']['latitude']
+      long = location['location']['longitude']
+      city = location['name']
+    else
+      lat = nil
+      long = nil
+      city = nil
+    end
 
     sex = nil
     sex = 'Male' if me['gender'] == 'male'
