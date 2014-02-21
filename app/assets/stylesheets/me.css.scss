@@ -34,6 +34,16 @@
       margin-bottom: 30px;
   }
 
+  .error {
+    label {
+      color: rgba(255, 210, 32, 1);
+    }
+
+    input, textarea {
+      margin-bottom: 1px;
+    }
+  }
+
   input  {
       height: 38px;
   }
