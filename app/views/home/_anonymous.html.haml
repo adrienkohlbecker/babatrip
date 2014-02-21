@@ -1,8 +1,12 @@
 .contain-to-grid.top-zone.centered
   .row
     .columns.small-12
-      %h2.bigger-title Where are your friends planning to go?
-      %h3.small-title Sign up now, share your next destinations with your friends and let the journey begin!
+      %h2.big-logo Travel-Meet
+  .row
+    .columns.small-12
+      %h3.catch-title 
+        Discover where your friends are planning to go 
+        %br and let the journey begin!
   - unless current_user
     .row
       %a{href: user_omniauth_authorize_path(:facebook)}

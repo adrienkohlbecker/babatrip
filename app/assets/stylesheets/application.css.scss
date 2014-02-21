@@ -139,6 +139,18 @@ h2,h3 {
     margin-top: 13px;
     }
 }
+.catch-title {
+    font-size: 18px;
+    margin-top: -2px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: normal;
+
+    @media only screen and (max-width: 40em) { 
+    margin-top: 13px;
+    }
+}
+
 .search-title {
     font-size: 14px;
     margin-top: -2px;
