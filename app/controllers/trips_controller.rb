@@ -25,8 +25,11 @@ class TripsController < ApplicationController
 
   def update
 
-    trip = Trip.find(update_params[:id])
-    trip.update_attributes!(update_params)
+    hash = update_params
+    hash.delete(:share)
+
+    trip = Trip.find(hash[:id])
+    trip.update_attributes!(hash)
     flash[:notice] = "Trip sucessfully edited"
 
     if update_params[:share] == "1"
