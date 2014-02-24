@@ -7,7 +7,7 @@ class UserMailer < ActionMailer::Base
     @receiver = trip.user
     @trip = trip
     @message = message
-    @content_preview = message.truncate(15)
+    @content_preview = message.truncate(100)
 
     mail(to: @receiver.email, reply_to: @sender.email, subject: "New message from #{sender.full_name}")
   end
@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
     @sender = sender
     @receiver = receiver
     @message = message
-    @content_preview = message.truncate(15)
+    @content_preview = message.truncate(100)
 
     mail(to: @receiver.email, reply_to: @sender.email, subject: "New message from #{sender.full_name}")
   end
