@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
   COMPOSITION_COLLECTION = ['Alone', 'Couple', 'With friends', 'For Work']
 
   scope :from_friends_of, ->(user) { user.nil? ? none : where(:user_id => user.friends.pluck(:id) ) }
-  scope :current, ->() { order('arriving ASC', 'leaving ASC').where('leaving > ?', Date.today) }
+  scope :current, ->() { order('arriving ASC', 'leaving ASC').where('leaving >= ?', Date.today) }
 
   def self.find_near_between(current_user, latitude, longitude, arriving, leaving)
 
@@ -21,7 +21,7 @@ class Trip < ActiveRecord::Base
       INNER JOIN users ON users.id = trips.user_id
       WHERE
         (earth_box(ll_to_earth(#{ActiveRecord::Base.connection.quote(latitude)}, #{ActiveRecord::Base.connection.quote(longitude)}), #{BOX_SIZE_IN_METERS}) @> ll_to_earth(trips.latitude, trips.longitude))
-        AND ((trips.arriving, trips.leaving) OVERLAPS (#{ActiveRecord::Base.connection.quote(arriving)}, #{ActiveRecord::Base.connection.quote(leaving)}))
+        AND ((trips.arriving, (trips.leaving + interval '1 day')::date) OVERLAPS (#{ActiveRecord::Base.connection.quote(arriving)}, #{ActiveRecord::Base.connection.quote(leaving)}))
         AND leaving >= #{ActiveRecord::Base.connection.quote(Date.today)}
         AND trips.user_id != #{ActiveRecord::Base.connection.quote(current_user.id)}
     }
