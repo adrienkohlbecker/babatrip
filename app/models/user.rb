@@ -176,7 +176,7 @@ class User < ActiveRecord::Base
       end
 
       ids_to_properties[r['id'].to_i] = {
-        :distance => r['distance'],
+        :distance => r['distance'].to_f,
         :mood => r['mood'],
         :time => r['time'],
         :match => match
