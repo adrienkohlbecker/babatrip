@@ -24,6 +24,7 @@ class Trip < ActiveRecord::Base
         AND ((trips.arriving, (trips.leaving + interval '1 day')::date) OVERLAPS (#{ActiveRecord::Base.connection.quote(arriving)}, #{ActiveRecord::Base.connection.quote(leaving)}))
         AND leaving >= #{ActiveRecord::Base.connection.quote(Date.today)}
         AND trips.user_id != #{ActiveRecord::Base.connection.quote(current_user.id)}
+        AND users.is_profile_completed IS TRUE
     }
 
     ids_to_properties = {}

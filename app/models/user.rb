@@ -161,6 +161,7 @@ class User < ActiveRecord::Base
       WHERE
         (earth_box(ll_to_earth(#{ActiveRecord::Base.connection.quote(latitude)}, #{ActiveRecord::Base.connection.quote(longitude)}), #{BOX_SIZE_IN_METERS}) @> ll_to_earth(users.latitude, users.longitude))
         AND users.id != #{ActiveRecord::Base.connection.quote(current_user.id)}
+        AND users.is_profile_completed IS TRUE
     }
 
     ids_to_properties = {}
