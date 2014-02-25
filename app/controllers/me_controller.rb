@@ -39,9 +39,9 @@ class MeController < ApplicationController
 
     day   = me_params[:user]["birth_date(3i)"].to_i
     month = me_params[:user]["birth_date(2i)"].to_i
-    year  = me_params[:user]["birth_date(1i)"].to_i   
-    
-    date = Date.civil(day, month, year ) rescue nil
+    year  = me_params[:user]["birth_date(1i)"].to_i
+
+    date = Date.civil(year, month, day) rescue nil
 
     if date
       if date < 18.years.ago
