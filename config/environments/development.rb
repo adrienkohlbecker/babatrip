@@ -28,6 +28,8 @@ TravelMeet::Application.configure do
   config.assets.debug = true
 
   # Required by devise
-  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
-  #config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { :host => ENV['DOMAIN'] }
+
+  # Required by letter opener
+  config.action_mailer.delivery_method = :letter_opener
 end

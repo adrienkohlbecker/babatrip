@@ -1,19 +1,13 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_user
   before_action :check_profile_completed
-
   def check_profile_completed
-
-    if current_user and not current_user.is_profile_completed
-      redirect_to me_edit_path
-    end
-
+    redirect_to me_edit_path if current_user and not current_user.is_profile_completed
   end
+  before_action :find_user
 
   def show
-    @user_profile = UserFacade.new(@user, current_user)
   end
 
   def contact_show

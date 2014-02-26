@@ -7,19 +7,18 @@ class MeController < ApplicationController
   end
 
   def edit
-    @profile = ProfileFacade.new(current_user)
   end
 
   def update
     user = current_user
-    user.first_name = me_params[:user][:first_name]
-    user.last_name = me_params[:user][:last_name]
-    user.email = me_params[:user][:email]
+    user.first_name = update_params[:user][:first_name]
+    user.last_name = update_params[:user][:last_name]
+    user.email = update_params[:user][:email]
 
     if not user.is_profile_completed
-      user.accepts = me_params[:user][:accepts]
+      user.accepts = update_params[:user][:accepts]
 
-      if me_params[:share] == "1"
+      if update_params[:share] == "1"
 
         url = "http://#{ENV['DOMAIN']}/"
         graph = Koala::Facebook::API.new(user.facebook_token, ENV['FACEBOOK_APP_SECRET'])
@@ -37,9 +36,9 @@ class MeController < ApplicationController
       # resend verification ?
     end
 
-    day   = me_params[:user]["birth_date(3i)"].to_i
-    month = me_params[:user]["birth_date(2i)"].to_i
-    year  = me_params[:user]["birth_date(1i)"].to_i
+    day   = update_params[:user]["birth_date(3i)"].to_i
+    month = update_params[:user]["birth_date(2i)"].to_i
+    year  = update_params[:user]["birth_date(1i)"].to_i
 
     date = Date.civil(year, month, day) rescue nil
 
@@ -55,17 +54,17 @@ class MeController < ApplicationController
       user.errors.add(:birth_date, "is invalid")
     end
 
-    user.sex = me_params[:user][:sex]
-    user.relationship_status = me_params[:user][:relationship_status]
-    user.mood = me_params[:user][:mood]
-    user.time = me_params[:user][:time]
+    user.sex = update_params[:user][:sex]
+    user.relationship_status = update_params[:user][:relationship_status]
+    user.mood = update_params[:user][:mood]
+    user.time = update_params[:user][:time]
 
-    user.description = me_params[:user][:description]
+    user.description = update_params[:user][:description]
 
-    user.nationality = me_params[:user][:nationality]
-    user.city = me_params[:user][:city]
-    user.latitude = me_params[:user][:latitude]
-    user.longitude = me_params[:user][:longitude]
+    user.nationality = update_params[:user][:nationality]
+    user.city = update_params[:user][:city]
+    user.latitude = update_params[:user][:latitude]
+    user.longitude = update_params[:user][:longitude]
 
     is_signup = !user.is_profile_completed
 
@@ -82,7 +81,7 @@ class MeController < ApplicationController
 
   private
 
-    def me_params
+    def update_params
       params.permit(:share, :user => [:first_name, :last_name, :email, :sex, :relationship_status, :nationality, :city, :latitude, :longitude, :mood, :time, :description, :accepts, "birth_date(1i)", "birth_date(2i)", "birth_date(3i)"])
     end
 

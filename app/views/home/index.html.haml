@@ -1,4 +1,4 @@
-- if @home.logged_in?
-  = render :partial => 'loggedin', :locals => {:home => @home}
+- if current_user
+  = render :partial => 'loggedin'
 - else
   = render :partial => 'anonymous'

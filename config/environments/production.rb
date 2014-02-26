@@ -79,5 +79,5 @@ TravelMeet::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Required by devise
-  config.action_mailer.default_url_options = { :host => 'travel-meet.com' }
+  config.action_mailer.default_url_options = { :host => ENV['DOMAIN'] }
 end

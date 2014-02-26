@@ -10,32 +10,11 @@ class User < ActiveRecord::Base
   has_many :trips
 
   BOX_SIZE_IN_METERS = 30000
-  scope :near, ->(latitude, longitude, box_size=BOX_SIZE_IN_METERS) { where("earth_box(ll_to_earth(?, ?), ?) @> ll_to_earth(latitude, longitude)", latitude, longitude, box_size) }
 
   SEX_COLLECTION = ['Male', 'Female']
   RELATIONSHIP_STATUS_COLLECTION = ['Single', 'In a relationship']
   MOOD_COLLECTION = ['Hippie', 'Cool', 'Chic']
   TIME_COLLECTION = ['Day', 'Night', 'All day']
-
-  MIN_PICTURE_HEIGHT = 100
-  MIN_PICTURE_WIDTH = 100
-
-  rails_admin do
-
-    field :email
-    field :uid do
-      label 'Facebook ID'
-      pretty_value do
-        bindings[:view].tag(:a, { :href => "https://www.facebook.com/#{value}" }) << value << bindings[:view].tag('/a')
-      end
-    end
-    field :latitude, :float
-    field :longitude, :float
-
-    field :created_at, :datetime
-    field :last_sign_in_at, :datetime
-
-  end
 
   def must_accept_terms
 

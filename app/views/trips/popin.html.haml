@@ -1,32 +1,32 @@
-.card.contact{:data => {:user_profile => user_show_path(@popin.trip.user.id)}}
+.card.contact{:data => {:user_profile => user_show_path(@trip.user.id)}}
   %div
     .left-trip-box
-      = render partial: 'shared/pic_and_character', locals: {user: @popin.trip.user}
+      = render partial: 'shared/pic_and_character', locals: {user: @trip.user}
     .right-trip-box
       %div
         %a.name
-          = @popin.trip.user.full_name
-        %a.fa.fa-facebook-square{href: "https://facebook.com/#{@popin.trip.user.uid}", target: '_blank'}
+          = @trip.user.full_name
+        %a.fa.fa-facebook-square{href: "https://facebook.com/#{@trip.user.uid}", target: '_blank'}
       .age-city
-        = "#{@popin.trip.user.age} years old, from #{@popin.trip.user.city}"
+        = "#{@trip.user.age} years old, from #{@trip.user.city}"
       .fa.fa-map-marker.location
-        = @popin.trip.city
+        = @trip.city
       .fa.fa-calendar-o.dates
-        = "#{@popin.trip.arriving.to_formatted_s(:rfc822)} - #{@popin.trip.leaving.to_formatted_s(:rfc822)}"
+        = "#{@trip.arriving.to_formatted_s(:rfc822)} - #{@trip.leaving.to_formatted_s(:rfc822)}"
       .fa.fa-suitcase.composition
-        = "#{@popin.trip.composition}"
+        = "#{@trip.composition}"
   %div.trip-message
     .right-trip-box
       .message
-        = @popin.trip.message
+        = @trip.message
   %div.answer
     .left-trip-box
       .profile-pic
-        %img{src: @popin.user_picture_url}
+        %img{src: current_user.picture_url}
     .right-trip-box
-      = form_tag contact_trip_path(@popin.trip) do
-        = hidden_field_tag :trip_id, @popin.trip_id
-        = text_area_tag :message, '', :placeholder => @popin.message_placeholder
+      = form_tag contact_trip_path(@trip) do
+        = hidden_field_tag :trip_id, @trip_id
+        = text_area_tag :message, '', :placeholder => "Write a message to #{@trip.user.first_name}"
         = submit_tag "SEND", {:class => [:button, :action, :small, :right]}
 
 %a.close-reveal-modal &#215

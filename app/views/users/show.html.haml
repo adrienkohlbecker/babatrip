@@ -3,45 +3,45 @@
 
     .columns.small-4.medium-2.large-2
       .profile-pic
-        %img{src: @user_profile.picture_url(width: 160, height: 160)}
+        %img{src: @user.picture_url(width: 160, height: 160)}
 
     .columns.small-8.medium-6.large-6
-      %h1= @user_profile.full_name
+      %h1= @user.full_name
       .additional-info
-        %span.agesex= @user_profile.age_sex
-        %span.location.fa.fa-map-marker= @user_profile.city
-        %span.nationality.fa.fa-globe= @user_profile.nationality
+        %span.agesex= "#{@user.sex}, #{@user.age} years old"
+        %span.location.fa.fa-map-marker= @user.city
+        %span.nationality.fa.fa-globe= @user.nationality
       .description
-        = @user_profile.description
+        = @user.description
 
     .columns.small-12.medium-3.large-3.large-offset-1
 
       %div
-        - if @user_profile.own?
+        - if current_user.id == @user.id
           %a.button.expand.primary{:href => edit_profile_path}
             EDIT MY PROFILE
         - else
-          %a.button.expand.primary{:href => "#{user_show_path(@user_profile.user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
+          %a.button.expand.primary{:href => "#{user_show_path(@user)}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
             CONTACT
 
       .character.row
         .mood.columns.small-4
-          %span{:class => [ class_from_mood(@user_profile.mood), :picto, :medium ]}
-            = @user_profile.mood
+          %span{:class => [ class_from_mood(@user.mood), :picto, :medium ]}
+            = @user.mood
         .time.columns.small-4
-          %span{:class => [ class_from_time(@user_profile.time), :picto, :medium ]}
-            = @user_profile.time
+          %span{:class => [ class_from_time(@user.time), :picto, :medium ]}
+            = @user.time
         .relationship.columns.small-4
-          %span{:class => [ class_from_relationship(@user_profile.relationship_status), :picto, :medium ]}
-            = @user_profile.relationship_status
+          %span{:class => [ class_from_relationship(@user.relationship_status), :picto, :medium ]}
+            = @user.relationship_status
 
 .contain-to-grid.main-zone
   .row
     .columns.small-12
       %h2.white-title My next trips
   .row
-    - @user_profile.trips.each do |trip|
-      - if !@user_profile.own?
+    - @user.trips.current.each do |trip|
+      - if current_user.id != @user.id
         .columns.small-12.medium-6.large-4
           %a{:href => "/trips/#{trip.id}/contact", :data => {:reveal_id => "contact-modal", :reveal_ajax => "true"}}
             .profile-trip-box

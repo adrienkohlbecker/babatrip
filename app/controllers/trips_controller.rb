@@ -2,18 +2,12 @@ class TripsController < ApplicationController
 
   before_action :authenticate_user!, :except => ['image']
   before_action :check_profile_completed, :except => ['image']
-
   def check_profile_completed
-
-    if current_user and not current_user.is_profile_completed
-      redirect_to me_edit_path
-    end
-
+    redirect_to me_edit_path if current_user and not current_user.is_profile_completed
   end
 
   def contact_show
-    trip = Trip.find(contact_params[:id])
-    @popin = PopinFacade.new(trip, current_user)
+    @trip = Trip.find(contact_params[:id])
     render 'popin', layout: false
   end
 
@@ -26,14 +20,11 @@ class TripsController < ApplicationController
   end
 
   def edit
-
     @trip = Trip.find(edit_params[:id])
     render 'edit', layout: false
-
   end
 
   def update
-
     hash = update_params
     hash.delete(:share)
 
@@ -46,20 +37,16 @@ class TripsController < ApplicationController
     end
 
     render nothing: true
-
   end
 
   def delete
-
     trip = Trip.find(edit_params[:id])
     trip.delete
     flash[:notice] = "Trip sucessfully deleted"
     render nothing: true
-
   end
 
   def create
-
     hash = create_params
     hash.delete(:share)
 
@@ -72,11 +59,9 @@ class TripsController < ApplicationController
     end
 
     render nothing: true
-
   end
 
   def image
-
     trip = Trip.find(image_params[:id])
 
     params = {
@@ -99,7 +84,6 @@ class TripsController < ApplicationController
       f << open(image).read
       send_file f, :type=>"image/png", :disposition => "inline", :x_sendfile=>true
     end
-
   end
 
   private

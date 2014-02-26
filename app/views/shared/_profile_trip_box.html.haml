@@ -1,5 +1,5 @@
 .trip-image
-  = image_tag @user_profile.map_image(trip, 313, 100), :width => 313, :height => 100
+  = image_tag trip.map_image_url(313, 100), :width => 313, :height => 100
 
 .trip-infos
   .location

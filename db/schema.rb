@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204212108) do
+ActiveRecord::Schema.define(version: 20140226002510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,6 @@ ActiveRecord::Schema.define(version: 20140204212108) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "rails_admin_histories", force: true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 8
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "trips", force: true do |t|
     t.string   "city",        null: false
@@ -73,7 +60,6 @@ ActiveRecord::Schema.define(version: 20140204212108) do
     t.datetime "facebook_token_expires"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "admin",                  default: false
     t.boolean  "is_profile_completed",   default: false, null: false
     t.string   "first_name"
     t.string   "last_name"

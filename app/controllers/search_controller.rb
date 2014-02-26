@@ -2,24 +2,19 @@ class SearchController < ApplicationController
 
   before_action :authenticate_user!
   before_action :check_profile_completed
-
   def check_profile_completed
-
-    if current_user and not current_user.is_profile_completed
-      redirect_to me_edit_path
-    end
-
+    redirect_to me_edit_path if current_user and not current_user.is_profile_completed
   end
 
   def index
 
-    city = search_params[:city]
-    latitude = search_params[:latitude]
-    longitude = search_params[:longitude]
-    arriving = search_params[:arriving]
-    leaving = search_params[:leaving]
+    @city = search_params[:city]
+    @latitude = search_params[:latitude]
+    @longitude = search_params[:longitude]
+    @arriving = search_params[:arriving]
+    @leaving = search_params[:leaving]
 
-    if [city, latitude, longitude, arriving, leaving].compact.length != 5
+    if [@city, @latitude, @longitude, @arriving, @leaving].compact.length != 5
       flash[:alert] = "You must complete all the search fields"
       redirect_to "/"
     end
@@ -30,15 +25,15 @@ class SearchController < ApplicationController
     friends_ids = friends.collect(&:id)
     friends_of_friends_ids = friends_of_friends.collect(&:id).uniq - friends_ids - [current_user.id]
 
-    trips = Trip.find_near_between(current_user, latitude, longitude, arriving, leaving)
+    trips = Trip.find_near_between(current_user, @latitude, @longitude, @arriving, @leaving)
 
-    @search_results = SearchResultsFacade.new(city, latitude, longitude, arriving, leaving)
-    @search_results.trips_from_friends = trips.select{|t| friends_ids.include?(t.user_id) }
-    @search_results.trips_from_friends_of_friends = trips.select{|t| friends_of_friends_ids.include?(t.user_id) }
+    @trips_from_friends = trips.select{|t| friends_ids.include?(t.user_id) }
+    @trips_from_friends_of_friends = trips.select{|t| friends_of_friends_ids.include?(t.user_id) }
 
-    locals = User.find_near_location(latitude, longitude, current_user)
-    @search_results.locals = locals.select{|u| friends_ids.include?(u.id)} + locals.select{|u| friends_of_friends_ids.include?(u.id)}
-    @search_results.locals += (locals - @search_results.locals)
+    locals = User.find_near_location(@latitude, @longitude, current_user)
+
+    @locals = locals.select{|u| friends_ids.include?(u.id)} + locals.select{|u| friends_of_friends_ids.include?(u.id)}
+    @locals += (locals - @locals)
 
   end
 

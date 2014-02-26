@@ -3,14 +3,14 @@
     .columns.small-12.medium-7.large-8
       %h2.big-title
         Who's in
-        = @search_results.city
+        = @city
       %h3.search-title
         Between
         %strong
-          = @search_results.formatted_arriving
+          = @arriving.strftime('%d %B %Y')
         and
         %strong
-          = @search_results.formatted_leaving
+          = @leaving.strftime('%d %B %Y')
 
     .columns.small-12.medium-5.large-4.buttons
       .row
@@ -20,37 +20,37 @@
           %a.button.expand.big.action{:href => '#', :data => {:reveal_id => 'add-modal'}} Add to my trips
 
 .contain-to-grid.main-zone.results
-  - if @search_results.empty?
+  - if @locals.empty? and @trips_from_friends.empty? and @trips_from_friends_of_friends.empty?
     .row
       .columns.small-12.centered
         %h2.noresults No results, invite more friends!
 
   - else
 
-    - unless @search_results.trips_from_friends.empty?
+    - unless @trips_from_friends.empty?
       .row.friends-results
         .columns.small-12
           %h2 Friends that are going there
       .row
-        - @search_results.trips_from_friends.each do |trip|
+        - @trips_from_friends.each do |trip|
           .columns.small-12.medium-6.large-4
             .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal'}}
               = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-    - unless @search_results.trips_from_friends_of_friends.empty?
+    - unless @trips_from_friends_of_friends.empty?
       .row.friendsOf-results
         .columns.small-12
           %h2 Friends of friends that are going there
       .row
-        - @search_results.trips_from_friends_of_friends.each do |trip|
+        - @trips_from_friends_of_friends.each do |trip|
           .columns.small-12.medium-6.large-4
             .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal'}}
               = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-    - unless @search_results.locals.empty?
+    - unless @locals.empty?
       .row.locals-results
         .columns.small-12
           %h2 Interesting people living there
       .row
-        - @search_results.locals.each do |user|
+        - @locals.each do |user|
           .columns.small-12.medium-6.large-4
             .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal'}}
               = render :partial => 'shared/user_box', :locals => {:user => user}
@@ -65,18 +65,18 @@
       .columns.small-12
         = label_tag "Where are you going exactly ?"
         .span.fa.fa-map-marker.location.inside
-        = text_field_tag(:city, @search_results.city, :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
-        = hidden_field_tag(:latitude, @search_results.latitude)
-        = hidden_field_tag(:longitude, @search_results.longitude)
+        = text_field_tag(:city, @city, :placeholder => "Which city are you visitig?", data: {city_autocomplete: true, city_autocomplete_lat: 'latitude', city_autocomplete_lng: "longitude"}, required: true)
+        = hidden_field_tag(:latitude, @latitude)
+        = hidden_field_tag(:longitude, @longitude)
     .row
       .columns.small-6
         = label_tag "From"
         .span.fa.fa-calendar.inside
-        = text_field_tag(:arriving, @search_results.arriving.strftime("%d/%m/%Y"), :placeholder => 'Arriving', required: true)
+        = text_field_tag(:arriving, @arriving.strftime("%d/%m/%Y"), :placeholder => 'Arriving', required: true)
       .columns.small-6
         = label_tag "To"
         .span.fa.fa-calendar.inside
-        = text_field_tag(:leaving, @search_results.leaving.strftime("%d/%m/%Y"), :placeholder => 'Leaving', required: true)
+        = text_field_tag(:leaving, @leaving.strftime("%d/%m/%Y"), :placeholder => 'Leaving', required: true)
     .row
       .columns.small-12
         = label_tag "Composition"
