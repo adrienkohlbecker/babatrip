@@ -37,7 +37,7 @@
       = submit_tag "Edit", {:class => [:button, :expand, :action]}
     .columns.small-7
       %label{'for' => 'share'}
-        = check_box_tag "share", "1", true
+        = check_box_tag "share", "1", false
         Share on Facebook
     .columns.small-3
       %a.delete-button.fa.fa-trash-o{href: "#" } Delete trip
