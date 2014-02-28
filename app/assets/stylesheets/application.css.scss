@@ -227,6 +227,11 @@ button, .button {
   background-size: 100%;
   background-position: 50%;
   margin: auto;
+
+  @media only screen and (max-width: 40em) { 
+      width: 90%;
+      margin-bottom: -33px;
+      }
 }
 
 .top-bar {
@@ -243,7 +248,7 @@ button, .button {
       background-position: center center;
 
       @media only screen and (max-width: 40em) { 
-      margin-left: 27px;
+      margin-left: 15px;
       }
 
 
@@ -251,6 +256,26 @@ button, .button {
 
     .top-bar-section ul {
         background: none !important;
+        width: auto !important;
+
+        @media only screen and (max-width: 40em) { 
+            float: right !important; 
+            margin-right: -8px;
+        }
+
+        li {
+          @media only screen and (max-width: 40em) { 
+            float: left !important;
+            margin-top: -4px;    
+          }
+          &.hidden-on-mobile {
+            @media only screen and (max-width: 40em) { 
+            display: none;    
+            }
+          }
+
+        }
+
 
         a {
           opacity: 0.8;
@@ -262,7 +287,7 @@ button, .button {
         }
 
         .user {
-            font-weight: normal;
+            font-weight: bold;
             font-size: 12px;
 
             img {
@@ -280,7 +305,7 @@ button, .button {
         background-color: transparent;
         border: none;
         display: block;
-        max-width: 21px;
+        width: 22px;
         height: 22px;
         -webkit-appearance: none !important;
         background-image: image-url('logout.png');
@@ -293,6 +318,12 @@ button, .button {
 
         &:hover {
           opacity: 1;
+        }
+
+        @media only screen and (max-width: 40em) { 
+          position: relative;
+          top: 12px;
+          margin-left: 10px;    
         }
 
     }
@@ -499,16 +530,3 @@ background: rgba(255, 210, 32, 0.7);
 float: left !important; 
 }
 
-.mobile_log {
-  display: none !important;
-
-  @media only screen and (max-width: 40em) { 
-    display: block !important;
-    position: fixed;
-    top: 8px;
-    width: 100px;
-    float: right;
-    left: 370px;
-  }
-
-}
