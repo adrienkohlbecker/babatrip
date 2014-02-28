@@ -17,3 +17,8 @@
               = image_tag current_user.picture_url(width: 28, height: 28)
           %li
             = button_to "Log out", destroy_user_session_path, :method => :delete, :class => :logout
+    %section.top-bar-section.mobile_log
+      %ul
+        - if current_user
+          %li
+            = button_to "Log out", destroy_user_session_path, :method => :delete, :class => :logout
