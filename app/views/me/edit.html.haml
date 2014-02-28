@@ -28,14 +28,14 @@
             = email_field_tag('user[email]', current_user.email, required: true)
             %small.error Email is required
         .row
-          .columns.small-6.user_birth_date
+          .columns.small-10.user_birth_date
             = label_tag 'user_birth_date_3i', 'Birth date'
             = date_select 'user', 'birth_date', start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: current_user.birth_date, required: true
             %small.error Birth date is required
-          .columns.small-2
+          .columns.small-3
             = label_tag :user_sex, 'Sex'
             = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, current_user.sex)
-          .columns.small-4
+          .columns.small-6
             = label_tag :user_relationship_status, 'Relationship status'
             = select_tag 'user[relationship_status]', options_for_select(User::RELATIONSHIP_STATUS_COLLECTION, current_user.sex)
         .row
