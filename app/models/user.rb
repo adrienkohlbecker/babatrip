@@ -61,24 +61,6 @@ class User < ActiveRecord::Base
     friends = @graph.get_connections("me", "friends")
     friends_uids = friends.collect{|f| f["id"]}
 
-    # Get current friends
-    current_connections = Connection.where('this_id = :user_uid OR other_id = :user_uid', user_uid: self.uid)
-    current_friends_uids = current_connections.collect{|c| [c.this_id, c.other_id]}.flatten.uniq - [self.uid]
-
-    # Add new friends
-    friends_to_add = friends_uids - current_friends_uids
-    friends_to_add.each do |uid|
-      Connection.create(this_id: self.uid, other_id: uid)
-    end
-
-    # Delete obsolete friends
-    friends_to_delete = current_friends_uids - friends_uids
-    if friends_to_delete.any?
-      Connection.where('(this_id =  :user_uid AND other_id IN (:friends_to_delete))
-                     OR (other_id = :user_uid AND this_id  IN (:friends_to_delete))',
-                     user_uid: self.uid, friends_to_delete: friends_to_delete).delete_all
-    end
-
     # Get user profile
     me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status,username')
 
@@ -109,7 +91,7 @@ class User < ActiveRecord::Base
     relationship_status = 'In a relationship' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
-    self.update_attributes!(username: username, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
+    self.update_attributes!(facebook_friends: friends_uids, username: username, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
 
   end
 
@@ -127,7 +109,7 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    User.joins("INNER JOIN connections ON (connections.this_id = '#{self.uid}' OR connections.other_id = '#{self.uid}')").where("(users.uid = connections.this_id OR users.uid = connections.other_id) AND users.uid != '#{self.uid}'")
+    User.where(:uid => self.facebook_friends)
   end
 
   def self.find_near_location(latitude, longitude, current_user)
@@ -171,13 +153,11 @@ class User < ActiveRecord::Base
   end
 
   def is_a_friend_of?(other_user)
-    return friends.include? other_user
+    return facebook_friends.include? other_user.uid
   end
 
   def is_a_friend_of_friend_of?(other_user)
-    friends_uids = friends.collect(&:uid)
-    friends_of_friends = User.joins("INNER JOIN connections ON (connections.this_id IN ('#{friends_uids.join("','")}') AND users.uid = connections.other_id) OR (connections.other_id IN ('#{friends_uids.join("','")}') AND users.uid = connections.this_id)").where("users.uid NOT IN ('#{friends_uids.join("','")}') AND users.uid != '#{self.uid}'")
-    return friends_of_friends.include? other_user
+    self.friends.where('? = ANY (facebook_friends)', other_user.uid).any?
   end
 
   def male?
