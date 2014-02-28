@@ -4,9 +4,9 @@
       = render partial: 'shared/pic_and_character', locals: {user: @user}
     .right-trip-box
       %div
-        %span.name
+        %a.name
           = @user.full_name
-        %span.fa.fa-facebook-square
+        %a.fa.fa-facebook-square
       .age-city
         = "#{@user.age} years old, from #{@user.city}"
       .description
