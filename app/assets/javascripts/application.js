@@ -64,15 +64,15 @@ $(function(){
 
   });
 
-  $(document).on('click', '[data-ajax-modal]', function(e) {
+  $(document).on('click', '.reveal-modal, [data-ajax-modal]', function(e) {
 
     var target = $(e.target);
     var href;
 
-    if (target.hasClass('name') || target.parent().hasClass('profile-pic')) {
+    if ((target.hasClass('name') && target.parents('.reveal-modal').length !== 0) || target.parent().hasClass('profile-pic')) {
 
-      href = target.parents('[data-ajax-modal]').attr('data-user-profile');
-      window.location.pathname = href;
+      href = target.parents('[data-user-profile]').attr('data-user-profile');
+      window.location.href = href;
 
     } else {
 
