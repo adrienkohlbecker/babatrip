@@ -11,6 +11,11 @@
     .row
       %a{href: user_omniauth_authorize_path(:facebook)}
         %img{src: image_path('facebook_login.png')}
+  - if current_user      
+    .row
+      %a{href: "https://www.facebook.com/travelmeetwebsite"}
+        %img{src: image_path('facebook_page.png')}
+
 
 .contain-to-grid.main-zone.about
   .row
