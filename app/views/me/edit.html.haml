@@ -7,43 +7,43 @@
 .contain-to-grid.main-zone
   .row.profile
 
-    .columns.small-3
+    .columns.small-12.medium-3
       = image_tag @user.picture_url
-    .columns.small-7.halfleft
+    .columns.small-12.medium-7.halfleft
 
       = form_tag(me_edit_path, method: "put", data: {abide: true}) do
 
         .row
-          .columns.small-6
+          .columns.small-12.medium-6
             = label_tag :user_first_name, 'First name'
             = text_field_tag('user[first_name]', @user.first_name, required: true)
             %small.error First name is required
-          .columns.small-6
+          .columns.small-12.medium-6
             = label_tag :user_last_name, 'Last name'
             = text_field_tag('user[last_name]', @user.last_name, required: true)
             %small.error Last name is required
         .row
-          .columns.small-6
+          .columns.small-12.medium-6
             = label_tag :user_email, 'Email'
             = email_field_tag('user[email]', @user.email, required: true)
             %small.error Email is required
         .row
-          .columns.small-10.user_birth_date
+          .columns.small-12.medium-10.user_birth_date
             = label_tag 'user_birth_date_3i', 'Birth date'
             = date_select 'user', 'birth_date',{ start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: @user.birth_date}, {required: true}
             %small.error Birth date is required
-          .columns.small-3
+          .columns.small-12.medium-3
             = label_tag :user_sex, 'Sex'
             = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, @user.sex)
-          .columns.small-6
+          .columns.small-12.medium-6
             = label_tag :user_relationship_status, 'Relationship status'
             = select_tag 'user[relationship_status]', options_for_select(User::RELATIONSHIP_STATUS_COLLECTION, @user.sex)
         .row
-          .columns.small-6
+          .columns.small-12.medium-5
             = label_tag :user_nationality, 'Nationality'
             = select_tag 'user[nationality]', options_for_select(nationality_select_collection, @user.nationality), required: true
             %small.error Nationality is required
-          .columns.small-6
+          .columns.small-12.medium-6
             = label_tag :user_city, 'City'
             = text_field_tag 'user[city]', @user.city, required: true, data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}
             = hidden_field_tag 'user[latitude]', @user.latitude, required: true
@@ -59,7 +59,7 @@
             = label_tag :user_mood, 'Mood'
             %span.explication Which kind of place do you look for?
         .row.image-as-radio
-          .columns.small-6
+          .columns.small-12.medium-6
             = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @user.mood, :selected_class => :selected, required: true }
 
         .row
@@ -67,7 +67,7 @@
             = label_tag :user_mood, 'Time'
             %span.explication Which part of the day do you enjoy the most?
         .row.image-as-radio
-          .columns.small-6
+          .columns.small-12.medium-6
             = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @user.time, :selected_class => :selected, required: true }
 
         - unless @user.is_profile_completed
@@ -80,11 +80,11 @@
                 Share on Facebook
 
         .row
-          .columns.small-offset-9.small-2
+          .columns.small-offset-5.columns.small-6.medium-2.medium-offset-9
             = submit_tag 'Submit', :class => [:button,:action, :big]
 
 
-    .columns.small-2.guide-text
+    .columns.small-12.medium-2.guide-text
       Fill out your profile, with your real informations.
       %br
       If you don't enter a valid e-mail adress your friends won't be able to get in touch with you.

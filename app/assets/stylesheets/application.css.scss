@@ -80,6 +80,10 @@ body {
 .halfleft {
     position: relative;
     left: -30px;
+
+    @media only screen and (max-width: 40em) { 
+      left: 0px;
+    }
 }
 
 .darker {
