@@ -71,7 +71,7 @@ class MeController < ApplicationController
 
     @user.is_profile_completed = true
 
-    if @user.errors.empty? && user.save
+    if @user.errors.empty? && @user.save
       redir = is_signup ? root_path : my_profile_path
       redirect_to session.delete("user_return_to") || redir
     else
