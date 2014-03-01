@@ -24,11 +24,34 @@
 
 
 .contain-to-grid.main-zone.results
-  .row
-    .columns.small-12
-      %h2.white-title Your friends' next destinations
-  .row
-    - @trips_from_friends.each do |trip|
-      .columns.small-12.medium-6.large-4
-        .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
-          = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+  - if @trips_from_friends.empty?
+    - if @trips_from_friends_of_friends.empty?
+      .row
+        .columns.small-12.centered
+          %h2.noresults To see where your friends are going invite them to join Travel-Meet and share their trips!
+          %ul.cf.social_links
+            %li#facebook
+              %a{:href => "https://www.facebook.com/sharer/sharer.php?u=http://www.travel-meet.com", :target => "blank"}
+                %i.fa.fa-facebook-square
+            %li#twitter
+              %a{:href => "https://www.twitter.com/home?status=Discover%20where%20your%20friends%20are%20planning%20to%20go%20on%20http://www.travel-meet.com"}
+                %i.fa.fa-twitter-square
+    - else 
+      .row
+        .columns.small-12
+          %h2.white-title None of your friends is travelling, but check some friends of friends next destinations
+      .row
+        - @trips_from_friends_of_friends.each do |trip|
+          .columns.small-12.medium-6.large-4
+            .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
+            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+
+  - else
+    .row
+      .columns.small-12
+        %h2.white-title Your friends' next destinations
+    .row
+      - @trips_from_friends.each do |trip|
+        .columns.small-12.medium-6.large-4
+          .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
+            = render :partial => 'shared/trip_box', :locals => {:trip => trip}
