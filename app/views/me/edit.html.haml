@@ -30,7 +30,7 @@
         .row
           .columns.small-10.user_birth_date
             = label_tag 'user_birth_date_3i', 'Birth date'
-            = date_select 'user', 'birth_date', start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: current_user.birth_date, required: true
+            = date_select 'user', 'birth_date',{ start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: current_user.birth_date}, {required: true}
             %small.error Birth date is required
           .columns.small-3
             = label_tag :user_sex, 'Sex'
