@@ -14,16 +14,16 @@
     = csrf_meta_tags
     %meta{:content => "Discover where your friends are planning to go and let the journey begin!", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Dancing+Script:400,700'
+    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Ubuntu:300,400,500|Dancing+Script:400,700"
     %link{:rel => "apple-touch-icon-precomposed", :href => "/favicon-152.png"}
     %meta{:name => "msapplication-TileColor", :content => "#FFB625"}
     %meta{:name => "msapplication-TileImage", :content => "/favicon-144.png"}
 
-    %meta{:property => 'og:url', :content => "http://#{ENV['DOMAIN']}/"}
-    %meta{:property => 'og:title', :content => "Travel-Meet :: Where are your friends planning to go?"}
-    %meta{:property => 'og:description', :content => "Discover where your friends are planning to go and let the journey begin!"}
-    %meta{:property => 'og:image', :content => "http://#{ENV['DOMAIN']}/facebook%20assets/logo-1024.png"}
-    %meta{:property => 'fb:app_id', :content => ENV['FACEBOOK_APP_ID']}
+    %meta{:property => "og:url", :content => "http://#{ENV['DOMAIN']}/"}
+    %meta{:property => "og:title", :content => "Travel-Meet :: Where are your friends planning to go?"}
+    %meta{:property => "og:description", :content => "Discover where your friends are planning to go and let the journey begin!"}
+    %meta{:property => "og:image", :content => "http://#{ENV['DOMAIN']}/facebook%20assets/logo-1024.png"}
+    %meta{:property => "og:app_id", :content => ENV['FACEBOOK_APP_ID']}
     %link{href: "https://plus.google.com/116406976904607599558", :rel => 'publisher'}
   %body
     .wrapper
