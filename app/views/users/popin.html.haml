@@ -6,7 +6,7 @@
       %div
         %a.name
           = @user.full_name
-        %a.fa.fa-facebook-square
+        %a.fa.fa-facebook-square{href: "https://facebook.com/#{@user.uid}", target: '_blank'}
       .age-city
         = "#{@user.age} years old, from #{@user.city}"
       .description
