@@ -1,14 +1,14 @@
 .contain-to-grid.top-zone.small
   .row.content-title-row
     .columns.small-12
-      %h2.big-title= current_user.is_profile_completed ? 'Edit your profile' : 'Complete your profile'
+      %h2.big-title= @user.is_profile_completed ? 'Edit your profile' : 'Complete your profile'
       %h3.small-title Let people know about your lifestyle so that they can decide to join you in your trips
 
 .contain-to-grid.main-zone
   .row.profile
 
     .columns.small-3
-      = image_tag current_user.picture_url
+      = image_tag @user.picture_url
     .columns.small-7.halfleft
 
       = form_tag(me_edit_path, method: "put", data: {abide: true}) do
@@ -16,43 +16,43 @@
         .row
           .columns.small-6
             = label_tag :user_first_name, 'First name'
-            = text_field_tag('user[first_name]', current_user.first_name, required: true)
+            = text_field_tag('user[first_name]', @user.first_name, required: true)
             %small.error First name is required
           .columns.small-6
             = label_tag :user_last_name, 'Last name'
-            = text_field_tag('user[last_name]', current_user.last_name, required: true)
+            = text_field_tag('user[last_name]', @user.last_name, required: true)
             %small.error Last name is required
         .row
           .columns.small-6
             = label_tag :user_email, 'Email'
-            = email_field_tag('user[email]', current_user.email, required: true)
+            = email_field_tag('user[email]', @user.email, required: true)
             %small.error Email is required
         .row
           .columns.small-10.user_birth_date
             = label_tag 'user_birth_date_3i', 'Birth date'
-            = date_select 'user', 'birth_date',{ start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: current_user.birth_date}, {required: true}
+            = date_select 'user', 'birth_date',{ start_year: Date.today.year - 90, end_year: Date.today.year, prompt: { day: 'dd', month: 'mm', year: 'yyyy' }, order: [:day, :month, :year], selected: @user.birth_date}, {required: true}
             %small.error Birth date is required
           .columns.small-3
             = label_tag :user_sex, 'Sex'
-            = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, current_user.sex)
+            = select_tag 'user[sex]', options_for_select(User::SEX_COLLECTION, @user.sex)
           .columns.small-6
             = label_tag :user_relationship_status, 'Relationship status'
-            = select_tag 'user[relationship_status]', options_for_select(User::RELATIONSHIP_STATUS_COLLECTION, current_user.sex)
+            = select_tag 'user[relationship_status]', options_for_select(User::RELATIONSHIP_STATUS_COLLECTION, @user.sex)
         .row
           .columns.small-6
             = label_tag :user_nationality, 'Nationality'
-            = select_tag 'user[nationality]', options_for_select(nationality_select_collection, current_user.nationality), required: true
+            = select_tag 'user[nationality]', options_for_select(nationality_select_collection, @user.nationality), required: true
             %small.error Nationality is required
           .columns.small-6
             = label_tag :user_city, 'City'
-            = text_field_tag 'user[city]', current_user.city, required: true, data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}
-            = hidden_field_tag 'user[latitude]', current_user.latitude, required: true
-            = hidden_field_tag 'user[longitude]', current_user.longitude, required: true
+            = text_field_tag 'user[city]', @user.city, required: true, data: {city_autocomplete: true, city_autocomplete_lat: 'user_latitude', city_autocomplete_lng: "user_longitude"}
+            = hidden_field_tag 'user[latitude]', @user.latitude, required: true
+            = hidden_field_tag 'user[longitude]', @user.longitude, required: true
             %small.error City is required
         .row
           .columns.small-12
             = label_tag :user_description, 'Description'
-            = text_area_tag 'user[description]', current_user.description, :placeholder => 'Add a short description of yourself that will be visible in your profile'
+            = text_area_tag 'user[description]', @user.description, :placeholder => 'Add a short description of yourself that will be visible in your profile'
 
         .row
           .columns.small-12
@@ -60,7 +60,7 @@
             %span.explication Which kind of place do you look for?
         .row.image-as-radio
           .columns.small-6
-            = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => current_user.mood, :selected_class => :selected, required: true }
+            = render :partial => 'collection_radio', :locals => {:collection => User::MOOD_COLLECTION, :name => "user[mood]", :value => @user.mood, :selected_class => :selected, required: true }
 
         .row
           .columns.small-12
@@ -68,9 +68,9 @@
             %span.explication Which part of the day do you enjoy the most?
         .row.image-as-radio
           .columns.small-6
-            = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => current_user.time, :selected_class => :selected, required: true }
+            = render :partial => 'collection_radio', :locals => {:collection => User::TIME_COLLECTION, :name => "user[time]", :value => @user.time, :selected_class => :selected, required: true }
 
-        - unless current_user.is_profile_completed
+        - unless @user.is_profile_completed
           .row.terms
             .columns.small-12.no-custom
               <div class="input boolean optional user_accepts"><input name="user[accepts]" type="hidden" value="0"><label class="boolean optional control-label checkbox simple-text" for="user_accepts"><input checked="checked" class="boolean optional" id="user_accepts" name="user[accepts]" required="required" type="checkbox" value="1">By clicking Submit, you agree to our <a href="/terms">Terms</a> and that you have read our <a href="/privacy">Privacy Policy</a>.</label></div>
