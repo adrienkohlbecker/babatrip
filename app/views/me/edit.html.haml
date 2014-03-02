@@ -41,7 +41,7 @@
         .row
           .columns.small-12.medium-5
             = label_tag :user_nationality, 'Nationality'
-            = select_tag 'user[nationality]', options_for_select(nationality_select_collection, @user.nationality), required: true
+            = select_tag 'user[nationality]', options_for_select(nationality_select_collection, @user.nationality), prompt: 'Nationality', required: true
             %small.error Nationality is required
           .columns.small-12.medium-6
             = label_tag :user_city, 'City'

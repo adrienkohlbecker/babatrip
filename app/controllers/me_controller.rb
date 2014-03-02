@@ -60,12 +60,38 @@ class MeController < ApplicationController
     @user.mood = update_params[:user][:mood]
     @user.time = update_params[:user][:time]
 
+    if @user.mood.nil? or @user.mood == ''
+      @user.errors.add(:mood, 'is empty')
+    end
+    if @user.time.nil? or @user.time == ''
+      @user.errors.add(:time, 'is empty')
+    end
+    if @user.relationship_status.nil? or @user.relationship_status == ''
+      @user.errors.add(:relationship_status, 'is empty')
+    end
+    if @user.sex.nil? or @user.sex == ''
+      @user.errors.add(:sex, 'is empty')
+    end
+
     @user.description = update_params[:user][:description]
 
     @user.nationality = update_params[:user][:nationality]
     @user.city = update_params[:user][:city]
     @user.latitude = update_params[:user][:latitude]
     @user.longitude = update_params[:user][:longitude]
+
+    if @user.nationality.nil? or @user.nationality == ''
+      @user.errors.add(:nationality, 'is empty')
+    end
+    if @user.city.nil? or @user.city == ''
+      @user.errors.add(:city, 'is empty')
+    end
+    if @user.latitude.nil? or @user.latitude == ''
+      @user.errors.add(:latitude, 'is empty')
+    end
+    if @user.longitude.nil? or @user.longitude == ''
+      @user.errors.add(:longitude, 'is empty')
+    end
 
     is_signup = !@user.is_profile_completed
 
@@ -75,7 +101,7 @@ class MeController < ApplicationController
       redir = is_signup ? root_path : my_profile_path
       redirect_to session.delete("user_return_to") || redir
     else
-      flash[:notice] = @user.errors.full_messages.join(".\n")
+      flash[:error] = @user.errors.full_messages.join(".\n")
       render 'edit'
     end
   end
