@@ -499,6 +499,11 @@ button, .button {
     border: none;
     font-weight: normal;
   }
+  .error {
+    background-color: #BA0000;
+    border: none;
+    font-weight: normal;
+  }
 
 }
 [data-abide] .error small.error, [data-abide] span.error, [data-abide] small.error {
