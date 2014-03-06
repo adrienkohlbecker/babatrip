@@ -5,8 +5,8 @@
   .row
     .columns.small-12
       %h3.catch-title 
-        Discover where your friends are planning to go 
-        %br and let the journey begin!
+        Share your travel destination with your friends 
+        %br and find out where they are planning to go
   - unless current_user
     .row
       %a{href: user_omniauth_authorize_path(:facebook)}
@@ -20,29 +20,27 @@
 .contain-to-grid.main-zone.about
   .row
     .columns.small-12.medium-4
-      %h2.plan Plan your trips
+      %h2.plan Share your trips
       %p
-        Travel-Meet takes the pain out of planning and opens you up to the spontaneity and excitement that travel should bring. 
-        %br
-        Simply choose a destination and notify your friends, follow their travel plans and join their adventure, or start a new conversation with locals in the community. 
+        Simply choose the destination and time of your next trip and share it with your friends. 
+        Travel-Meet opens you up to the spontaneity and excitement that travel should bring. 
+        
+        
+    .columns.small-12.medium-4
+      %h2.meet Join your friends
+      %p
+        Discover where your friends are planning to go and join their adventure, or strike a completely new conversation with friends of friends and locals in the community.
+      
+              
     .columns.small-12.medium-4
       %h2.travel Travel the World
       %p
-        The beauty of travel is in the exchange. Whether it be shared moments with existing friends, or as part of an adventure that forces you to get in contact with a local or other travellers that cross your path.  
-        %br
-        Travel-Meet offers a springboard for wonderful, unplanned experiences.
-              
-    .columns.small-12.medium-4
-      %h2.meet Meet new people
-      %p
-        Search profiles of local residents with common interests and connect with them for useful tips, personal recommendations or unique guided tours. 
-        %br
-        Hop off the tour bus and gain authentic insights into the lifestyle and stories from real people in real places.
+        The beauty of travel is in the exchange. Hop off the tour bus, and gain authentic insights into the lifestyle and stories from real people in real places.
 
 .contain-to-grid.secondary-zone.about
   .row
     .columns.small-12.centered
-      %h2.medium-title What is your lifestyle like ?
+      %h2.medium-title What is your lifestyle ?
       %h3.small-title We want to make sure that you have a great time with the right person.
   .row.legenda
     .columns.small-12.medium-4
