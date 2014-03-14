@@ -274,10 +274,11 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 8px;
-            margin-top: 5px;
+            margin-top: 0px;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
+            line-height: 1.4em;
             }
 
         .dates, .composition {
