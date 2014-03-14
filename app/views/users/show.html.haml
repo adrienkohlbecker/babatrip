@@ -6,7 +6,9 @@
         %img{src: @user.picture_url(width: 160, height: 160)}
 
     .columns.small-8.medium-6.large-6
-      %h1= @user.full_name
+      %h1.name
+        = @user.full_name
+        %a.fa.fa-facebook-square.small{href: "https://facebook.com/#{@user.uid}", target: '_blank'}
       .additional-info
         %span.agesex= "#{@user.sex}, #{@user.age} years old"
         %span.location.fa.fa-map-marker= @user.city

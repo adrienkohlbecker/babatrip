@@ -158,6 +158,12 @@ label.collection_check_boxes {
         margin-left: 15px;
         text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.3);
 
+        .fa-facebook-square {
+          font-size: 20PX;
+          text-shadow: none;
+        }
+
+
         @media only screen and (max-width: 40em) { 
         font-size: 37px;
         line-height: 44px;
