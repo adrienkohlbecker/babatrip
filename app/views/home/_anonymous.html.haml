@@ -5,16 +5,15 @@
   .row
     .columns.small-12
       %h3.catch-title 
-        Share your next trips with your friends 
-        %br and find out where they are planning to go
+        Share your next trips with your friends and find out where they are planning to go
   - unless current_user
     .row
-      %a{href: user_omniauth_authorize_path(:facebook)}
-        %img{src: image_path('facebook_login.png')}
+      %a.btn-fb{href: user_omniauth_authorize_path(:facebook)}
+        .fa.fa-facebook Sign Up with Facebook
   - if current_user      
     .row
-      %a{href: "https://www.facebook.com/travelmeetwebsite"}
-        %img{src: image_path('facebook_page.png')}
+      %a.btn-fb{href: "https://www.facebook.com/travelmeetwebsite"}
+        .fa.fa-facebook Follow us on Facebook
 
 
 .contain-to-grid.main-zone.about

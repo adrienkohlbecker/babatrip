@@ -146,8 +146,8 @@ h2,h3 {
 }
 .catch-title {
     font-size: 18px;
-    margin-top: -2px;
-    margin-bottom: 20px;
+    margin-top: -5px;
+    margin-bottom: 32px;
     font-style: italic;
     font-weight: normal;
 
@@ -550,4 +550,33 @@ ul.social_links li {
         opacity: 1;
     }
   }
+}
+
+.btn-fb {
+  background: #3b5998;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 25px;
+  font-weight: bold;
+
+
+  .fa {
+    font-weight: bold;
+
+    &:before {
+      opacity: 0.6;
+      margin-right: 10px;
+      
+    }
+  }
+
+
+  &:hover {
+      background: darken(#3b5998,5%);
+      color: white;
+      
+    }
+
+
 }
