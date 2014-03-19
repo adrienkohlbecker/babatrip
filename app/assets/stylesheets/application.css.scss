@@ -33,6 +33,7 @@
 
 html, body {
   height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 a {
   color: #ff4e96;
@@ -563,8 +564,7 @@ ul.social_links li {
 
   .fa {
     font-weight: bold;
-    font-family: Helvetica, Arial, sans-serif;
-
+    
     &:before {
       opacity: 0.6;
       margin-right: 10px;
