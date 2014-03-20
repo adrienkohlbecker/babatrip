@@ -561,13 +561,14 @@ ul.social_links li {
   padding: 12px 25px;
   font-weight: bold;
 
-
   .fa {
     font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
     
     &:before {
       opacity: 0.6;
       margin-right: 10px;
+      font-family: FontAwesome;
       
     }
   }
