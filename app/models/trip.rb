@@ -30,25 +30,70 @@ class Trip < ActiveRecord::Base
     ids_to_properties = {}
     trips_to_consider.each {|r|
 
-      match = 0
-      if r['mood'] == current_user.mood
-        match += 1
+      if current_user.mood == 'Chic'
+        if r['mood'] == 'Chic'
+          match_mood = 1
+        elsif r['mood'] == 'Cool'
+          match_mood = 0.5
+        else
+          match_mood = 0
+        end
+      elsif current_user.mood == 'Hippie'
+        if r['mood'] == 'Hippie'
+          match_mood = 1
+        elsif r['mood'] == 'Cool'
+          match_mood = 0.5
+        else
+          match_mood = 0
+        end
+      else #current_user.mood == 'Cool'
+        if r['mood'] == 'Cool'
+          match_mood = 1
+        elsif r['mood'] == 'Chic'
+          match_mood = 0.5
+        else
+          match_mood = 0
+        end
       end
-      if r['time'] == current_user.time or r['time'] == 'All day' or current_user.time = 'All day'
-        match += 1
+
+      if current_user.time == '24h'
+        if r['time'] == '24h'
+          match_time = 1
+        elsif r['time'] == 'Day'
+          match_time = 0.5
+        else
+          match_time = 0
+        end
+      elsif current_user.time == 'Day'
+        if r['time'] == 'Day'
+          match_time = 1
+        elsif r['time'] == '24h'
+          match_time = 0.5
+        else
+          match_time = 0
+        end
+      else # current_user.time == 'Night'
+        if r['time'] == 'Night'
+          match_time = 1
+        elsif r['time'] == '24h'
+          match_time = 0.5
+        else
+          match_time = 0
+        end
       end
 
       ids_to_properties[r['id'].to_i] = {
         :distance => r['distance'],
         :mood => r['mood'],
         :time => r['time'],
-        :match => match
+        :match_mood => match_mood,
+        :match_time => match_time
       }
 
     }
 
     trips = Trip.where(:id => ids_to_properties.keys).to_a
-    trips.sort_by! {|trip| [-ids_to_properties[trip.id][:match], ids_to_properties[trip.id][:distance], trip.arriving, trip.leaving] }
+    trips.sort_by! {|trip| [-ids_to_properties[trip.id][:match_mood], -ids_to_properties[trip.id][:match_time], ids_to_properties[trip.id][:distance], trip.arriving, trip.leaving] }
 
     return trips
 
