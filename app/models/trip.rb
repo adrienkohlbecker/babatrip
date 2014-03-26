@@ -56,8 +56,8 @@ class Trip < ActiveRecord::Base
         end
       end
 
-      if current_user.time == '24h'
-        if r['time'] == '24h'
+      if current_user.time == 'All day'
+        if r['time'] == 'All day'
           match_time = 1
         elsif r['time'] == 'Day'
           match_time = 0.5
@@ -67,7 +67,7 @@ class Trip < ActiveRecord::Base
       elsif current_user.time == 'Day'
         if r['time'] == 'Day'
           match_time = 1
-        elsif r['time'] == '24h'
+        elsif r['time'] == 'All day'
           match_time = 0.5
         else
           match_time = 0
@@ -75,7 +75,7 @@ class Trip < ActiveRecord::Base
       else # current_user.time == 'Night'
         if r['time'] == 'Night'
           match_time = 1
-        elsif r['time'] == '24h'
+        elsif r['time'] == 'All day'
           match_time = 0.5
         else
           match_time = 0
