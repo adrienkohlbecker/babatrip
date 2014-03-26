@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
   end
 
   def is_a_friend_of_friend_of?(other_user)
-    self.friends.where('? = ANY (facebook_friends)', other_user.uid).any?
+    (other_user.facebook_friends & self.facebook_friends).any?
   end
 
   def male?
