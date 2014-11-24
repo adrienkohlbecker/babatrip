@@ -31,45 +31,45 @@
               %i.fa.fa-twitter-square
 
   - else
-
-    - unless @trips_from_friends.empty?
-      .row.legenda
-        .columns.small-12
-          %span 
-            %i.blue
-            Friends
-          %span
-            %i.green 
-            Friends of friend
-          %span
-            %i.yellow 
-            Locals
-      .row.friends-results
-        .columns.small-12
-          %h2.white-title Friends that are going there
-      .row
-        - @trips_from_friends.each do |trip|
-          .columns.small-12.medium-6.large-4
-            .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-    - unless @trips_from_friends_of_friends.empty?
-      .row.friendsOf-results
-        .columns.small-12
-          %h2.white-title Friends of friends that are going there
-      .row
-        - @trips_from_friends_of_friends.each do |trip|
-          .columns.small-12.medium-6.large-4
-            .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
-              = render :partial => 'shared/trip_box', :locals => {:trip => trip}
-    - unless @locals.empty?
-      .row.locals-results
-        .columns.small-12
-          %h2.white-title Interesting people living there
-      .row
-        - @locals.each do |user|
-          .columns.small-12.medium-6.large-4
-            .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(user.id)}}
-              = render :partial => 'shared/user_box', :locals => {:user => user}
+    .row.legenda
+      .columns.small-12
+        %span 
+          %i.blue
+          Friends
+        %span
+          %i.green 
+          Friends of friend
+        %span
+          %i.yellow 
+          Locals
+      - unless @trips_from_friends.empty?
+        
+        .row.friends-results
+          .columns.small-12
+            %h2.white-title Friends that are going there
+        .row
+          - @trips_from_friends.each do |trip|
+            .columns.small-12.medium-6.large-4
+              .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
+                = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+      - unless @trips_from_friends_of_friends.empty?
+        .row.friendsOf-results
+          .columns.small-12
+            %h2.white-title Friends of friends that are going there
+        .row
+          - @trips_from_friends_of_friends.each do |trip|
+            .columns.small-12.medium-6.large-4
+              .card{:data => {:href => "/trips/#{trip.id}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(trip.user.id)}}
+                = render :partial => 'shared/trip_box', :locals => {:trip => trip}
+      - unless @locals.empty?
+        .row.locals-results
+          .columns.small-12
+            %h2.white-title Interesting people living there
+        .row
+          - @locals.each do |user|
+            .columns.small-12.medium-6.large-4
+              .card.user{:data => {:href => "#{user_show_path(user)}/contact", :ajax_modal => 'contact-modal', :user_profile => user_show_path(user.id)}}
+                = render :partial => 'shared/user_box', :locals => {:user => user}
 
 .reveal-modal#add-modal{data: {reveal: true}}
   .row
