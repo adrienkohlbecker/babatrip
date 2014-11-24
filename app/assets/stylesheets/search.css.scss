@@ -92,3 +92,36 @@ padding: 15px;
   padding-top:20px;
   font-weight: normal;
 }
+
+.legenda {
+  position: absolute;
+  top: -13px;
+  left:0;
+  right: 0px;
+  text-align: right;
+  font-size: 12px;
+
+  span {
+    margin-right: 13px;
+    i {
+      display: inline-block;
+      width: 13px;
+      height: 13px;
+      border-radius: 20px;
+      margin-right: 3px;
+      position: relative;
+      top: 2px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .blue {
+     background-color: #3b5998;
+    }
+     .green {
+      background-color: #40a4a3;
+    }
+    .yellow {
+      background-color: #ffaa00;
+    }
+    
+  }
+}

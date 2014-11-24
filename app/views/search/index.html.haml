@@ -33,6 +33,17 @@
   - else
 
     - unless @trips_from_friends.empty?
+      .row.legenda
+        .columns.small-12
+          %span 
+            %i.blue
+            Friends
+          %span
+            %i.green 
+            Friends of friend
+          %span
+            %i.yellow 
+            Locals
       .row.friends-results
         .columns.small-12
           %h2.white-title Friends that are going there
