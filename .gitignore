@@ -36,3 +36,9 @@ pickle-email-*.html
 # Sublime text
 *.sublime-project
 *.sublime-workspace
+
+*.log
+
+environment
+
+db:schema:load_if_ruby
