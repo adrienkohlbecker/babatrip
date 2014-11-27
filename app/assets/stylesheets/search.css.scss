@@ -101,6 +101,10 @@ padding: 15px;
   text-align: right;
   font-size: 12px;
 
+  @media only screen and (max-width: 40em) {
+        display: none;
+  }
+
   span {
     margin-right: 13px;
     i {
