@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
     user.email = auth.info.email unless user.is_email_overridden
     user.facebook_token = auth.credentials.token
     user.facebook_token_expires = Time.at(auth.credentials.expires_at)
-    user.username = auth.info.nickname
 
     user.save!
     user
@@ -62,7 +61,7 @@ class User < ActiveRecord::Base
     friends_uids = friends.collect{|f| f["id"]}
 
     # Get user profile
-    me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status,username')
+    me = @graph.get_object("me", fields: 'birthday,gender,first_name,last_name,location,relationship_status')
 
     if me['location']
       location_id = me['location']['id']
@@ -81,7 +80,7 @@ class User < ActiveRecord::Base
     sex = 'Female' if me['gender'] == 'female'
 
     birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
-    username = me['username']
+    username = me['user-id']
 
     first_name = me['first_name']
     last_name = me['last_name']
@@ -91,7 +90,7 @@ class User < ActiveRecord::Base
     relationship_status = 'In a relationship' if ['In a relationship', 'Engaged', 'Married', 'In a civil union', 'In a domestic partnership'].include?(me['relationship_status'])
     # manque "It's complicated" et "In an open relationship"
 
-    self.update_attributes!(facebook_friends: friends_uids, username: username, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
+    self.update_attributes!(facebook_friends: friends_uids, latitude: lat, longitude: long, sex: sex, birth_date: birth_date, first_name: first_name, last_name: last_name, relationship_status: relationship_status, city: city)
 
   end
 
