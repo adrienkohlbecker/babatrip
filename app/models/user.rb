@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     sex = 'Female' if me['gender'] == 'female'
 
     birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
-    username = me['user-id']
+    # username = me['user-id']
 
     first_name = me['first_name']
     last_name = me['last_name']
