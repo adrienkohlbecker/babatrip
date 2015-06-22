@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth)
 
-    user = User.where(:provider => auth.provider).first
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
     if not user
       user = User.where(:email => auth.info.email).first # Email must be unique so we handle this edge case
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     if not user
       user = User.new
       user.provider = auth.provider
-      # user.uid = auth.uid
+      user.uid = auth.uid
       user.password = Devise.friendly_token[0,20] # set a random password, password flow never used by user
     end
 
@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
     sex = 'Female' if me['gender'] == 'female'
 
     birth_date = Date.strptime(me['birthday'], '%m/%d/%Y') rescue nil
-    # username = me['user-id']
+    username = me['user-id']
 
     first_name = me['first_name']
     last_name = me['last_name']
