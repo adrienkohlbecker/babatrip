@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228154438) do
+ActiveRecord::Schema.define(version: 20150729125530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140228154438) do
     t.boolean  "is_email_overridden",    default: false
     t.string   "mood"
     t.string   "time"
-    t.string   "username",                               null: false
+    t.string   "username"
     t.text     "description"
     t.boolean  "accepts"
     t.string   "facebook_friends",                                    array: true
