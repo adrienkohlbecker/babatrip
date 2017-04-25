@@ -42,3 +42,4 @@ pickle-email-*.html
 environment
 
 db:schema:load_if_ruby
+/.project
