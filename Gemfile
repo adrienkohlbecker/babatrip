@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.10'
+ruby '2.2.3'
 
 gem 'rails', '~> 4.0.0'
 
@@ -13,7 +13,7 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier'
 
 # Use Phusion Passenger as the app server
-gem 'passenger'
+gem 'puma'
 
 # Required by heroku
 gem "rails_12factor"

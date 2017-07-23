@@ -40,7 +40,6 @@ GEM
     countries (0.9.3)
       currencies (~> 0.4.2)
     currencies (0.4.2)
-    daemon_controller (1.2.0)
     debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -53,7 +52,7 @@ GEM
       dotenv (= 0.10.0)
     erubis (2.7.0)
     execjs (2.0.2)
-    faraday (0.9.0)
+    faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     font-awesome-sass (4.0.3.1)
       sass (~> 3.2)
@@ -67,7 +66,7 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
-    hashie (2.0.5)
+    hashie (3.5.6)
     hike (1.2.3)
     i18n (0.6.9)
     jquery-rails (3.1.0)
@@ -76,8 +75,7 @@ GEM
     jquery-rails-cdn (1.0.1)
       jquery-rails
     json (1.8.1)
-    jwt (0.1.11)
-      multi_json (>= 1.5)
+    jwt (1.5.6)
     koala (1.9.0)
       addressable
       faraday
@@ -92,34 +90,29 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     modernizr-rails (2.7.1)
-    multi_json (1.9.2)
-    multi_xml (0.5.5)
+    multi_json (1.12.1)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     newrelic_rpm (3.7.3.204)
-    oauth2 (0.9.3)
-      faraday (>= 0.8, < 0.10)
-      jwt (~> 0.1.8)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
-      rack (~> 1.2)
-    omniauth (1.2.1)
-      hashie (>= 1.2, < 3)
-      rack (~> 1.0)
-    omniauth-facebook (1.6.0)
-      omniauth-oauth2 (~> 1.1)
-    omniauth-oauth2 (1.1.2)
-      faraday (>= 0.8, < 0.10)
-      multi_json (~> 1.3)
-      oauth2 (~> 0.9.3)
+      rack (>= 1.2, < 3)
+    omniauth (1.4.2)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
+    omniauth-facebook (4.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.4.0)
+      oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    passenger (4.0.40)
-      daemon_controller (>= 1.2.0)
-      rack
-      rake (>= 0.8.1)
     pg (0.17.1)
     polyglot (0.3.4)
-    rack (1.5.2)
+    puma (3.9.1)
+    rack (1.5.5)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.4)
@@ -194,10 +187,16 @@ DEPENDENCIES
   modernizr-rails
   newrelic_rpm
   omniauth-facebook
-  passenger
   pg
+  puma
   rails (~> 4.0.0)
   rails_12factor
   sass-rails (~> 4.0.2)
   sentry-raven
   uglifier
+
+RUBY VERSION
+   ruby 2.2.3p173
+
+BUNDLED WITH
+   1.13.7
